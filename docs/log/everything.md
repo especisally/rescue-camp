@@ -5,19 +5,40 @@
 
 ---
 
-## 0.2.2 - 2026-06-26 - 管理后台布局修复 + adminCrud JSON字段处理修复
+## 0.2.2 - 2026-06-26 - 管理后台布局修复 + adminCrud 修复 + 服务器部署
 
-- **管理后台布局修复**：`main.ejs` 的 `<%- body %>` 在 Express 标准 EJS 中不会自动填充，导致所有后台页面内容渲染在 `</html>` 之外（页面显示空白）。拆分为 `header.ejs` + `footer.ejs` 模式，24 个视图全部迁移。✅
-- **adminCrud JSON 字段自动解析**：新增 `parseJsonFields()` 和 `removeEmptyStrings()` 辅助函数，自动解析表单提交的 JSON 字符串（如危化品 properties、装备 specs 等），避免 Prisma 类型校验错误。✅
-- **健康检查版本号动态读取**：`GET /api/health` 从硬编码 `0.2.0` 改为从 `package.json` 动态读取。✅
-- 版本号 0.2.1 → 0.2.2（Bug 修复，补丁版本号 +1）
+### 问题诊断
+- **根因**：上一会话声称已完成 `main.ejs` → `header.ejs`+`footer.ejs` 拆分，但 `header.ejs` 和 `footer.ejs` 文件从未提交到 Git，24 个视图修改也未提交。GitHub 仓库仅有 `e5a2813` 一次提交（v0.2.0/0.2.1 旧代码）。服务器 Clone 后运行的是旧代码，`main.ejs` 的 `<%- body %>` 不填充导致后台页面空白 ✅
+- **服务端版本号不一致**：健康检查 `/api/health` 硬编码返回 `0.2.0`，`package.json` 已是 `0.2.1` ✅
+
+### 代码修复
+- **管理后台布局修复**：提交 `header.ejs` + `footer.ejs`（新文件），24 个视图从 `include('../layouts/main')` 改为 `include header` + 内容 + `include footer` ✅
+- **adminCrud JSON 字段自动解析**：新增 `parseJsonFields()` 和 `removeEmptyStrings()` 函数，自动处理危化品/装备/标准/训练的表单 JSON 字段 ✅
+- **版本号动态读取**：`/api/health` 从 `package.json` 读取版本号，不再硬编码 ✅
+- **新增 .gitignore**：项目根目录忽略 `server.zip` ✅
+- 版本号 0.2.1 → 0.2.2
+
+### 服务器部署
+- 服务器初始化 Git + `git fetch` + `git reset --hard origin/master` 拉取最新代码 ✅
+- 解决目录嵌套问题：`.git` 上移至 `/www/wwwroot/yjjyzxy.top/`，`server/` 代码就位 ✅
+- `npx prisma generate` → Prisma Client v5.22.0 ✅
+- `npx prisma db push` → 数据库已同步，无需变更 ✅
+- PM2 重启 `rescue-camp-api` → 在线，版本 0.2.2 ✅
+- 配置 PATH：`export PATH="/www/server/nodejs/v20.15.0/bin:$PATH"` ✅
+- 后续更新流程简化为：`git pull` → `pm2 restart` ✅
+
+### 验证结果
+- `GET /api/health` → `{"status":"ok","db":"connected","version":"0.2.2"}` ✅
+- `GET /admin/login` → 200，登录页正常 ✅
+- 登录后 `GET /admin/` → 200，数据看板展示正常（8 项统计）✅
+- Git 提交 `b5111c1`：31 个文件变更，172 行新增 ✅
 - 详细日志见：`feature-backend-phase4.md`
 
 ---
 ## 0.2.1 - 2026-06-26 - Bug修复 + 种子数据扩充 + 前端 API 接入 + 服务器部署
 
 - 修复敏感词过滤 Bug：`sensitiveFilter.js` 中 `REPEAT_CHAR` 未定义 → `REPLACE_CHAR` ✅
-- 修复管理后台 500 错误：EJS 布局 `<%- body %>` 未定义，拆分为 `header.ejs` + `footer.ejs`（24 个视图批量更新）✅
+- 修复管理后台 500 错误：EJS 布局 `<%- body %>` 未定义，拆分为 `header.ejs` + `footer.ejs`（24 个视图批量更新）— **注：修复未提交，v0.2.2 才实际部署** ✅
 - 种子数据大幅扩充：训练操法 4 + 装备 6 + 题库 3（21题）+ 帖子 5 + 评论 6 + 推荐 5 + 危化品 4 + 考核标准 4 ✅
 - 种子数据脚本重构为可重复执行（`deleteMany` + `upsert` 策略）✅
 - 创建前端 API 基础设施：`config/index.js` + `utils/request.js` + `utils/util.js` ✅
@@ -27,20 +48,6 @@
 - 服务器部署：Node.js v20 + MySQL + Nginx 反向代理 + 种子数据 ✅
 - 微信公众平台添加合法域名 `https://www.yjjyzxy.top` ✅
 - 版本号 0.2.0 → 0.2.1
-- 详细日志见：`feature-backend-phase4.md`
-- 详细日志见：`feature-frontend-api-integration.md`
-
-- 修复敏感词过滤 Bug：`sensitiveFilter.js` 中 `REPEAT_CHAR` 未定义 → `REPLACE_CHAR` ✅
-- 种子数据大幅扩充：训练操法 4 条 + 装备 6 件 + 题库 3 个（21 题）+ 帖子 5 篇 + 评论 6 条 + 推荐 5 条 + 危化品 4 条 + 考核标准 4 条 ✅
-- 种子数据脚本重构为可重复执行（`deleteMany` + `upsert` 策略，避免重复插入）✅
-- 创建前端 API 基础设施：`config/index.js`（API 地址）+ `utils/request.js`（请求封装/Token 注入/错误拦截）+ `utils/util.js`（工具函数）✅
-- 更新 `app.js`：Token 管理 + 登录状态持久化 + 自动获取用户信息 ✅
-- 登录页接入真实微信登录（`wx.login` → `POST /api/auth/login`）✅
-- 首页接入 Banner/推荐 API（`GET /api/banners` + `GET /api/recommends`），保留 fallback 数据 ✅
-- **全部 28 个前端页面接入真实 API**（视频3页/论坛3页/刷题3页/工具4页/训练2页/装备2页/学习2页/个人中心5页/搜索/通知/帮助/关于）✅
-- **服务器部署完成**：Node.js + MySQL + Nginx 反向代理 + 种子数据填充 ✅
-- 微信公众平台已添加合法域名 `https://www.yjjyzxy.top` ✅
-- 版本号 0.2.0 → 0.2.1（Bug 修复 + 新功能，补丁版本号 +1）
 - 详细日志见：`feature-backend-phase4.md`
 - 详细日志见：`feature-frontend-api-integration.md`
 
