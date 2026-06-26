@@ -1,2 +1,87 @@
-<!--pages/quiz/result.wxml-->
-<text>pages/quiz/result.wxml</text>
+<!-- 刷题中心 - 答题结果页 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">答题结果</text>
+      <view class="nav-placeholder"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="page-scroll" style="padding-top: calc(88rpx + {{statusBarHeight}}px);">
+
+    <!-- 成绩展示区 -->
+    <view class="score-hero">
+      <view class="score-circle {{accuracy >= 80 ? 'score-good' : accuracy >= 60 ? 'score-ok' : 'score-bad'}}">
+        <text class="score-number">{{score}}</text>
+        <text class="score-divider">/</text>
+        <text class="score-total">{{total}}</text>
+      </view>
+      <text class="score-label">正确率 {{accuracy}}%</text>
+      <text class="score-desc">
+        {{accuracy >= 90 ? '🎉 太棒了！' : accuracy >= 80 ? '👍 做得不错！' : accuracy >= 60 ? '💪 继续加油！' : '📚 还要多多练习哦！'}}
+      </text>
+    </view>
+
+    <!-- 统计卡片 -->
+    <view class="stats-row">
+      <view class="stat-card">
+        <text class="stat-icon">✅</text>
+        <text class="stat-value">{{score}}</text>
+        <text class="stat-label">答对</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">❌</text>
+        <text class="stat-value">{{total - score}}</text>
+        <text class="stat-label">答错</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-icon">⏱</text>
+        <text class="stat-value">{{durationText}}</text>
+        <text class="stat-label">用时</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-section">
+      <view class="action-btn action-wrong" bindtap="onReviewWrong" wx:if="{{total - score > 0}}">
+        <text class="action-text">📝 错题回顾</text>
+      </view>
+      <view class="action-btn action-retry" bindtap="onRetry">
+        <text class="action-text">🔄 重新答题</text>
+      </view>
+      <view class="action-btn action-back" bindtap="goBack">
+        <text class="action-text">📋 返回题库</text>
+      </view>
+    </view>
+
+    <!-- 错题回顾列表 -->
+    <view class="wrong-section" wx:if="{{wrongList.length > 0 && showWrongDetail}}">
+      <view class="section-header">
+        <text class="section-title">错题回顾</text>
+        <text class="section-count">共 {{wrongList.length}} 题</text>
+      </view>
+      <view class="wrong-list">
+        <view class="wrong-item" wx:for="{{wrongList}}" wx:key="id">
+          <view class="wrong-question-header">
+            <text class="wrong-number">第 {{index + 1}} 题</text>
+            <text class="wrong-answer">你的答案: {{item.userAnswer}} | 正确答案: {{item.correctAnswer}}</text>
+          </view>
+          <text class="wrong-question-text">{{item.questionText}}</text>
+          <text class="wrong-explanation" wx:if="{{item.explanation}}">💡 {{item.explanation}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 显示/隐藏错题 -->
+    <view class="toggle-wrong" wx:if="{{wrongList.length > 0}}" bindtap="onToggleWrong">
+      <text class="toggle-text">{{showWrongDetail ? '收起错题 ▲' : '展开错题回顾 ▼'}}</text>
+    </view>
+
+    <!-- 底部安全距离 -->
+    <view style="height: 80rpx;"></view>
+  </scroll-view>
+</view>

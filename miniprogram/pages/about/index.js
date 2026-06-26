@@ -1,66 +1,19 @@
 // pages/about/index.js
+const app = getApp();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    statusBarHeight: 0,
+    appInfo: {
+      icon: '🚒',
+      name: '应急救援战训营',
+      version: 'v0.2.5',
+      description: '应急救援战训营是一款面向消防救援人员的专业培训平台，提供丰富的教学视频、实战案例、刷题练习和装备管理等功能，助力消防员提升专业技能和应急处置能力。',
+      copyright: '© 2026 应急救援战训营',
+    },
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  onLoad: function () { this.setData({ statusBarHeight: app.globalData.statusBarHeight || 44 }); },
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+  goBack: function () { wx.navigateBack({ fail: function () { wx.switchTab({ url: '/pages/index/index' }); } }); },
+});

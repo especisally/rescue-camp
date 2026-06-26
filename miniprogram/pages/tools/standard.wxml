@@ -27,7 +27,7 @@
 
   <!-- 标准列表 -->
   <view class="standard-list">
-    <navigator url="/pages/tools/standard-detail?id={{item.id}}" class="standard-card" wx:for="{{filteredList}}" wx:key="id">
+    <navigator url="/pages/tools/standard-detail?id={{item.id}}" class="standard-card" wx:for="{{standards}}" wx:key="id">
       <view class="card-body">
         <view class="card-header">
           <text class="card-title">{{item.title}}</text>
@@ -42,7 +42,7 @@
       </view>
     </navigator>
 
-    <view class="empty-tip" wx:if="{{filteredList.length === 0}}">
+    <view class="empty-tip" wx:if="{{standards.length === 0}}">
       <text>未找到匹配的考核标准</text>
     </view>
   </view>

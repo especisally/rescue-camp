@@ -16,13 +16,13 @@
     <view class="progress-bar">
       <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
     </view>
-    <text class="progress-text">已完成 {{currentIndex}}/{{totalCount}}</text>
+    <text class="progress-text">已完成 {{currentIndex + 1}}/{{totalCount}}</text>
   </view>
 
   <!-- 题目卡片 -->
   <view class="question-card">
     <view class="question-header">
-      <text class="question-number">第 {{currentIndex}} 题</text>
+      <text class="question-number">第 {{currentIndex + 1}} 题</text>
       <text class="question-type">{{question.type}}</text>
     </view>
 
@@ -31,8 +31,9 @@
     <!-- 选项列表 -->
     <view class="options-list">
       <view
-        class="option-item {{option.selected ? 'option-selected' : ''}} {{option.correct ? 'option-correct' : ''}} {{item.showResult && option.wrong ? 'option-wrong' : ''}}"
+        class="option-item {{option.selected ? 'option-selected' : ''}} {{option.correct ? 'option-correct' : ''}} {{showResult && option.wrong ? 'option-wrong' : ''}}"
         wx:for="{{question.options}}"
+        wx:for-item="option"
         wx:key="label"
         data-label="{{option.label}}"
         bindtap="onSelectOption"

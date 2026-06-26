@@ -1,66 +1,34 @@
 // pages/comments/index.js
+const app = getApp();
+const { get } = require('../../utils/request');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    statusBarHeight: 0,
+    comments: [],
+    loading: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  onLoad: function () { this.setData({ statusBarHeight: app.globalData.statusBarHeight || 44 }); this.fetchComments(); },
 
+  fetchComments: function () {
+    const that = this;
+    this.setData({ loading: true });
+    get('/users/me/comments', { pageSize: 50 }, { auth: true })
+      .then(function (data) {
+        const comments = (data.list || []).map(function (item) {
+          return {
+            id: item.id,
+            postTitle: item.post ? item.post.title : '帖子',
+            myComment: item.content || '',
+            time: item.createdAt ? item.createdAt.substring(0, 10) : '',
+            icon: '💬',
+          };
+        });
+        that.setData({ comments, loading: false });
+      })
+      .catch(function () { that.setData({ loading: false }); });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+  goBack: function () { wx.navigateBack({ fail: function () { wx.switchTab({ url: '/pages/profile/index' }); } }); },
+});

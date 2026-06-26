@@ -35,10 +35,8 @@
           <label class="form-label">作者</label>
           <input type="text" name="author" class="form-control" value="<%= video.author || '' %>">
         </div>
-        <div class="col-md-3">
-          <label class="form-label">时长（秒）</label>
-          <input type="number" name="duration" class="form-control" value="<%= video.duration || '' %>" placeholder="120">
-        </div>
+        <!-- 时长由视频上传后自动检测填充 -->
+        <input type="hidden" name="duration" value="<%= video.duration || '' %>">
         <div class="col-md-3">
           <label class="form-label">所需积分</label>
           <input type="number" name="points" class="form-control" value="<%= video.points || 0 %>">

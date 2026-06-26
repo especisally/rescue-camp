@@ -1,1 +1,60 @@
-/* pages/about/index.wxss */
+/** 关于我们页面样式 */
+
+/* ========== 页面容器 ========== */
+.about-page {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+/* ========== 自定义导航 ========== */
+.about-nav {
+  padding: 12rpx 24rpx;
+  background: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
+  height: 88rpx;
+  box-sizing: border-box;
+}
+
+.about-nav__back {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 16rpx;
+  background: #f1f1f1;
+}
+
+/* ========== App 信息 ========== */
+.about-info__logo {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 40rpx;
+  background: linear-gradient(135deg, #1a56db, #005BAC);
+  box-shadow: 0 8rpx 32rpx rgba(26, 86, 219, 0.3);
+}
+
+.about-info__version {
+  padding: 8rpx 24rpx;
+  background: #f1f1f1;
+  border-radius: 24rpx;
+}
+
+.about-info__desc {
+  padding: 0 48rpx;
+  text-align: center;
+}
+
+/* ========== 功能亮点 ========== */
+.about-features__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16rpx;
+}
+
+.about-features__item {
+  padding: 16rpx 8rpx;
+}
+
+/* ========== 版权信息 ========== */
+.about-copyright {
+  padding-bottom: 40rpx;
+  opacity: 0.6;
+}

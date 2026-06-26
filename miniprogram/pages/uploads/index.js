@@ -1,66 +1,37 @@
 // pages/uploads/index.js
+const app = getApp();
+const { get } = require('../../utils/request');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    statusBarHeight: 0,
+    uploads: [],
+    loading: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  onLoad: function () { this.setData({ statusBarHeight: app.globalData.statusBarHeight || 44 }); this.fetchUploads(); },
 
+  fetchUploads: function () {
+    const that = this;
+    this.setData({ loading: true });
+    get('/users/me/uploads', { pageSize: 50 }, { auth: true })
+      .then(function (data) {
+        const statusMap = { 1: '已发布', 0: '审核中' };
+        const uploads = (data.list || []).map(function (item) {
+          return {
+            id: item.id,
+            title: item.title || '',
+            type: item.type === 'video' ? '视频' : '图文',
+            status: item.status === 1 ? 'published' : 'reviewing',
+            statusText: statusMap[item.status] || '审核中',
+            time: item.createdAt ? item.createdAt.substring(0, 10) : '',
+            icon: item.type === 'video' ? '🎬' : '📄',
+          };
+        });
+        that.setData({ uploads, loading: false });
+      })
+      .catch(function () { that.setData({ loading: false }); });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+  goBack: function () { wx.navigateBack({ fail: function () { wx.switchTab({ url: '/pages/profile/index' }); } }); },
+});

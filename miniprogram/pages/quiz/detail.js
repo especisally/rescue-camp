@@ -22,9 +22,12 @@ Page({
   onLoad(options) {
     const systemInfo = wx.getSystemInfoSync();
     const bankId = options.id || '';
+    // 从 URL 参数解码标题（中文需 decodeURIComponent）
+    const bankTitle = options.title ? decodeURIComponent(options.title) : '题库加载中...';
     this.setData({
       statusBarHeight: systemInfo.statusBarHeight,
       bankId,
+      bankTitle,
       startTime: Date.now(),
     });
     this.fetchQuestions();
@@ -233,11 +236,20 @@ Page({
     }, { auth: true })
       .then(function (result) {
         wx.hideLoading();
+        // 构建题目信息映射（用于结果页错题回顾）
+        const questionMap = {};
+        that.data.questionList.forEach(function (q) {
+          questionMap[q.id] = {
+            question: q.text,
+            explanation: q.explanation,
+          };
+        });
+        result.questionMap = questionMap;
         // Navigate to result page with data
         const app = getApp();
         app.globalData.quizResult = result;
         wx.redirectTo({
-          url: '/pages/quiz/result?bankId=' + that.data.bankId + '&score=' + result.score + '&total=' + result.total + '&accuracy=' + result.accuracy,
+          url: '/pages/quiz/result?bankId=' + that.data.bankId + '&score=' + result.score + '&total=' + result.total + '&accuracy=' + result.accuracy + '&duration=' + result.duration,
         });
       })
       .catch(function (err) {

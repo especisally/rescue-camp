@@ -1,1 +1,275 @@
-/* pages/quiz/result.wxss */
+/* 刷题中心 - 答题结果页样式 */
+page {
+  background-color: #f9f9f9;
+}
+
+.page-scroll {
+  height: 100vh;
+}
+
+/* 自定义导航栏 */
+.custom-nav {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+
+.nav-back {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-back-icon {
+  font-size: 36rpx;
+  color: #1a1c1c;
+  font-weight: bold;
+}
+
+.nav-title {
+  flex: 1;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+  text-align: center;
+}
+
+.nav-placeholder {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 成绩展示区 */
+.score-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 24rpx 32rpx;
+  background-color: #fff;
+}
+
+.score-circle {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+  border: 8rpx solid;
+}
+
+.score-good {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.06);
+}
+
+.score-ok {
+  border-color: #FF9800;
+  background-color: rgba(255, 152, 0, 0.06);
+}
+
+.score-bad {
+  border-color: #F44336;
+  background-color: rgba(244, 67, 54, 0.06);
+}
+
+.score-number {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+}
+
+.score-divider {
+  font-size: 36rpx;
+  color: #999;
+  margin: 0 4rpx;
+}
+
+.score-total {
+  font-size: 36rpx;
+  color: #999;
+}
+
+.score-label {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+  margin-bottom: 12rpx;
+}
+
+.score-desc {
+  font-size: 28rpx;
+  color: #5f3f3b;
+}
+
+/* 统计卡片 */
+.stats-row {
+  display: flex;
+  padding: 24rpx;
+  gap: 16rpx;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.stat-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+/* 操作按钮 */
+.action-section {
+  padding: 16rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.action-btn {
+  height: 88rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-wrong {
+  background-color: #FF9800;
+}
+
+.action-retry {
+  background-color: #1a56db;
+}
+
+.action-back {
+  border: 2rpx solid #d0d0d0;
+  background-color: #fff;
+}
+
+.action-text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.action-back .action-text {
+  color: #5f3f3b;
+}
+
+/* 错题回顾区 */
+.wrong-section {
+  margin: 16rpx 24rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+}
+
+.section-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.wrong-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.wrong-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.wrong-question-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rpx;
+}
+
+.wrong-number {
+  font-size: 24rpx;
+  color: #1a56db;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.wrong-answer {
+  font-size: 22rpx;
+  color: #F44336;
+}
+
+.wrong-question-text {
+  font-size: 28rpx;
+  color: #1a1c1c;
+  line-height: 1.6;
+  display: block;
+}
+
+.wrong-explanation {
+  margin-top: 16rpx;
+  padding: 16rpx;
+  background-color: rgba(0, 91, 172, 0.06);
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #5f3f3b;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 展开/收起错题 */
+.toggle-wrong {
+  display: flex;
+  justify-content: center;
+  padding: 24rpx;
+}
+
+.toggle-text {
+  font-size: 26rpx;
+  color: #1a56db;
+}

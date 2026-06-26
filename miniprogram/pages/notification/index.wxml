@@ -1,2 +1,53 @@
-<!--pages/notification/index.wxml-->
-<text>pages/notification/index.wxml</text>
+<!-- 通知中心 -->
+<view class="page-body notification-page">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义顶部导航栏 -->
+  <view class="notification-nav flex items-center justify-between">
+    <view class="notification-nav__back flex items-center justify-center" bindtap="goBack">
+      <text style="font-size:36rpx;">&lt;</text>
+    </view>
+    <text class="text-lg font-bold">消息通知</text>
+    <view class="notification-nav__action" bindtap="markAllRead">
+      <text class="text-sm text-primary">全部已读</text>
+    </view>
+  </view>
+
+  <!-- 通知列表 -->
+  <view class="notification-list mt-4">
+    <view
+      class="notification-item flex items-start gap-12"
+      wx:for="{{notifications}}"
+      wx:key="id"
+      bindtap="onNotificationTap"
+      data-id="{{item.id}}"
+      data-index="{{index}}"
+    >
+      <!-- 图标区域 -->
+      <view class="notification-item__icon flex items-center justify-center">
+        <text style="font-size:40rpx;">{{item.icon}}</text>
+        <!-- 未读红点 -->
+        <view class="notification-item__dot" wx:if="{{item.unread}}"></view>
+      </view>
+
+      <!-- 内容区域 -->
+      <view class="flex-1" style="overflow:hidden;">
+        <view class="flex items-center justify-between">
+          <text class="text-sm font-semibold {{item.unread ? 'text-on-surface' : 'text-on-surface-variant'}}">{{item.title}}</text>
+          <text class="text-xs text-on-surface-variant">{{item.time}}</text>
+        </view>
+        <text class="text-sm text-on-surface-variant mt-4 line-clamp-2">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="notification-empty flex flex-col items-center justify-center" wx:if="{{notifications.length === 0}}">
+    <text style="font-size:80rpx;">🔔</text>
+    <text class="text-md text-on-surface-variant mt-16">暂无消息</text>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

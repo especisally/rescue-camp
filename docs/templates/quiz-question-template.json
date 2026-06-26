@@ -1,0 +1,36 @@
+[
+  {
+    "type": "single",
+    "question": "灭火救援中，消防员进入火场前必须检查的装备是？",
+    "options": [
+      { "label": "A", "text": "空气呼吸器" },
+      { "label": "B", "text": "对讲机" },
+      { "label": "C", "text": "手电筒" },
+      { "label": "D", "text": "急救包" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "空气呼吸器是进入火场的基本防护装备，保障消防员呼吸安全，必须在使用前检查气瓶压力和面罩密封性。"
+  },
+  {
+    "type": "multi",
+    "question": "以下哪些属于水域救援的个人防护装备？（多选）",
+    "options": [
+      { "label": "A", "text": "救生衣" },
+      { "label": "B", "text": "水域救援头盔" },
+      { "label": "C", "text": "防火服" },
+      { "label": "D", "text": "防寒服" }
+    ],
+    "correctAnswer": "A,B,D",
+    "explanation": "水域救援个人防护装备包括救生衣、水域救援头盔和防寒服。防火服用于火灾救援，不适用于水域环境。"
+  },
+  {
+    "type": "judge",
+    "question": "进入密闭空间救援时，必须先进行气体检测。",
+    "options": [
+      { "label": "A", "text": "正确" },
+      { "label": "B", "text": "错误" }
+    ],
+    "correctAnswer": "A",
+    "explanation": "根据《消防救援安全规程》，进入任何密闭空间前必须进行气体检测，确保氧气含量和其他有害气体浓度在安全范围内。"
+  }
+]

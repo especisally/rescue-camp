@@ -66,6 +66,7 @@ Page({
     wx.navigateTo({ url: '/pages/tools/chemical-detail?id=' + id });
   },
 
+  onSearch() { this.setData({ page: 1, chemicals: [] }); this.fetchChemicals(); },
   onSearchTap() { wx.navigateTo({ url: '/pages/search/index' }); },
 
   onSearchInput(e) {

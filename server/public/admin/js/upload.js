@@ -55,8 +55,16 @@
       fetch('/admin/upload/' + uploadType, {
         method: 'POST',
         body: formData,
+        credentials: 'same-origin',
       })
-        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          // 检查响应是否为 JSON（session 过期会返回 HTML 跳转）
+          var contentType = res.headers.get('content-type') || '';
+          if (contentType.indexOf('application/json') === -1) {
+            throw new Error('登录已过期，请刷新页面后重新登录');
+          }
+          return res.json();
+        })
         .then(function (data) {
           btn.innerHTML = originalText;
           btn.disabled = false;
@@ -87,7 +95,7 @@
           btn.innerHTML = originalText;
           btn.disabled = false;
           console.error('Upload error:', err);
-          showToast('上传失败，请检查网络', 'danger');
+          showToast(err.message || '上传失败，请检查网络', 'danger');
         });
     });
   }

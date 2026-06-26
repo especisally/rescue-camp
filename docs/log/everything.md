@@ -5,6 +5,30 @@
 
 ---
 
+## 0.2.5 - 2026-06-26 - 全局 Bug 修复：上传按钮 + 题库显示 + 页面结构修复
+
+- 修复管理后台上传按钮脚本（增加 session 过期检测 + 凭证携带）
+- 修复小程序上传按钮（wx.chooseMedia 增加 fail 回调，补充错误提示）
+- 修复题库答题页无法显示选项（wx:for 变量命名错误：`option` → `wx:for-item="option"`）
+- 修复题库答题页 showResult 引用错误（`item.showResult` → `showResult`）
+- 修复题库答题页 0-based 索引显示（"第 0 题" → "第 1 题"）
+- 完成答题结果页完整 UI（原为占位文本 `<text>pages/quiz/result.wxml</text>`）
+- 修复题库答题页 bankTitle 不更新（永远显示"题库加载中..."）
+- 修复答题结果页错题回顾功能（传递 questionMap 到结果页）
+- 删除视频表单"时长"可见输入框（保留隐藏字段供自动检测）
+- 修复 10 个页面加载空白（stub 文件覆盖了真实实现：about/certification/comments/favorites/help/login/notification/search/settings/uploads）
+- 修复 profile/edit 页面空白（同上 stub 覆盖问题）
+- 修复训练操法页列表不显示（`filteredList` → `trainings` 变量名不匹配）
+- 修复危化品查询页列表不显示（`filteredList` → `chemicals` 变量名不匹配）
+- 修复考核标准页列表不显示（`filteredList` → `standards` 变量名不匹配）
+- 修复危化品搜索框 confirm 事件处理（`onSearch` 方法缺失）
+- 修复通知页面标记已读（`data-id` 未传递）
+- 修复设置页退出登录（`logout()` 方法替代直接改 `globalData`）
+- 新增题目导入模板（JSON + CSV + README 说明）
+- 版本号 0.2.4 → 0.2.5
+- 详细日志见：`bugfix-v0.2.5.md`
+---
+
 ## 0.2.4 - 2026-06-26 - 器材/视频页面修复 + 后台上传功能 + 删除报修领用
 
 - 删除器材装备页面 FAB 添加按钮（占位功能，无需前端添加）

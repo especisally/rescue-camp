@@ -68,7 +68,7 @@ Page({
   },
 
   onBankTap(e) {
-    const { id } = e.currentTarget.dataset;
-    wx.navigateTo({ url: '/pages/quiz/detail?id=' + id });
+    const { id, title } = e.currentTarget.dataset;
+    wx.navigateTo({ url: '/pages/quiz/detail?id=' + id + '&title=' + encodeURIComponent(title || '') });
   },
 });

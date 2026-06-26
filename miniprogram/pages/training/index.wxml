@@ -42,7 +42,7 @@
 
     <!-- 常规卡片网格 -->
     <view class="card-grid">
-      <view class="train-card" wx:for="{{filteredList}}" wx:key="id" bindtap="onTrainingTap" data-id="{{item.id}}">
+      <view class="train-card" wx:for="{{trainings}}" wx:key="id" bindtap="onTrainingTap" data-id="{{item.id}}">
         <view class="card-img" style="background: {{item.bgColor}};">
           <text class="card-img-icon">{{item.icon}}</text>
         </view>

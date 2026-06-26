@@ -44,6 +44,7 @@
       wx:key="id"
       bindtap="onBankTap"
       data-id="{{item.id}}"
+      data-title="{{item.title}}"
     >
       <!-- 角标 -->
       <view class="bank-badge" wx:if="{{item.badge}}" style="background-color: {{item.badgeColor}};">{{item.badge}}</view>

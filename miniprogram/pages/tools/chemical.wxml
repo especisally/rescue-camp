@@ -29,7 +29,7 @@
 
   <!-- 危化品列表 -->
   <view class="chemical-list">
-    <navigator url="/pages/tools/chemical-detail?id={{item.id}}" class="chemical-card" wx:for="{{filteredList}}" wx:key="id">
+    <navigator url="/pages/tools/chemical-detail?id={{item.id}}" class="chemical-card" wx:for="{{chemicals}}" wx:key="id">
       <view class="card-left">
         <view class="un-badge">{{item.unNumber}}</view>
       </view>
@@ -45,7 +45,7 @@
       </view>
     </navigator>
 
-    <view class="empty-tip" wx:if="{{filteredList.length === 0}}">
+    <view class="empty-tip" wx:if="{{chemicals.length === 0}}">
       <text>未找到匹配的危化品</text>
     </view>
   </view>

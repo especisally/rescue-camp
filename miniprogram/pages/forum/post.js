@@ -49,6 +49,10 @@ Page({
       sourceType: ['album', 'camera'],
       success(res) {
         const files = res.tempFiles;
+        if (!files || files.length === 0) {
+          wx.showToast({ title: '未选择文件', icon: 'none' });
+          return;
+        }
         wx.showLoading({ title: '上传中...' });
 
         // Upload files one by one
@@ -67,10 +71,17 @@ Page({
             that.setData({ content: newContent.trim() });
             wx.showToast({ title: '上传成功', icon: 'success' });
           })
-          .catch(function () {
+          .catch(function (err) {
             wx.hideLoading();
-            wx.showToast({ title: '上传失败', icon: 'none' });
+            wx.showToast({ title: err && err.message ? err.message : '上传失败，请重试', icon: 'none' });
           });
+      },
+      fail(err) {
+        console.error('chooseMedia fail:', err);
+        // 用户取消选择不算错误
+        if (err && err.errMsg && err.errMsg.indexOf('cancel') === -1) {
+          wx.showToast({ title: '选择文件失败，请检查权限', icon: 'none' });
+        }
       },
     });
   },
