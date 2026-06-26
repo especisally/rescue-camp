@@ -1,0 +1,314 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tactical-border {
+            border-left: 3px solid transparent;
+        }
+        .tactical-border.active {
+            border-left: 3px solid #005BAC;
+            background-color: #f3f3f3;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "on-primary-container": "#fff7f6",
+                        "inverse-primary": "#ffb4aa",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004788",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeeeee",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-secondary-container": "#003b74",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#005BAC", /* Updated to Rescue Blue per style guide */
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#c0000d",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "primary": "#E60012", /* Updated to Fire Red per style guide */
+                        "outline": "#946e69",
+                        "on-secondary-fixed": "#001b3b",
+                        "primary-fixed": "#ffdad5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fbf8f8",
+                        "on-surface-variant": "#5f3f3b",
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-primary-fixed": "#410001",
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#6ba7fd",
+                        "tertiary-container": "#737272",
+                        "primary-container": "#e60012",
+                        "surface-dim": "#dadada",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "tertiary-fixed": "#e4e2e1",
+                        "tertiary": "#5a5a5a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-margin": "16px",
+                        "section-gap": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["\"Inter, PingFang SC\""],
+                        "body-lg": ["\"Inter, PingFang SC\""],
+                        "label-md": ["\"Inter, PingFang SC\""],
+                        "headline-md": ["\"Inter, PingFang SC\""],
+                        "body-md": ["\"Inter, PingFang SC\""],
+                        "headline-sm": ["\"Inter, PingFang SC\""]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-container-margin h-14 border-b border-surface-variant"><button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors active:scale-95 -ml-2">
+  <span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<h1 class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary">应急救援战训营</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Wrapper with Sidebar -->
+<main class="pt-14 pb-16 flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-24 md:w-32 flex-shrink-0 bg-surface-container-lowest border-r border-surface-variant overflow-y-auto hide-scrollbar">
+<nav class="flex flex-col py-4">
+<a class="tactical-border active flex flex-col items-center py-4 px-2 gap-1 group" href="#">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-md text-label-md text-secondary font-bold">基础器材</span>
+</a>
+<a class="tactical-border flex flex-col items-center py-4 px-2 gap-1 group hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-tertiary">engineering</span>
+<span class="font-label-md text-label-md text-tertiary">特种器材</span>
+</a>
+<a class="tactical-border flex flex-col items-center py-4 px-2 gap-1 group hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-tertiary">handyman</span>
+<span class="font-label-md text-label-md text-tertiary">破拆工具</span>
+</a>
+<a class="tactical-border flex flex-col items-center py-4 px-2 gap-1 group hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-tertiary">fire_extinguisher</span>
+<span class="font-label-md text-label-md text-tertiary">灭火药剂</span>
+</a>
+<a class="tactical-border flex flex-col items-center py-4 px-2 gap-1 group hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-tertiary">medical_services</span>
+<span class="font-label-md text-label-md text-tertiary">急救包具</span>
+</a>
+<a class="tactical-border flex flex-col items-center py-4 px-2 gap-1 group hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-tertiary">detector_status</span>
+<span class="font-label-md text-label-md text-tertiary">侦检仪器</span>
+</a>
+</nav>
+</aside>
+<!-- Main Scrolling List -->
+<section class="flex-grow overflow-y-auto bg-surface p-4 flex flex-col gap-4">
+<!-- Search & Filter Bar -->
+<div class="flex items-center gap-3 bg-surface-container rounded-lg px-4 py-2 border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-tertiary" placeholder="搜索器材名称或型号..." type="text">
+<button class="material-symbols-outlined text-tertiary">filter_list</button>
+</div>
+<!-- List Header -->
+<div class="flex justify-between items-center px-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">器材列表 <span class="text-tertiary text-label-md font-normal ml-2">共 24 件</span></h2>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-on-surface-variant">grid_view</span></button>
+<button class="p-1 bg-surface-container-high rounded"><span class="material-symbols-outlined text-secondary">view_list</span></button>
+</div>
+</div>
+<!-- Items List -->
+<div class="flex flex-col gap-3">
+<!-- Item Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg overflow-hidden flex shadow-sm hover:shadow-md transition-shadow active:scale-[0.99] duration-100">
+<div class="w-32 h-32 flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-tech hydraulic rescue spreader tool in a tactical setting. The tool is crafted from brushed metal with red accents, set against a clean, industrial garage background with soft overhead lighting. The composition is sharp and detailed, emphasizing the robust and precise engineering of the emergency equipment in a light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd8JruGu8EHhf5A-8tc2Mq9AgXRwGVSVs67ubBOpHMpzjiHiRzpsirnjkFg75_y80ZKUX_6I-PMdqevJJXvnaZAto5SpItC93xFOVqabeJWY_bjw7Q0w5b6DFMGXz8xL7BO9mWF-SmOg6HuRnOXsnfRaa13vtJco1Ga6NqzMspXo5dRTAuGDnU-34TUJSr8FnGxW0PHPPurPGW_nhOR8I30dXZnjr7R3t6eo9Kng1Kr-w6n_Jd-xjPa69JfcFLrW3JS6LKvb79YlZt">
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-1.5 py-0.5 font-bold rounded uppercase">In Stock</div>
+</div>
+<div class="flex-grow p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">液压扩张器</h3>
+<span class="text-label-md font-label-md text-tertiary">YX-300A</span>
+</div>
+<p class="text-body-md text-tertiary line-clamp-1 mt-1">适用于交通事故救援、地震灾害救援等多种紧急情况下的破拆作业。</p>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">破拆类</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">液压驱动</span>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg overflow-hidden flex shadow-sm hover:shadow-md transition-shadow active:scale-[0.99] duration-100">
+<div class="w-32 h-32 flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A professional firefighting drone equipped with thermal imaging cameras, sitting on a concrete tarmac. The drone is painted in rescue blue and white, with tactical decals. Sunlight reflects off its carbon fiber frame, creating a clean, bright, and authoritative visual style consistent with high-end emergency response technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo19lXHGmMH3ZRTnnNtRdqdRypO8piYHwtX0ZQhy5spRDiLJ2fwZ4aEkRhthNjjRj4OkxXe2vnwmjsUpzLAcx8OLM_WMcS5DILLIysjbUHqstwcxLPS0IGm2uRTOVC7EHsDGSp16cJM5PXX9AME7CLljj8nkaWAfzQI9w4NtmQ-v_Bqd_5d4qL2_aMFUDgPaIBEO4GJT7wR6OxENtkg6nJwEkV4_xIHUQ5fI9tAgohT6yi1RKT9kLI8M40-9cocMbLN5k6IF3ZIGnx">
+<div class="absolute top-2 left-2 bg-secondary text-white text-[10px] px-1.5 py-0.5 font-bold rounded uppercase">Active</div>
+</div>
+<div class="flex-grow p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">工业侦察无人机</h3>
+<span class="text-label-md font-label-md text-tertiary">Mavic 3T</span>
+</div>
+<p class="text-body-md text-tertiary line-clamp-1 mt-1">集红外测温、高清变焦于一体，提供全天候战场感知能力。</p>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">侦察类</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">航空器</span>
+</div>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg overflow-hidden flex shadow-sm hover:shadow-md transition-shadow active:scale-[0.99] duration-100">
+<div class="w-32 h-32 flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A series of heavy-duty industrial fire extinguishers arranged in a row. They are bright red with bold white text and black tactical mounting brackets. The lighting is crisp and hospital-clean, highlighting the metallic textures and safety valves in a disciplined, high-contrast environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdKlpCj2r0WfGoxgQgOWp1Oc22k2oWq2J11dMBzYqu9OT36P8HttPMtG59CNwBQ7D4R3ABmwCQkpDKl5tmTKwQbBL9SltURtc3uaWBAOj8ycWcxhgXmOIk4omr8fJs2_jQHI8vqQHipTttJxZ55MQngxjEppSVUsYHuNcgEjwNJALPcJne64o5jNHmE0WMCF1iXRiQsXplBGsrAxyVTEhbL0cYDXKRg3w0j0oNCzzgrMW0-ZLhlJIXSjWhzS6oisRiPrVjZeZLF0mU">
+</div>
+<div class="flex-grow p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">高效灭火弹</h3>
+<span class="text-label-md font-label-md text-tertiary">MH-Q8</span>
+</div>
+<p class="text-body-md text-tertiary line-clamp-1 mt-1">针对密闭空间初期火灾研制的投掷式自动灭火器材。</p>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">灭火类</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">耗材</span>
+</div>
+</div>
+</div>
+<!-- Item Card 4 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg overflow-hidden flex shadow-sm hover:shadow-md transition-shadow active:scale-[0.99] duration-100">
+<div class="w-32 h-32 flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A high-precision tactical thermal imaging camera held by a gloved hand. The screen shows a vibrant orange heat signature against a blue background. The device itself is ruggedized black plastic with textured grips, set against a bright, professional training facility backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEAUg26FwyDZC99fVoq5JPHFKodtTikuH0gmVnm5-pSR1dGLKHkpgQM2EC-aaYjfe9CZYYxU2Ne8qiqWPEekoHSQb6jERR6IPP6j7-8_Zmzp-QAMzC1FCfgHeAGAV8CZfleNYV9UoP4jAMobjJDItmuZwnhANQTS-_CJqwKh8DLZQKku9cn2RRJe5NdhTBEVjkpxZ-h-9TLyllA_UCmdB7xDTwmMTS0AxULA5VqrQyKI2NmqeA1ciRq8vqPwoTsxad3cGFnZcOVq6x">
+</div>
+<div class="flex-grow p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">手持红外热像仪</h3>
+<span class="text-label-md font-label-md text-tertiary">FLIR K-SERIES</span>
+</div>
+<p class="text-body-md text-tertiary line-clamp-1 mt-1">极高灵敏度，帮助救援人员在浓烟及黑暗环境中寻找被困人员。</p>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">侦察类</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-bold border border-surface-variant">电子设备</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for scroll bottom -->
+<div class="h-8"></div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest border-t border-surface-variant"><a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 w-1/4" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 w-1/4" href="#">
+<span class="material-symbols-outlined text-[24px]">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</a>
+<a class="flex flex-col items-center justify-center transition-transform active:scale-90 w-1/4 text-tertiary" href="#">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+<span class="font-label-md text-label-md">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 w-1/4" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</a></nav>
+<!-- Floating Action Button (Optional Contextual Add) -->
+<button class="fixed right-6 bottom-20 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        // Micro-interactions for Sidebar selection
+        document.querySelectorAll('.tactical-border').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.tactical-border').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('span:first-child').style.fontVariationSettings = "'FILL' 0";
+                    i.querySelector('span:last-child').classList.remove('font-bold');
+                    i.querySelector('span:last-child').classList.replace('text-secondary', 'text-tertiary');
+                    i.querySelector('span:first-child').classList.replace('text-secondary', 'text-tertiary');
+                });
+                this.classList.add('active');
+                this.querySelector('span:first-child').style.fontVariationSettings = "'FILL' 1";
+                this.querySelector('span:last-child').classList.add('font-bold');
+                this.querySelector('span:last-child').classList.replace('text-tertiary', 'text-secondary');
+                this.querySelector('span:first-child').classList.replace('text-tertiary', 'text-secondary');
+            });
+        });
+    </script>
+
+
+
+
+
+
+</body></html>

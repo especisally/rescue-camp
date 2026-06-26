@@ -1,0 +1,101 @@
+<!-- 首页 - 应急救援战训营 -->
+<view class="page-body">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义顶部导航栏 -->
+  <view class="index-nav">
+    <view class="index-nav__title text-lg font-bold truncate">应急救援战训营</view>
+    <view class="index-nav__right flex items-center gap-8">
+      <view class="search-bar flex-1" bindtap="onSearchTap">
+        <text class="icon-sm">🔍</text>
+        <input placeholder="搜索课程、帖子、装备..." placeholder-class="text-on-surface-variant text-sm" />
+      </view>
+      <view class="index-nav__filter flex items-center justify-center">
+        <text style="font-size:36rpx;">☰</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Banner轮播 -->
+  <view class="container mt-12">
+    <swiper class="index-banner" indicator-dots="{{true}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ffffff" autoplay="{{true}}" interval="{{4000}}" circular="{{true}}">
+      <block wx:for="{{banners}}" wx:key="id">
+        <swiper-item>
+          <view class="index-banner__item" style="background: {{item.bg}};">
+            <view class="index-banner__overlay">
+              <view class="index-banner__icon">{{item.icon}}</view>
+              <view class="index-banner__title text-xl font-bold text-white">{{item.title}}</view>
+              <view class="index-banner__subtitle text-sm text-white" style="opacity:0.85;">{{item.subtitle}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 主功能网格 3x2 -->
+  <view class="container mt-12">
+    <view class="index-grid">
+      <block wx:for="{{menus}}" wx:key="id">
+        <navigator url="{{item.url}}" class="index-grid__card">
+          <view class="index-grid__icon" style="background-color: {{item.colorBg}};">{{item.icon}}</view>
+          <view class="index-grid__name text-md font-semibold mt-8">{{item.name}}</view>
+          <view class="index-grid__desc text-xs text-on-surface-variant mt-4">{{item.desc}}</view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+
+  <!-- 为您推荐 -->
+  <view class="container mt-12">
+    <view class="flex items-center justify-between">
+      <view class="text-lg font-bold">为您推荐</view>
+      <navigator url="/pages/video/index" class="text-sm text-secondary">查看全部 &gt;</navigator>
+    </view>
+
+    <!-- 大图推荐卡片 -->
+    <view class="index-recommend card mt-12">
+      <view class="index-recommend__hero" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+        <view class="index-recommend__hero-icon">🎭</view>
+        <view class="index-recommend__hot tag tag-primary" style="position:absolute; top:16rpx; right:16rpx; background:#1a56db; color:#fff;">HOT</view>
+      </view>
+      <view class="p-12">
+        <view class="text-md font-semibold line-clamp-2">高层建筑灭火救援技战术解析</view>
+        <view class="flex items-center justify-between mt-8">
+          <view class="flex items-center gap-4 text-xs text-on-surface-variant">
+            <text>👁 1.2w</text>
+            <text>⏲ 15:40</text>
+          </view>
+          <view class="tag tag-outline text-xs">视频课程</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 横向卡片列表 -->
+    <view class="mt-8">
+      <block wx:for="{{recommends}}" wx:key="id">
+        <view class="index-recommend__row card mt-8 flex">
+          <view class="index-recommend__thumb" style="background-color: {{item.bg}};">
+            <text style="font-size:48rpx;">{{item.icon}}</text>
+          </view>
+          <view class="flex-1 ml-12 py-4 flex flex-col justify-center" style="overflow:hidden;">
+            <view class="flex items-center gap-8">
+              <view class="tag tag-secondary text-xs">{{item.tag}}</view>
+            </view>
+            <view class="text-sm font-medium line-clamp-2 mt-4">{{item.title}}</view>
+            <view class="flex items-center gap-4 text-xs text-on-surface-variant mt-4">
+              <text wx:if="{{item.views}}">👁 {{item.views}}</text>
+              <text wx:if="{{item.interactions}}">💬 {{item.interactions}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 底部安全区 -->
+  <view class="safe-bottom" style="height:40rpx;"></view>
+
+</view>

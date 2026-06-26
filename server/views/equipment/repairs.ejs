@@ -1,0 +1,66 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>装备名称</th>
+          <th>型号</th>
+          <th>用户ID</th>
+          <th>报修原因</th>
+          <th>状态</th>
+          <th>提交时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (list.length === 0) { %>
+          <tr><td colspan="8" class="text-center text-muted py-4">暂无报修申请</td></tr>
+        <% } %>
+        <% list.forEach(function(r) { %>
+          <tr>
+            <td><%= r.id %></td>
+            <td><%= r.equipment ? r.equipment.name : '-' %></td>
+            <td><%= r.equipment ? r.equipment.model || '-' : '-' %></td>
+            <td><%= r.userId %></td>
+            <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><%= r.reason %></td>
+            <td>
+              <% if (r.status === 0) { %><span class="badge bg-warning">待处理</span>
+              <% } else if (r.status === 1) { %><span class="badge bg-info">处理中</span>
+              <% } else if (r.status === 2) { %><span class="badge bg-success">已完成</span>
+              <% } else { %><span class="badge bg-danger">已拒绝</span><% } %>
+            </td>
+            <td><%= new Date(r.createdAt).toLocaleString('zh-CN') %></td>
+            <td>
+              <% if (r.status === 0) { %>
+                <form method="POST" action="/admin/equipment/repairs/<%= r.id %>/process" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-info">标记处理中</button>
+                </form>
+              <% } %>
+              <% if (r.status === 0 || r.status === 1) { %>
+                <form method="POST" action="/admin/equipment/repairs/<%= r.id %>/approve" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-success" onclick="return confirm('确认已完成？')">完成</button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if (totalPages > 1) { %>
+<nav class="mt-3">
+  <ul class="pagination justify-content-center">
+    <% for (var i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === page ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+      </li>
+    <% } %>
+  </ul>
+  <p class="text-center text-muted">共 <%= total %> 条，第 <%= page %>/<%= totalPages %> 页</p>
+</nav>
+<% } %>

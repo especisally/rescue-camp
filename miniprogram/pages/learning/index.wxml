@@ -1,0 +1,157 @@
+<!-- 拓展学习 - 主页 -->
+<view class="page-body">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义顶部导航栏 -->
+  <view class="learning-nav flex items-center justify-between">
+    <view class="flex items-center gap-8">
+      <navigator url="/pages/index/index" open-type="switchTab" class="learning-nav__back flex items-center justify-center">
+        <text style="font-size:40rpx;">←</text>
+      </navigator>
+      <text class="text-lg font-bold" style="color:#1a56db;">拓展学习</text>
+    </view>
+    <view class="learning-nav__search flex items-center justify-center">
+      <text style="font-size:36rpx;">🔍</text>
+    </view>
+  </view>
+
+  <!-- 搜索与筛选 -->
+  <view class="container mt-12">
+    <view class="search-bar" style="height:80rpx;" bindtap="onSearchTap">
+      <text class="icon-sm">🔍</text>
+      <input placeholder="搜索全球救援实操案例..." placeholder-class="text-on-surface-variant text-sm" />
+    </view>
+
+    <!-- 分类标签 (横向滚动) -->
+    <scroll-view class="learning-filters mt-12" scroll-x="true" enhanced show-scrollbar="{{false}}">
+      <view class="learning-filters__inner flex gap-8">
+        <block wx:for="{{filters}}" wx:key="id">
+          <view
+            class="learning-filter__item {{item.active ? 'learning-filter__item--active' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="switchFilter"
+          >{{item.name}}</view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 精选视频流 -->
+  <view class="container mt-16">
+    <view class="flex items-center gap-8 mb-12">
+      <text style="font-size:36rpx;">⭐</text>
+      <text class="text-lg font-bold">精选视频流</text>
+    </view>
+
+    <!-- 大图精选卡片 -->
+    <view class="learning-feature">
+      <view class="learning-feature__hero" style="background: linear-gradient(135deg, #1a1a2e, #2d3436);">
+        <text style="font-size:100rpx;">⛰</text>
+      </view>
+      <view class="learning-feature__overlay">
+        <view class="flex items-center gap-8 mb-8">
+          <view class="tag tag-primary text-xs">Breaking</view>
+          <view class="flex items-center gap-4 text-xs" style="color:rgba(255,255,255,0.85);">
+            <text>🌍</text>
+            <text>瑞士 (Switzerland)</text>
+          </view>
+        </view>
+        <view class="text-lg font-bold text-white line-clamp-2">阿尔卑斯山脉高海拔复杂地形救援实录</view>
+        <view class="flex items-center justify-between mt-8">
+          <view class="text-xs" style="color:rgba(255,255,255,0.7);">发布于 2023.10.15</view>
+          <view class="flex items-center gap-4 text-xs" style="color:rgba(255,255,255,0.7);">
+            <text>👁 12.5k</text>
+          </view>
+        </view>
+        <view class="learning-feature__play flex items-center justify-center">
+          <text style="font-size:60rpx; color:rgba(255,255,255,0.9);">▶</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 次级视频网格 -->
+    <view class="grid-2 mt-12">
+      <block wx:for="{{videos}}" wx:key="id">
+        <view class="learning-video-card" bindtap="onVideoTap" data-id="{{item.id}}">
+          <view class="learning-video-card__thumb" style="background: {{item.bg}};">
+            <text style="font-size:60rpx;">{{item.icon}}</text>
+            <view class="learning-video-card__duration">{{item.duration}}</view>
+          </view>
+          <view class="mt-8">
+            <view class="text-xs text-secondary">{{item.region}}</view>
+            <view class="text-sm font-semibold line-clamp-2 mt-4">{{item.title}}</view>
+            <view class="text-xs text-on-surface-variant mt-4">{{item.date}} · {{item.views}}次播放</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 前沿资料库 -->
+  <view class="container mt-16">
+    <view class="flex items-center justify-between mb-12">
+      <view class="flex items-center gap-8">
+        <text style="font-size:36rpx;">📖</text>
+        <text class="text-lg font-bold">前沿资料库</text>
+      </view>
+      <view class="flex items-center gap-4 text-sm text-secondary">
+        <text>查看更多</text>
+        <text>›</text>
+      </view>
+    </view>
+
+    <view class="flex flex-col gap-8">
+      <block wx:for="{{documents}}" wx:key="id">
+        <view class="learning-doc card-padded flex items-center gap-12" bindtap="onDocTap" data-id="{{item.id}}">
+          <view class="learning-doc__icon flex items-center justify-center" style="background-color: {{item.iconBg}};">
+            <text style="font-size:40rpx;">{{item.icon}}</text>
+          </view>
+          <view class="flex-1" style="overflow:hidden;">
+            <view class="text-sm font-semibold truncate">{{item.title}}</view>
+            <view class="flex gap-16 text-xs text-on-surface-variant mt-4">
+              <text>{{item.format}} ({{item.size}})</text>
+              <text>来源：{{item.source}}</text>
+            </view>
+          </view>
+          <view class="learning-doc__download flex items-center justify-center">
+            <text style="font-size:36rpx;">📥</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 全球趋势概览 -->
+  <view class="container mt-16">
+    <view class="text-lg font-bold mb-12">全球趋势概览</view>
+    <view class="learning-trends">
+      <view class="learning-trends__main" style="background: #6ba7fd;">
+        <view class="learning-trends__content">
+          <view class="text-md font-bold text-white">
+            <text>无人机</text>
+            <text>空中侦察</text>
+          </view>
+          <view class="text-xs mt-8" style="color:rgba(255,255,255,0.8);">实时三维建模在山岳救援的应用</view>
+          <view class="learning-trends__badge">54个国家已部署</view>
+        </view>
+        <view class="learning-trends__watermark">✈</view>
+      </view>
+      <view class="learning-trends__stat" style="background: #e2e2e2;">
+        <view class="text-2xl font-bold" style="color:#1a56db;">85%</view>
+        <view class="text-xs text-on-surface-variant mt-8">数字化预案覆盖率增长</view>
+      </view>
+      <view class="learning-trends__stat" style="background: #e4e2e1;">
+        <view class="flex items-center gap-8">
+          <text style="font-size:48rpx;">🌐</text>
+          <text class="text-sm font-bold">跨国救援<br/>协同协议</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全区 -->
+  <view class="safe-bottom" style="height:40rpx;"></view>
+
+</view>

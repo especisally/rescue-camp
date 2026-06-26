@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/forum/index",
+    "pages/forum/post",
+    "pages/forum/detail",
+    "pages/shop/index",
+    "pages/profile/index",
+    "pages/video/index",
+    "pages/video/play",
+    "pages/video/category",
+    "pages/tools/index",
+    "pages/tools/chemical",
+    "pages/tools/chemical-detail",
+    "pages/tools/standard",
+    "pages/tools/standard-detail",
+    "pages/training/index",
+    "pages/equipment/index",
+    "pages/equipment/detail",
+    "pages/learning/index",
+    "pages/quiz/index",
+    "pages/quiz/detail",
+    "pages/quiz/result",
+    "pages/search/index",
+    "pages/training/detail",
+    "pages/learning/detail",
+    "pages/notification/index",
+    "pages/settings/index",
+    "pages/about/index",
+    "pages/help/index",
+    "pages/certification/index",
+    "pages/login/index",
+    "pages/favorites/index",
+    "pages/comments/index",
+    "pages/uploads/index",
+    "pages/profile/edit"
+  ],
+  "window": {
+    "backgroundColor": "#f9f9f9",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f9f9f9",
+    "navigationBarTitleText": "应急救援战训营",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#5a5a5a",
+    "selectedColor": "#1a56db",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/forum/index",
+        "text": "论坛",
+        "iconPath": "images/icons/examples.png",
+        "selectedIconPath": "images/icons/examples-active.png"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "text": "商城",
+        "iconPath": "images/icons/goods.png",
+        "selectedIconPath": "images/icons/goods-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/icons/usercenter.png",
+        "selectedIconPath": "images/icons/usercenter-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,176 @@
+/* 视频学习 - 主页样式 */
+page {
+  background-color: #f9f9f9;
+}
+
+.page {
+  padding-bottom: 40rpx;
+}
+
+/* 自定义导航栏 */
+.custom-nav {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+
+.nav-back {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-back-icon {
+  font-size: 36rpx;
+  color: #1a1c1c;
+  font-weight: bold;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1a56db;
+}
+
+.nav-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-avatar-icon {
+  font-size: 40rpx;
+}
+
+/* 搜索栏 */
+.search-wrap {
+  margin-top: 88rpx;
+  padding: 20rpx 24rpx;
+  background-color: #fff;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 8rpx;
+  padding: 16rpx 20rpx;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  color: #999;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1a1c1c;
+}
+
+.search-placeholder {
+  color: #bbb;
+}
+
+/* 分区标题 */
+.section-header {
+  padding: 32rpx 24rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1a1c1c;
+}
+
+.section-subtitle {
+  font-size: 24rpx;
+  color: #5f3f3b;
+  margin-top: 6rpx;
+}
+
+/* 分类网格 - 单列满行 */
+.category-grid {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24rpx;
+  gap: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-card {
+  width: 100%;
+  height: 160rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.category-card:active {
+  transform: scale(0.98);
+  transition: transform 0.15s ease;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.card-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 56rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.card-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.card-arrow {
+  position: relative;
+  z-index: 1;
+  color: rgba(255,255,255,0.7);
+  font-size: 30rpx;
+  margin-left: auto;
+}

@@ -1,0 +1,159 @@
+<!--pages/forum/post.wxml-->
+<view class="page-container">
+
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-inner">
+      <navigator open-type="navigateBack" class="nav-btn nav-cancel">取消</navigator>
+      <text class="nav-title">发布帖子</text>
+      <view class="nav-btn nav-publish" bindtap="onPublish">发布</view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="page-scroll" style="padding-top: {{navTotalHeight}}px;">
+
+    <!-- 发布类型切换 -->
+    <view class="tab-switcher">
+      <view class="tab-item active">
+        <text class="tab-text">发布视频</text>
+        <view class="tab-indicator"></view>
+      </view>
+      <view class="tab-item">
+        <text class="tab-text">发布资料</text>
+      </view>
+      <view class="tab-item">
+        <text class="tab-text">发布课件</text>
+      </view>
+    </view>
+
+    <!-- 发布性质 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-label">发布性质</text>
+      </view>
+      <view class="tag-row">
+        <view class="tag-pill {{nature === 'help' ? 'active' : ''}}" bindtap="onNatureTap" data-nature="help">
+          <text>求助</text>
+        </view>
+        <view class="tag-pill {{nature === 'ask' ? 'active' : ''}}" bindtap="onNatureTap" data-nature="ask">
+          <text>提问</text>
+        </view>
+        <view class="tag-pill {{nature === 'chat' ? 'active' : ''}}" bindtap="onNatureTap" data-nature="chat">
+          <text>闲聊</text>
+        </view>
+        <view class="tag-pill {{nature === 'share' ? 'active' : ''}}" bindtap="onNatureTap" data-nature="share">
+          <text>经验分享</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 上传区域 -->
+    <view class="section">
+      <view class="upload-area" bindtap="onUploadTap">
+        <view class="upload-content">
+          <view class="upload-icon-wrap">
+            <text class="upload-icon">+</text>
+          </view>
+          <text class="upload-text">点击上传视频、文档或课件</text>
+          <text class="upload-hint">支持 MP4, MOV, PDF, PPT, DOC 格式，最大 500MB</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标题输入 -->
+    <view class="section">
+      <view class="input-row">
+        <text class="input-label">标题</text>
+        <input class="underline-input" placeholder="请输入标题" value="{{title}}" bindinput="onTitleInput" />
+      </view>
+    </view>
+
+    <!-- 内容文本域 -->
+    <view class="section">
+      <view class="input-row textarea-row">
+        <text class="input-label">战术心得 / 经验分享</text>
+      </view>
+      <textarea class="content-textarea" placeholder="分享您的救援经验、战术心得..." value="{{content}}" bindinput="onContentInput" maxlength="2000" auto-height />
+    </view>
+
+    <!-- 下载所需积分 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-label">下载所需积分</text>
+      </view>
+      <view class="point-selector">
+        <view class="point-btn {{points === 0 ? 'active' : ''}}" bindtap="onPointsTap" data-points="0">
+          <text>0</text>
+        </view>
+        <view class="point-btn {{points === 5 ? 'active' : ''}}" bindtap="onPointsTap" data-points="5">
+          <text>5</text>
+        </view>
+        <view class="point-btn {{points === 10 ? 'active' : ''}}" bindtap="onPointsTap" data-points="10">
+          <text>10</text>
+        </view>
+        <view class="point-btn {{points === 20 ? 'active' : ''}}" bindtap="onPointsTap" data-points="20">
+          <text>20</text>
+        </view>
+        <view class="point-btn {{customPoints ? 'active' : ''}}" bindtap="onCustomPointsTap">
+          <text>自定义</text>
+        </view>
+      </view>
+      <input wx:if="{{showCustomPoints}}" class="custom-points-input" type="number" placeholder="输入积分数量" value="{{customPointsValue}}" bindinput="onCustomPointsInput" />
+    </view>
+
+    <!-- 添加分类标签 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-label">添加分类标签</text>
+      </view>
+      <view class="tag-row">
+        <view class="tag-pill {{selectedTags.indexOf('fire') > -1 ? 'tag-active' : ''}}" bindtap="onTagToggle" data-tag="fire">
+          <text>灭火救援</text>
+        </view>
+        <view class="tag-pill {{selectedTags.indexOf('water') > -1 ? 'tag-active' : ''}}" bindtap="onTagToggle" data-tag="water">
+          <text>水域救援</text>
+        </view>
+        <view class="tag-pill {{selectedTags.indexOf('equip') > -1 ? 'tag-active' : ''}}" bindtap="onTagToggle" data-tag="equip">
+          <text>装备保养</text>
+        </view>
+        <view class="tag-pill {{selectedTags.indexOf('fitness') > -1 ? 'tag-active' : ''}}" bindtap="onTagToggle" data-tag="fitness">
+          <text>体能训练</text>
+        </view>
+        <view class="tag-pill {{selectedTags.indexOf('tactics') > -1 ? 'tag-active' : ''}}" bindtap="onTagToggle" data-tag="tactics">
+          <text>战术推演</text>
+        </view>
+        <view class="tag-pill tag-custom" bindtap="onCustomTagTap">
+          <text>自定义</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 协议勾选 -->
+    <view class="section">
+      <view class="agreement-row" bindtap="onAgreementToggle">
+        <view class="checkbox-custom {{agreed ? 'checked' : ''}}">
+          <text wx:if="{{agreed}}" class="check-mark">✓</text>
+        </view>
+        <text class="agreement-text">我已阅读并同意<text class="agreement-link">《战训营内容分享协议》</text></text>
+      </view>
+    </view>
+
+    <!-- 安全提示 -->
+    <view class="section">
+      <view class="safety-card">
+        <view class="safety-icon-wrap">
+          <text class="safety-icon">🛡</text>
+        </view>
+        <view class="safety-content">
+          <text class="safety-title">安全提示</text>
+          <text class="safety-text">请勿传播涉密信息、敏感资料及违法违规内容。分享救援经验时注意保护个人隐私及行动细节。</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部安全距离 -->
+    <view style="height: 140rpx;"></view>
+
+  </scroll-view>
+
+</view>

@@ -1,0 +1,103 @@
+<!-- 刷题中心 - 题库详细页 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">{{bankTitle}}</text>
+      <view class="nav-placeholder"></view>
+    </view>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-wrap" style="margin-top: calc(88rpx + {{statusBarHeight}}px);">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
+    </view>
+    <text class="progress-text">已完成 {{currentIndex}}/{{totalCount}}</text>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view class="question-card">
+    <view class="question-header">
+      <text class="question-number">第 {{currentIndex}} 题</text>
+      <text class="question-type">{{question.type}}</text>
+    </view>
+
+    <text class="question-text">{{question.text}}</text>
+
+    <!-- 选项列表 -->
+    <view class="options-list">
+      <view
+        class="option-item {{option.selected ? 'option-selected' : ''}} {{option.correct ? 'option-correct' : ''}} {{item.showResult && option.wrong ? 'option-wrong' : ''}}"
+        wx:for="{{question.options}}"
+        wx:key="label"
+        data-label="{{option.label}}"
+        bindtap="onSelectOption"
+      >
+        <text class="option-label">{{option.label}}</text>
+        <text class="option-text">{{option.text}}</text>
+        <view class="option-mark" wx:if="{{option.correct && showResult}}">
+          <text class="mark-check">✓</text>
+        </view>
+        <view class="option-mark wrong-mark" wx:elif="{{option.wrong && showResult}}">
+          <text class="mark-cross">✗</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 解析卡片（选择后显示） -->
+  <view class="explanation-card" wx:if="{{showResult}}">
+    <view class="explanation-header">
+      <text class="explanation-icon">💡</text>
+      <text class="explanation-title">题目解析</text>
+    </view>
+    <text class="explanation-text">{{question.explanation}}</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-row">
+    <view class="action-btn action-prev" bindtap="onPrev">
+      <text class="action-btn-text">上一题</text>
+    </view>
+    <view class="action-btn action-submit" bindtap="onFinish">
+      <text class="action-btn-text" style="color:#fff;">交卷</text>
+    </view>
+    <view class="action-btn action-next" bindtap="onNext">
+      <text class="action-btn-text action-next-text">下一题</text>
+    </view>
+    <view class="action-fav {{question.favorited ? 'action-fav-active' : ''}}" bindtap="onToggleFav">
+      <text class="action-fav-icon">{{question.favorited ? '★' : '☆'}}</text>
+    </view>
+  </view>
+
+  <!-- 答题卡按钮 -->
+  <view class="sheet-btn-wrap">
+    <view class="sheet-btn" bindtap="onShowSheet">
+      <text class="sheet-btn-icon">📋</text>
+      <text class="sheet-btn-text">答题卡</text>
+    </view>
+  </view>
+
+  <!-- 答题卡弹层 -->
+  <view class="sheet-overlay" wx:if="{{showSheet}}" bindtap="onHideSheet">
+    <view class="sheet-panel" catchtap="">
+      <text class="sheet-title">答题卡</text>
+      <view class="sheet-grid">
+        <view
+          class="sheet-item {{item.done ? 'sheet-done' : ''}} {{item.id === currentIndex ? 'sheet-current' : ''}}"
+          wx:for="{{sheetList}}"
+          wx:key="id"
+          data-index="{{item.id}}"
+          bindtap="onSheetSelect"
+        >{{item.id}}</view>
+      </view>
+      <view class="sheet-close" bindtap="onHideSheet">
+        <text class="sheet-close-text">关闭</text>
+      </view>
+    </view>
+  </view>
+</view>

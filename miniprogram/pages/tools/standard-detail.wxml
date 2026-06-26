@@ -1,0 +1,80 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">消防员体能考核标准</view>
+      <view class="nav-right"></view>
+    </view>
+  </view>
+
+  <scroll-view class="content" scroll-y enhanced>
+    <!-- 标准信息卡片 -->
+    <view class="info-card">
+      <view class="info-title">{{standard.title}}</view>
+      <view class="info-meta">
+        <view class="meta-item">
+          <text class="meta-label">发布单位</text>
+          <text class="meta-value">{{standard.publisher}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">实施日期</text>
+          <text class="meta-value">{{standard.effectiveDate}}</text>
+        </view>
+      </view>
+      <view class="info-scope">
+        <text class="scope-label">适用范围：</text>
+        <text class="scope-text">{{standard.scope}}</text>
+      </view>
+    </view>
+
+    <!-- 考核项目 -->
+    <view class="section">
+      <view class="section-title">考核项目</view>
+      <view class="project-list">
+        <view class="project-item" wx:for="{{standard.projects}}" wx:key="name" wx:for-index="idx">
+          <view class="project-number">{{idx + 1}}</view>
+          <view class="project-body">
+            <text class="project-name">{{item.name}}</text>
+            <view class="project-scores">
+              <text class="score-pass">合格：{{item.pass}}</text>
+              <text class="score-excellent">优秀：{{item.excellent}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评分标准 -->
+    <view class="section">
+      <view class="section-title">评分标准</view>
+      <view class="score-card">
+        <view class="score-summary">
+          <view class="score-block">
+            <text class="score-num">100</text>
+            <text class="score-unit">总分</text>
+          </view>
+          <view class="score-block">
+            <text class="score-num pass">60</text>
+            <text class="score-unit">合格线</text>
+          </view>
+          <view class="score-block">
+            <text class="score-num excellent">90</text>
+            <text class="score-unit">优秀线</text>
+          </view>
+        </view>
+        <view class="score-note">
+          各项按权重折算后合计，60分及以上为合格，90分及以上为优秀
+        </view>
+      </view>
+    </view>
+
+    <!-- 下载按钮 -->
+    <view class="download-btn" bindtap="onDownload">
+      <text class="download-icon">📄</text>
+      <text class="download-text">下载完整标准文档</text>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,216 @@
+<!-- 论坛帖子详情 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">帖子详情</text>
+      <view class="nav-share" bindtap="onShare">
+        <text class="nav-share-icon">📤</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 帖子内容 -->
+  <scroll-view class="content" scroll-y enhanced>
+    <!-- 作者信息卡片 -->
+    <view class="author-card">
+      <view class="author-left">
+        <view class="author-avatar" style="background-color: {{post.avatarBg}};">
+          <text>{{post.avatar}}</text>
+        </view>
+        <view class="author-info">
+          <view class="author-name-row">
+            <text class="author-name">{{post.username}}</text>
+            <text class="author-level">Lv.{{post.level}}</text>
+          </view>
+          <text class="post-time">{{post.time}}</text>
+        </view>
+      </view>
+      <view class="follow-btn" bindtap="onFollow">
+        <text>{{post.isFollowed ? '已关注' : '+ 关注'}}</text>
+      </view>
+    </view>
+
+    <!-- 帖子标题 -->
+    <view class="post-title-section">
+      <text class="post-title">{{post.title}}</text>
+      <view class="post-tags" wx:if="{{post.tags}}">
+        <text class="post-tag" wx:for="{{post.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+      </view>
+    </view>
+
+    <!-- 帖子正文 -->
+    <view class="post-body">
+      <text class="post-text">{{post.content}}</text>
+    </view>
+
+    <!-- 帖子图片 -->
+    <view class="post-images" wx:if="{{post.images}}">
+      <view class="post-img-wrap" wx:for="{{post.images}}" wx:key="index" wx:for-item="img">
+        <view class="post-img" style="background: {{img.bg}};">
+          <text style="font-size: 48rpx;">{{img.icon}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 视频缩略图（视频帖） -->
+    <view class="post-video" wx:if="{{post.videoThumb}}" style="background: {{post.thumbBg}};">
+      <view class="post-video-play">
+        <text>▶</text>
+      </view>
+      <view class="post-video-duration" wx:if="{{post.duration}}">{{post.duration}}</view>
+    </view>
+
+    <!-- 互动数据条 -->
+    <view class="post-stats">
+      <view class="stat-item">
+        <text class="stat-icon">❤️</text>
+        <text class="stat-text">{{post.like}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">💬</text>
+        <text class="stat-text">{{post.comment}} 评论</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">👁</text>
+        <text class="stat-text">{{post.views}} 浏览</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">📤</text>
+        <text class="stat-text">{{post.share}}</text>
+      </view>
+    </view>
+
+    <!-- 点赞/收藏/分享按钮 -->
+    <view class="post-actions">
+      <view class="action-btn {{post.isLiked ? 'action-liked' : ''}}" bindtap="onLike">
+        <text>{{post.isLiked ? '❤️' : '🤍'}}</text>
+        <text>点赞 {{post.like}}</text>
+      </view>
+      <view class="action-btn {{post.isFavorited ? 'action-liked' : ''}}" bindtap="onFavorite">
+        <text>{{post.isFavorited ? '⭐' : '☆'}}</text>
+        <text>收藏</text>
+      </view>
+      <view class="action-btn" bindtap="onShare">
+        <text>📤</text>
+        <text>分享</text>
+      </view>
+    </view>
+
+    <!-- 分隔 -->
+    <view class="section-divider"></view>
+
+    <!-- 评论区 -->
+    <view class="comments-section">
+      <view class="section-header">
+        <text class="section-title">全部评论 ({{comments.length}})</text>
+        <view class="comment-sort">
+          <text class="{{commentSort === 'hot' ? 'sort-active' : ''}}" bindtap="onSortComments" data-sort="hot">最热</text>
+          <text class="sort-divider">|</text>
+          <text class="{{commentSort === 'new' ? 'sort-active' : ''}}" bindtap="onSortComments" data-sort="new">最新</text>
+        </view>
+      </view>
+
+      <!-- 评论列表 -->
+      <view class="comment-list">
+        <block wx:if="{{comments.length > 0}}">
+          <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+            <view class="comment-avatar" style="background-color: {{item.avatarBg}};">
+              <text>{{item.avatar}}</text>
+            </view>
+            <view class="comment-body">
+              <view class="comment-header">
+                <view class="comment-user-row">
+                  <text class="comment-username">{{item.username}}</text>
+                  <text class="comment-level">Lv.{{item.level}}</text>
+                  <text class="comment-badge" wx:if="{{item.isAuthor}}">作者</text>
+                </view>
+                <text class="comment-time">{{item.time}}</text>
+              </view>
+              <text class="comment-text">{{item.content}}</text>
+              <!-- 回复子评论 -->
+              <view class="comment-replies" wx:if="{{item.replies && item.replies.length > 0}}">
+                <view class="reply-item" wx:for="{{item.replies}}" wx:key="id" wx:for-item="reply">
+                  <text class="reply-from">{{reply.fromUser}}</text>
+                  <text wx:if="{{reply.toUser}}" class="reply-to">回复</text>
+                  <text wx:if="{{reply.toUser}}" class="reply-to-user">{{reply.toUser}}</text>
+                  <text class="reply-sep">：</text>
+                  <text class="reply-text">{{reply.content}}</text>
+                </view>
+              </view>
+              <view class="comment-actions">
+                <view class="comment-action" bindtap="onReplyComment" data-id="{{item.id}}" data-name="{{item.username}}">
+                  <text>💬 回复</text>
+                </view>
+                <view class="comment-action" bindtap="onLikeComment" data-id="{{item.id}}">
+                  <text>{{item.isLiked ? '❤️' : '🤍'}} {{item.likeCount || 0}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <!-- 空评论 -->
+        <view class="empty-comments" wx:if="{{comments.length === 0}}">
+          <text class="empty-icon">💬</text>
+          <text class="empty-text">暂无评论，来说两句吧</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 相关推荐 -->
+    <view class="related-section">
+      <view class="section-header">
+        <text class="section-title">相关帖子</text>
+        <text class="section-more" bindtap="onMoreRelated">更多 ›</text>
+      </view>
+      <view class="related-list">
+        <view class="related-card" wx:for="{{relatedPosts}}" wx:key="id" bindtap="onRelatedTap" data-id="{{item.id}}">
+          <text class="related-title">{{item.title}}</text>
+          <view class="related-meta">
+            <text class="related-author">{{item.username}}</text>
+            <text class="related-stats">💬 {{item.comment}} · ❤️ {{item.like}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部安全区 -->
+    <view class="safe-bottom"></view>
+  </scroll-view>
+
+  <!-- 底部评论输入栏 -->
+  <view class="comment-bar">
+    <view class="comment-bar-input" bindtap="onFocusComment">
+      <text class="comment-bar-placeholder">{{replyTarget ? '回复 ' + replyTarget + '：' : '说点什么...'}}</text>
+    </view>
+    <view class="comment-bar-actions">
+      <view class="bar-action" bindtap="onLike">
+        <text>{{post.isLiked ? '❤️' : '🤍'}}</text>
+      </view>
+      <view class="bar-action" bindtap="onFavorite">
+        <text>{{post.isFavorited ? '⭐' : '☆'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论输入弹层 -->
+  <view class="comment-overlay" wx:if="{{showCommentInput}}" bindtap="onCancelComment">
+    <view class="comment-input-panel" catchtap="noop">
+      <view class="input-panel-header">
+        <text class="input-panel-title">{{replyTarget ? '回复 ' + replyTarget : '发表评论'}}</text>
+        <text class="input-panel-cancel" bindtap="onCancelComment">取消</text>
+      </view>
+      <textarea class="comment-textarea" placeholder="友善交流，分享你的观点..." value="{{commentText}}" bindinput="onCommentInput" auto-height maxlength="500" focus="{{showCommentInput}}" />
+      <view class="input-panel-footer">
+        <text class="char-count">{{commentText.length}}/500</text>
+        <view class="submit-btn" bindtap="onSubmitComment">
+          <text>发布</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

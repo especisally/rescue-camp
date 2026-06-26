@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>刷题中心 - TACTICAL READINESS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#fff7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004788",
+                    "on-primary-fixed-variant": "#930007",
+                    "outline": "#946e69",
+                    "primary-container": "#e60012",
+                    "tertiary": "#5a5a5a",
+                    "surface-container-low": "#f3f3f3",
+                    "on-surface": "#1a1c1c",
+                    "primary-fixed": "#ffdad5",
+                    "on-tertiary-container": "#fbf8f8",
+                    "on-secondary-fixed": "#001b3b",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410001",
+                    "background": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9f9",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3131",
+                    "secondary-fixed": "#d5e3ff",
+                    "tertiary-fixed": "#e4e2e1",
+                    "surface-container-highest": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-dim": "#dadada",
+                    "surface-tint": "#c0000d",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "tertiary-container": "#737272",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "secondary-container": "#6ba7fd",
+                    "on-secondary-container": "#003b74",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface-variant": "#5f3f3b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "primary": "#b7000c",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "secondary": "#0b5eaf",
+                    "outline-variant": "#e9bcb6",
+                    "inverse-primary": "#ffb4aa",
+                    "secondary-fixed-dim": "#a7c8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "gutter": "12px",
+                    "section-gap": "24px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["\"Inter, PingFang SC\""],
+                    "headline-sm": ["\"Inter, PingFang SC\""],
+                    "label-md": ["\"Inter, PingFang SC\""],
+                    "headline-lg-mobile": ["\"Inter, PingFang SC\""],
+                    "body-md": ["\"Inter, PingFang SC\""],
+                    "body-lg": ["\"Inter, PingFang SC\""],
+                    "headline-lg": ["\"Inter, PingFang SC\""]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tactical-border {
+            border-left: 4px solid #b7000c;
+        }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background-color: rgba(249, 249, 249, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-header border-b border-surface-variant h-14 flex justify-between items-center px-container-margin">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+<h1 class="font-headline-sm text-headline-sm text-primary tracking-tight">刷题中心</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+</header>
+<main class="pt-14 px-container-margin">
+<!-- Search Hero Section -->
+<section class="mt-section-gap">
+<div class="relative w-full h-40 rounded-xl overflow-hidden mb-6 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-contrast photograph of rescue professionals in a tactical training environment. The lighting is dramatic and focused, highlighting specialized equipment and gear. The scene is dominated by a professional color palette of deep reds, charcoal grays, and crisp whites, conveying a sense of mission-critical readiness and discipline." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuYxcHOigP7GMcobc_mPhhmaEfVyqAHFn9rFtVNHqcUSwpU7_Vuw9mb-xLC6c0BlrjOL-UXWGrh_Y0-EY-g05yHPFkTCtYnG3n5Q1JXhO50o78utG0XvCL56E8bGKpfSDL7Ef53Y94lMr9QAVMRXYndr46fjlMrnk_K-m6uj3mFESlM4ZmBVh4mu6tr82UNoH368MhnGZtq3jF1v5oP244ZWa-EBRKuTr43cypCf7hkapW6oEbt4ofhioBPpvEvBOlsshDKkZeHLc')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4">
+<h2 class="text-white font-headline-md text-headline-md mb-2">题库搜索中心</h2>
+<div class="relative w-full">
+<input class="w-full h-11 bg-white/90 rounded-lg pl-10 pr-4 text-on-surface text-body-md border-none focus:ring-2 focus:ring-primary transition-all placeholder:text-tertiary" placeholder="搜索战术规范、专业技能或鉴定题目..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-tertiary">search</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Tabs -->
+<section class="mt-4 mb-6">
+<div class="flex overflow-x-auto hide-scrollbar gap-2 py-2">
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all active:scale-95" onclick="switchTab(this)">全部</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">作战训练安全</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">灭火救援</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">晋级考核</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">职业技能鉴定</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">水域救援</button>
+<button class="px-4 py-2 whitespace-nowrap rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" onclick="switchTab(this)">绳索救援</button>
+</div>
+</section>
+<!-- Question Bank List -->
+<section class="space-y-4" id="bank-list">
+<!-- Bank Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-center gap-4 active:bg-surface-container-low transition-colors shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">fire_truck</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">2024年度灭火救援指挥员考核</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 1,280 题
+                        </span>
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-10-15
+                        </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-primary border border-primary-container hover:bg-primary-container/5">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Bank Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-center gap-4 active:bg-surface-container-low transition-colors shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[28px]">water_drop</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">急流救援专业技术鉴定理论</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 850 题
+                        </span>
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-09-28
+                        </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary border border-secondary-container hover:bg-secondary/5">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Bank Item 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-center gap-4 active:bg-surface-container-low transition-colors shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<div class="w-12 h-12 bg-on-secondary-fixed-variant/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-[28px]">hardware</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">绳索救援初级技术员认证</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 420 题
+                        </span>
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-11-02
+                        </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-secondary-fixed-variant border border-on-secondary-fixed-variant/30 hover:bg-on-secondary-fixed-variant/5">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Bank Item 4 (Tactical Focus) -->
+<div class="bg-primary/5 p-4 rounded-xl border border-primary/20 flex items-center gap-4 active:bg-primary/10 transition-colors shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0">
+<div class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">HOT</div>
+</div>
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[28px]">security</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">作战训练安全知识1000题</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 1,000 题
+                        </span>
+<span class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-11-10
+                        </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-md">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<!-- Bank Item 5 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-center gap-4 active:bg-surface-container-low transition-colors shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[28px]">verified_user</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">职业技能等级鉴定(五级)</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 2,100 题
+                        </span>
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-08-15
+                        </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-tertiary border border-tertiary-container/30 hover:bg-tertiary/5">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Stats Bento Section -->
+<section class="mt-section-gap grid grid-cols-2 gap-3 pb-8">
+<div class="bg-secondary-fixed/30 p-4 rounded-xl border border-secondary-fixed flex flex-col gap-2">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<div>
+<div class="text-label-md font-label-md text-on-secondary-fixed-variant">今日已刷题</div>
+<div class="text-headline-lg font-headline-lg text-secondary">156 <span class="text-label-md font-normal">题</span></div>
+</div>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl border border-surface-variant flex flex-col gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">target</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface-variant">平均正确率</div>
+<div class="text-headline-lg font-headline-lg text-on-surface">94.2%</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-surface-variant shadow-sm h-16 flex justify-around items-center pb-safe">
+<a class="flex flex-col items-center justify-center transition-transform duration-150 text-tertiary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform duration-150 rounded-lg px-4" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform duration-150 rounded-lg px-4" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform duration-150 rounded-lg px-4" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</a>
+</nav>
+<script>
+        function switchTab(btn) {
+            const tabs = btn.parentNode.querySelectorAll('button');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                tab.classList.add('bg-surface-container', 'text-on-surface-variant');
+            });
+            btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            
+            // Interaction: Simulate list refresh
+            const list = document.getElementById('bank-list');
+            list.style.opacity = '0.5';
+            setTimeout(() => {
+                list.style.opacity = '1';
+            }, 300);
+        }
+
+        // Simple haptic-like feedback for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.navigator && window.navigator.vibrate) {
+                    window.navigator.vibrate(5);
+                }
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

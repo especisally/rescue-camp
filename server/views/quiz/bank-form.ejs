@@ -1,0 +1,40 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/quiz/banks/' + bank.id : '/admin/quiz/banks' %>">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">题库名称 *</label>
+          <input type="text" name="title" class="form-control" value="<%= bank.title || '' %>" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">分类 *</label>
+          <select name="categoryId" class="form-select" required>
+            <option value="">请选择</option>
+            <% if (typeof categories !== 'undefined') { categories.forEach(function(c) { %>
+              <option value="<%= c.id %>" <%= bank.categoryId == c.id ? 'selected' : '' %>><%= c.name %></option>
+            <% }) } %>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">图标 (Emoji)</label>
+          <input type="text" name="icon" class="form-control" value="<%= bank.icon || '' %>" placeholder="🔥">
+        </div>
+        <% if (isEdit) { %>
+        <div class="col-md-3">
+          <label class="form-label">状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= bank.status == 1 ? 'selected' : '' %>>启用</option>
+            <option value="0" <%= bank.status == 0 ? 'selected' : '' %>>停用</option>
+          </select>
+        </div>
+        <% } %>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/quiz/banks" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

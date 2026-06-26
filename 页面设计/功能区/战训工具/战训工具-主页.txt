@@ -1,0 +1,235 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>应急救援战训营 - 战训工具</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "on-primary-container": "#fff7f6",
+                        "inverse-primary": "#ffb4aa",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004788",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeeeee",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-secondary-container": "#003b74",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#0b5eaf",
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#c0000d",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "primary": "#b7000c",
+                        "outline": "#946e69",
+                        "on-secondary-fixed": "#001b3b",
+                        "primary-fixed": "#ffdad5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fbf8f8",
+                        "on-surface-variant": "#5f3f3b",
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "background": "#f9f9f9",
+                        "outline-variant": "#e9bcb6",
+                        "on-primary-fixed": "#410001",
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#6ba7fd",
+                        "tertiary-container": "#737272",
+                        "primary-container": "#e60012",
+                        "surface-dim": "#dadada",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "tertiary-fixed": "#e4e2e1",
+                        "tertiary": "#5a5a5a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-margin": "16px",
+                        "section-gap": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["\"Inter, PingFang SC\""],
+                        "body-lg": ["\"Inter, PingFang SC\""],
+                        "label-md": ["\"Inter, PingFang SC\""],
+                        "headline-md": ["\"Inter, PingFang SC\""],
+                        "body-md": ["\"Inter, PingFang SC\""],
+                        "headline-lg-mobile": ["\"Inter, PingFang SC\""],
+                        "headline-sm": ["\"Inter, PingFang SC\""]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tactical-card-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top App Bar (From Shared Components) -->
+<header class="bg-surface sticky top-0 z-50 border-b border-surface-variant flex items-center justify-between px-container-margin h-14 w-full"><button class="flex items-center justify-center text-on-surface mr-2 active:opacity-80 transition-all duration-200">
+  <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 mr-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-on-surface-variant/60" placeholder="搜索全站视频、论坛、资料..." type="text">
+</div>
+<button class="flex items-center justify-center text-primary active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-container-margin pt-4 pb-stack-md pb-20">
+<!-- Tactical Search Bar -->
+<!-- Tool Hero Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 gap-stack-md">
+<!-- 危化品查询 -->
+<div class="relative overflow-hidden rounded-lg border border-[#EEEEEE] bg-surface-container-lowest active:scale-[0.98] transition-transform duration-100 group">
+<div class="h-[200px] w-full relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A macro close-up of high-tech scientific chemical containers with digital status indicators in a clean, professional laboratory setting. The lighting is cold and precise, using a palette of white, silver, and deep rescue blue to convey rigor and safety. The style is modern industrial photography with high contrast and sharp focus, emphasizing structural order and mission-critical reliability." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBC5pw4PCc4z3zjIZMfwy-yt3cjrQOG5H0AwJOpiXYE2F_QhPQnL77OwNrrs1H-lkZgGSXMEJnCLhBChuEdnurQhwScHFDwvl-txcTi9IHAFPMzGChJ8TtHmDc82H5Fnnx4vdUmpDJNZ92voR8uj2X4bc6R7pcq09N5Vwm7Ex-R7jNlLyoRZFwmMp1mkE5bWKjT2dqIprrX1-pdm9gp3exy9ddRrN4wQPtVM1p47xjGCzYAaT2ZO53NvOcDq9uC8DdsSEgwqS9HZo_M')"></div>
+<div class="absolute inset-0 tactical-card-overlay flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl mb-2 opacity-90">science</span>
+<h2 class="font-headline-md text-headline-md-mobile text-white font-bold tracking-wider">危化品查询</h2>
+<p class="text-white/70 font-label-md mt-1">快速检索理化特性与处置对策</p>
+</div>
+</div>
+</div>
+<!-- 火灾扑救要点 -->
+<div class="relative overflow-hidden rounded-lg border border-[#EEEEEE] bg-surface-container-lowest active:scale-[0.98] transition-transform duration-100 group">
+<div class="h-[200px] w-full relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A dramatic, professional photograph of fire containment equipment in a structured warehouse, featuring fire extinguishers, hoses, and nozzles arranged with military precision. The environment uses high-contrast lighting with warm fire-red accents against cold steel backgrounds. The mood is intense yet disciplined, symbolizing tactical readiness and authoritative institutional presence." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmmdVVFXFrvk4IFXIoEL_RbEJFO6eJZ8ywwqwpv3MKQdYcLR-yAv2y0Z8NegH-9lfGYCR2wA_VDZaoijtDVwRQiz9CiGXoc99Mrfl74Jd3dsKujdrTjwCcQ51KsHnhY-hnt9E77cCeVlQ73-6J5DdW0RN91DgrAfeLituFezqgO6ZZ4lJokF6Xicq4HZnYih8Dd7Fn-4qBNWLXFc_0Z4DWW-_oN7QKdgnNrvdXZqWrsc95aWy0qwxpELEHOvJIjANTj6ja4iJRcM6L')"></div>
+<div class="absolute inset-0 tactical-card-overlay flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl mb-2 opacity-90">fire_truck</span>
+<h2 class="font-headline-md text-headline-md-mobile text-white font-bold tracking-wider">火灾扑救要点</h2>
+<p class="text-white/70 font-label-md mt-1">各类建筑及特殊场所作战规程</p>
+</div>
+</div>
+</div>
+<!-- 抢险救援要点 -->
+<div class="relative overflow-hidden rounded-lg border border-[#EEEEEE] bg-surface-container-lowest active:scale-[0.98] transition-transform duration-100 group">
+<div class="h-[200px] w-full relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional tactical rescue scene setup showing high-performance ropes, carabiners, and hydraulic rescue tools laid out on a clean concrete floor. The lighting is cinematic with strong directional shadows, emphasizing the grit and reliability of the gear. Colors focus on deep blacks, metallic grays, and rescue blue highlights in a corporate modernist style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQKKfaC9E11aHluF5ie7X-svIZ5qaPTludGm4nzmc75_ZKEuw0DvXHwFah0rJOA9Ii4AuE8j-k588FA_Exa0TkGBU_kSa-9uQ4mM8F23ZAY8WeTDdKVJd_aQoHtuea-Gf9_F7wpdB_5ay4SWLaj-Z6kJVXYC9FbDiunLwLzP9QSmeDXCBzjj8IrBZ-A-J3B8347MfwvtD75m-6zj67SmHgaNa_zyw6SLTDTnHfDyZ_2RDyDsoGPyHSd3UL37SsLt1hqKOy5ZecUzk0')"></div>
+<div class="absolute inset-0 tactical-card-overlay flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl mb-2 opacity-90">engineering</span>
+<h2 class="font-headline-md text-headline-md-mobile text-white font-bold tracking-wider">抢险救援要点</h2>
+<p class="text-white/70 font-label-md mt-1">交通事故、建筑坍塌等专项技术</p>
+</div>
+</div>
+</div>
+<!-- 体能标准 -->
+<div class="relative overflow-hidden rounded-lg border border-[#EEEEEE] bg-surface-container-lowest active:scale-[0.98] transition-transform duration-100 group">
+<div class="h-[200px] w-full relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="An atmospheric photograph of a tactical training gym at dawn, featuring heavy-duty fitness equipment and stopwatches. The scene is lit with soft morning light filtering through high windows, creating a disciplined and focused environment. The color palette is minimal, using muted grays and whites with sharp primary red accents on a digital display, conveying confidence and structural order." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7iUDHa0T6ePEP4_HVPM4Ne1W0QCAIzphjhF4CN-laocnMVVqxP2Q-x-ZLJKrtOZ86O2jauTBujcwMPMNX3WNHV6cvMJlPJQUyG3M-PI3ixLrd43t3olPJQJ9VFcfZ9YFpoX15b9dFYC1w7bmSr2y5oQDIQ7-Al3f3LDv6yked_H9T1Thju-Fd0xVhbj0okccbuQFcAECnX6i7KbPR79ctU7ej6c-hReY6zvVkEDoX11NYLSTZRNLSju8JSq3yMjQ_rp-BXeV9Tlgi')"></div>
+<div class="absolute inset-0 tactical-card-overlay flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl mb-2 opacity-90">fitness_center</span>
+<h2 class="font-headline-md text-headline-md-mobile text-white font-bold tracking-wider">体能标准</h2>
+<p class="text-white/70 font-label-md mt-1">各年龄段及岗位体能考核基准</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Access Section -->
+<section class="mt-section-gap">
+<div class="flex items-center justify-between mb-stack-md px-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">常用换算与参考</h3>
+<span class="text-secondary font-label-md">全部工具</span>
+</div>
+<div class="grid grid-cols-2 gap-stack-sm">
+<button class="flex flex-col items-center justify-center py-stack-md bg-surface-container-low rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary mb-1">calculate</span>
+<span class="font-label-md text-on-surface">流量计算器</span>
+</button>
+<button class="flex flex-col items-center justify-center py-stack-md bg-surface-container-low rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary mb-1">speed</span>
+<span class="font-label-md text-on-surface">等级考核表</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (From Shared Components) -->
+
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.tactical-card-overlay').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.classList.add('bg-black/40');
+            });
+            card.addEventListener('touchend', () => {
+                card.classList.remove('bg-black/40');
+            });
+        });
+    </script>
+
+
+
+
+
+
+<nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-surface-variant h-16 flex items-center justify-around px-2 z-50">
+  <a href="#" class="flex flex-col items-center justify-center flex-1 text-on-surface-variant">
+    <span class="material-symbols-outlined mb-1">home</span>
+    <span class="text-label-md">首页</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center flex-1 text-on-surface-variant">
+    <span class="material-symbols-outlined mb-1">forum</span>
+    <span class="text-label-md">论坛</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center flex-1 text-on-surface-variant">
+    <span class="material-symbols-outlined mb-1">shopping_bag</span>
+    <span class="text-label-md">商城</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center flex-1 text-on-surface-variant">
+    <span class="material-symbols-outlined mb-1">person</span>
+    <span class="text-label-md">我的</span>
+  </a>
+</nav>
+
+</body></html>

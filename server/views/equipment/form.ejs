@@ -1,0 +1,59 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/equipment/' + equipment.id : '/admin/equipment' %>">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">名称 *</label>
+          <input type="text" name="name" class="form-control" value="<%= equipment.name || '' %>" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">型号</label>
+          <input type="text" name="model" class="form-control" value="<%= equipment.model || '' %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">分类 *</label>
+          <select name="categoryId" class="form-select" required>
+            <option value="">请选择</option>
+            <% categories.forEach(function(c) { %>
+              <option value="<%= c.id %>" <%= equipment.categoryId == c.id ? 'selected' : '' %>><%= c.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">图片 URL</label>
+          <input type="text" name="imageUrl" class="form-control" value="<%= equipment.imageUrl || '' %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">装备状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= equipment.status == 1 ? 'selected' : '' %>>正常</option>
+            <option value="2" <%= equipment.status == 2 ? 'selected' : '' %>>维修中</option>
+            <option value="3" <%= equipment.status == 3 ? 'selected' : '' %>>报废</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">规格参数（JSON，如 [{"name":"重量","value":"10kg"}]）</label>
+          <textarea name="specs" class="form-control" rows="3" placeholder='[{"name":"重量","value":"10kg"},{"name":"材质","value":"高强度钢"}]'><%= equipment.specs ? JSON.stringify(equipment.specs) : '' %></textarea>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">使用说明</label>
+          <textarea name="usage" class="form-control" rows="3"><%= equipment.usage || '' %></textarea>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">适用场景</label>
+          <textarea name="scenario" class="form-control" rows="3"><%= equipment.scenario || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">维护保养</label>
+          <textarea name="maintenance" class="form-control" rows="3"><%= equipment.maintenance || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/equipment" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/quiz/banks/' + bank.id + '/questions/' + question.id : '/admin/quiz/banks/' + bank.id + '/questions' %>">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">题目类型 *</label>
+          <select name="type" class="form-select" required>
+            <option value="single" <%= question.type === 'single' ? 'selected' : '' %>>单选题</option>
+            <option value="multi" <%= question.type === 'multi' ? 'selected' : '' %>>多选题</option>
+            <option value="judge" <%= question.type === 'judge' ? 'selected' : '' %>>判断题</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">正确答案 *</label>
+          <input type="text" name="correctAnswer" class="form-control" value="<%= question.correctAnswer || '' %>" required
+            placeholder="单选填字母；多选用逗号分隔；判断填对/错">
+        </div>
+        <div class="col-12">
+          <label class="form-label">题目内容 *</label>
+          <textarea name="question" class="form-control" rows="3" required><%= question.question || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">选项 (JSON 格式) — 单选/多选必填</label>
+          <textarea name="options" class="form-control" rows="4" placeholder='[{"label":"A","text":"选项内容"},{"label":"B","text":"选项内容"}]'><%= question.options ? JSON.stringify(question.options, null, 2) : '' %></textarea>
+          <small class="text-muted">JSON 格式：[{"label":"A", "text":"..."}, {"label":"B", "text":"..."}...]</small>
+        </div>
+        <div class="col-12">
+          <label class="form-label">题目解析</label>
+          <textarea name="explanation" class="form-control" rows="2"><%= question.explanation || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/quiz/banks/<%= bank.id %>/questions" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

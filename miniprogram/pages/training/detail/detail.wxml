@@ -1,0 +1,67 @@
+<!-- 训练操法详情页 -->
+<view class="detail-page" wx:if="{{drill}}">
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+  <view class="detail-nav">
+    <view class="detail-nav__inner">
+      <view class="detail-nav__back" bindtap="goBack"><text class="detail-nav__back-icon">←</text></view>
+      <text class="detail-nav__title text-lg font-bold truncate">{{drill.name}}</text>
+      <view class="detail-nav__placeholder"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="detail-scroll">
+    <!-- Hero 横幅 -->
+    <view class="hero-banner" style="background: {{drill.bgColor}};">
+      <text class="hero-banner__icon">{{drill.icon}}</text>
+      <text class="hero-banner__name">{{drill.name}}</text>
+      <view class="tag" style="background: {{drill.tagColor}}; color: #fff;">{{drill.tag}}</view>
+    </view>
+
+    <!-- 操法描述 -->
+    <view class="section">
+      <view class="section-title"><text class="section-title__text">操法简介</text></view>
+      <text class="section-content text-md">{{drill.description}}</text>
+    </view>
+
+    <!-- 操作步骤 -->
+    <view class="section">
+      <view class="section-title"><text class="section-title__text">操作步骤</text></view>
+      <view class="steps-list">
+        <view class="step-item flex items-start gap-12" wx:for="{{drill.steps}}" wx:key="order">
+          <view class="step-number flex items-center justify-center">{{item.order}}</view>
+          <view class="flex-1">
+            <text class="step-title text-sm font-bold">{{item.title}}</text>
+            <text class="step-desc text-sm">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 装备清单 -->
+    <view class="section">
+      <view class="section-title"><text class="section-title__text">装备清单</text></view>
+      <view class="equip-list">
+        <view class="equip-item flex items-center justify-between" wx:for="{{drill.equipments}}" wx:key="name">
+          <view class="flex items-center gap-8">
+            <text style="font-size:36rpx;">{{item.icon}}</text>
+            <text class="text-sm">{{item.name}}</text>
+          </view>
+          <text class="text-sm font-semibold text-primary">{{item.qty}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 安全注意 -->
+    <view class="section">
+      <view class="section-title"><text class="section-title__text">⚠️ 安全注意事项</text></view>
+      <view class="caution-list">
+        <view class="caution-item flex items-start gap-8" wx:for="{{drill.cautions}}" wx:key="*this">
+          <text class="caution-dot">•</text>
+          <text class="text-sm">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="height: 80rpx;"></view>
+  </scroll-view>
+</view>

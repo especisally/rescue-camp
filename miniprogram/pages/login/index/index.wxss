@@ -1,0 +1,64 @@
+/** 登录页面样式 */
+
+/* ========== 页面容器 ========== */
+.login-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== 自定义导航 ========== */
+.login-nav {
+  padding: 12rpx 24rpx;
+  height: 88rpx;
+  box-sizing: border-box;
+}
+
+.login-nav__back {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 16rpx;
+  background: #f1f1f1;
+}
+
+/* ========== Logo 区域 ========== */
+.login-logo {
+  padding-top: 80rpx;
+}
+
+.login-logo__icon {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a56db, #005BAC);
+  box-shadow: 0 12rpx 40rpx rgba(26, 86, 219, 0.35);
+}
+
+/* ========== 登录按钮 ========== */
+.login-btn {
+  height: 100rpx;
+  background: linear-gradient(135deg, #07c160, #06ad56);
+  border-radius: 50rpx;
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
+}
+
+.login-btn:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+/* ========== 暂不登录 ========== */
+.login-skip:active {
+  opacity: 0.6;
+}
+
+/* ========== 隐私协议 ========== */
+.login-agreement {
+  position: absolute;
+  bottom: 80rpx;
+  left: 0;
+  right: 0;
+  padding: 0 48rpx;
+}

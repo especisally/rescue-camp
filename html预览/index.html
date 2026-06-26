@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>战训营 - 首页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1a1c1c",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#5f3f3b",
+                    "outline-variant": "#e9bcb6",
+                    "on-secondary-fixed": "#001b3b",
+                    "secondary": "#005BAC",
+                    "tertiary-fixed": "#e4e2e1",
+                    "surface-variant": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#946e69",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-primary-fixed-variant": "#930007",
+                    "inverse-primary": "#ffb4aa",
+                    "tertiary": "#5a5a5a",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e8e8e8",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary-container": "#fff7f6",
+                    "on-tertiary-container": "#fbf8f8",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#E60012",
+                    "tertiary-container": "#737272",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary-container": "#003b74",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "secondary-container": "#6ba7fd",
+                    "surface-container": "#eeeeee",
+                    "surface-tint": "#c0000d",
+                    "on-primary-fixed": "#410001",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#e60012",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#004788",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-fixed": "#d5e3ff",
+                    "background": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "primary-fixed": "#ffdad5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "section-gap": "24px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"],
+                    "headline-sm": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar with Search -->
+<header class="bg-surface sticky top-0 z-50 border-b border-surface-variant flex items-center justify-between px-container-margin h-14 w-full">
+<div class="flex-1 flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 mr-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-on-surface-variant/60" placeholder="搜索全站视频、论坛、资料..." type="text">
+</div>
+<button class="flex items-center justify-center text-primary active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</header>
+<main class="flex-1 pb-20">
+<!-- Banner Carousel -->
+<section class="mt-4 px-container-margin">
+<div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-action photograph of fire rescue personnel in full gear operating during a night-time tactical training exercise. The scene is illuminated by dramatic searchlights and fire glow, using a palette of deep blues and vibrant fire reds. Professional architectural framing captures the intensity and discipline of the elite emergency team." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBu1aYOz7kC_BM02RJo0KLU3b9SpNblvPiWLJiJdTrUCpnZkkhDGkE4XF-GUMzXigRl_v9XkV728IISVarAumLbCbvXqgkZVa7tnWKeoR_xzb5BzZ6RGVu_8z4Ls05302WIbaDi-p92fj3hoSdULGPeveM-A2M1xjfxh8mgox8v8DigespH-nxYIMvL1RHtVY_upeOum611Nuk_xUyQChoOKd76tjiVd2GR43kLOxTJHdxuuyay2Y2kdQ6VaBit4YjNhFAWgqlQtnE')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+<h2 class="text-white font-headline-md text-headline-md mb-1">年度实战化救援演练专题</h2>
+<p class="text-white/80 font-label-md text-label-md">掌握最新战术，提升响应速度</p>
+</div>
+</div>
+<div class="absolute bottom-3 right-4 flex gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+</div>
+</div>
+</section>
+<!-- Main Function Grid -->
+<section class="mt-section-gap px-container-margin">
+<div class="grid grid-cols-3 gap-4">
+<!-- Video Learning -->
+<a href="功能区/视频学习/视频学习-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="play_circle">play_circle</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">视频学习</span>
+<span class="text-on-surface-variant text-[10px] mt-1">精品课程</span>
+</a>
+<!-- Tactical Tools -->
+<a href="功能区/战训工具/战训工具-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="construction">construction</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">战训工具</span>
+<span class="text-on-surface-variant text-[10px] mt-1">辅助计算</span>
+</a>
+<!-- Training Methods -->
+<a href="功能区/训练操法/训练操法-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary-container mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="fitness_center">fitness_center</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">训练操法</span>
+<span class="text-on-surface-variant text-[10px] mt-1">作业程序</span>
+</a>
+<!-- Equipment -->
+<a href="功能区/器材装备/器材装备-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-600 mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">器材装备</span>
+<span class="text-on-surface-variant text-[10px] mt-1">管理维护</span>
+</a>
+<!-- Extended Learning -->
+<a href="功能区/拓展学习/拓展学习-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="public">public</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">拓展学习</span>
+<span class="text-on-surface-variant text-[10px] mt-1">视野提升</span>
+</a>
+<!-- Quiz Center -->
+<a href="功能区/刷题中心/刷题中心-主页.html" class="flex flex-col items-start p-3 bg-white border border-surface-variant rounded-xl shadow-sm active:scale-[0.98] transition-transform no-underline">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-[28px]" data-icon="quiz">quiz</span>
+</div>
+<span class="font-headline-sm text-[14px] text-on-surface">刷题中心</span>
+<span class="text-on-surface-variant text-[10px] mt-1">考点练习</span>
+</a>
+</div>
+</section>
+<!-- Recommended Content -->
+<section class="mt-section-gap px-container-margin">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">为您推荐</h3>
+<span class="text-secondary text-label-md font-bold">查看全部</span>
+</div>
+<div class="space-y-4">
+<!-- Tactical Card 1 -->
+<div class="flex flex-col bg-white border border-surface-variant rounded-xl overflow-hidden">
+<div class="relative w-full h-40 bg-cover bg-center" data-alt="A high-contrast photo of advanced firefighting drones hovering over a simulated disaster site. The lighting is crisp morning sun, creating sharp shadows. The style is professional, tactical, and clean, highlighting the technological aspect of modern rescue operations." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9LC3T0bcc2Fd2Cea5J1yHj4Quy_eSezuC2Y2Zf9U-H71ODMXl2TyijLIbcl1u0L1EoKdMk241KGDlf5QwU3TFdJAj4mMJvhyi4O-QG6Y4Vnve0Lq-m1OUxv72ZCP23T9YK_3k1HFpFHP3VAovQAZOukHChfcHZKwM4P31BZgT-n8mA8gcVsAHxkn_EQH0oPpAN22Fhdr404acin71aoUEv0LQoSxJ0MqafQnJ8v7zZ48-VN2Ttt9VBpQL1bUHmxlPsprBKQQCgSY')">
+<div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-0.5 font-bold rounded">HOT</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">高层建筑灭火救援技战术解析</h4>
+<div class="flex items-center justify-between text-on-surface-variant text-label-md">
+<span class="flex items-center"><span class="material-symbols-outlined text-[14px] mr-1" data-icon="visibility">visibility</span> 1.2w 播放</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-[14px] mr-1" data-icon="schedule">schedule</span> 15:40</span>
+</div>
+</div>
+</div>
+<!-- Tactical Card 2 -->
+<div class="flex bg-white border border-surface-variant rounded-xl overflow-hidden h-28">
+<div class="w-1/3 bg-cover bg-center" data-alt="A detailed close-up shot of a rescue hydraulic cutter tool in use during a professional demonstration. Pristine metallic surfaces reflecting laboratory lighting. The image emphasizes rigor, mechanical precision, and institutional reliability in rescue equipment maintenance." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdsGb-IviQ5RkFqIXYlcpzI6p-PUibs8bgDdGx-S5qyjqUD7NwxAUv2E2yqulU0kMB9c9z9h_f6Y84M2uKY-eZ4tkAm04mvUMOKu61Md--zQcfIYNyqV3ww4xd8XHyHxlFxFbF2d6XPFFMYk7EBrQkvIIMKgKQWtnhqKJBWw45D2mnCplbq5_93hXJbySsQE3-a0cq8tDgxIX_05aJbgT79sPXa3mzvmT1QLnY-C3Tl51l8I50yYvmMaCu4x-65drywK07iTq-hl4')">
+</div>
+<div class="flex-1 p-3 flex flex-col justify-between">
+<h4 class="font-headline-sm text-headline-sm text-on-surface line-clamp-2">新型液压破拆工具组的操作规范与维护保养</h4>
+<div class="flex items-center text-on-surface-variant text-label-md">
+<span class="bg-surface-container-high px-1.5 py-0.5 rounded mr-2 text-[10px]">器材篇</span>
+<span class="">3小时前更新</span>
+</div>
+</div>
+</div>
+<!-- Tactical Card 3 -->
+<div class="flex bg-white border border-surface-variant rounded-xl overflow-hidden h-28">
+<div class="w-1/3 bg-cover bg-center" data-alt="A professional group portrait of a tactical rescue team in formation, standing in front of a modern red fire truck. The setting is a clean, organized training facility. The mood is disciplined and authoritative, conveying mission-critical readiness and professional brotherhood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9nC2vGfdkx1D1sRZ_1sbKqLrmOj3t9jHF30Yv7j2ZCiKD4i-QJo8iXk8F1YIJ2Q1R8KWheDBLBcbBJIVyEa-jwPA3O9YvoAEZroyGpKR-AhsvY3tkNQJm2iFtKATcIZKBUflRPAs69GeTWvhoastkXRQ8l_SKfsE8G-JthxLFbhHmFEZSiJ889a9cDexDZj4YXavJNn8gAY-WOon-CiM8lsyOc-6d6w09UFO7B3mjItnVQD7q0tXxvrII1-qutRmTm0Me6o2fb4g')">
+</div>
+<div class="flex-1 p-3 flex flex-col justify-between">
+<h4 class="font-headline-sm text-headline-sm text-on-surface line-clamp-2">基层中队战训一体化建设经验分享</h4>
+<div class="flex items-center text-on-surface-variant text-label-md">
+<span class="bg-secondary/10 text-secondary px-1.5 py-0.5 rounded mr-2 text-[10px]">经验帖</span>
+<span class="">528 互动</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-surface-variant flex justify-around items-center h-16 px-gutter pb-safe">
+<a href="index.html" class="flex flex-col items-center justify-center text-secondary font-bold active:scale-95 transition-transform duration-150 no-underline">
+<span class="material-symbols-outlined text-[24px]" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md mt-0.5">首页</span>
+</a>
+<a href="论坛/论坛主页.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low active:scale-95 transition-transform duration-150 no-underline">
+<span class="material-symbols-outlined text-[24px]" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md mt-0.5">论坛</span>
+</a>
+<a href="商城/商城主页.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low active:scale-95 transition-transform duration-150 no-underline">
+<span class="material-symbols-outlined text-[24px]" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md mt-0.5">商城</span>
+</a>
+<a href="我的/个人中心.html" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low active:scale-95 transition-transform duration-150 no-underline">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-0.5">我的</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('opacity-70');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('opacity-70');
+            });
+        });
+    </script>
+
+
+</body></html>

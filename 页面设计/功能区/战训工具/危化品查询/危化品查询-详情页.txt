@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#c0000d",
+                    "surface-bright": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "surface": "#f9f9f9",
+                    "primary-container": "#e60012",
+                    "primary": "#b7000c",
+                    "outline-variant": "#e9bcb6",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-variant": "#e2e2e2",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "surface-container": "#eeeeee",
+                    "primary-fixed": "#ffdad5",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "outline": "#946e69",
+                    "inverse-primary": "#ffb4aa",
+                    "on-surface": "#1a1c1c",
+                    "secondary": "#0b5eaf",
+                    "on-primary-fixed": "#410001",
+                    "surface-container-low": "#f3f3f3",
+                    "on-secondary-container": "#003b74",
+                    "on-secondary-fixed": "#001b3b",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "tertiary": "#5a5a5a",
+                    "on-secondary-fixed-variant": "#004788",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "inverse-surface": "#2f3131",
+                    "on-surface-variant": "#5f3f3b",
+                    "on-primary-fixed-variant": "#930007",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-container": "#6ba7fd",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#fff7f6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fbf8f8",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-tertiary-fixed": "#1b1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "gutter": "12px",
+                    "stack-md": "16px",
+                    "container-margin": "16px",
+                    "section-gap": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter, PingFang SC"],
+                    "body-md": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .tactical-border {
+            border-left: 4px solid #b7000c;
+        }
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top App Bar (Shared Component Strategy) -->
+<header class="flex justify-between items-center px-container-margin h-14 w-full z-50 bg-surface dark:bg-surface-dim border-b border-surface-variant dark:border-outline-variant sticky top-0">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-on-primary-fixed">应急救援战训营</h1>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+</header>
+<main class="max-w-4xl mx-auto mt-4 px-container-margin pb-24">
+<!-- Hero Section: Product Image & Identity -->
+<section class="bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-variant mb-section-gap">
+<div class="relative h-64 md:h-80 w-full">
+<img class="w-full h-full object-cover" data-alt="A professional, high-definition studio shot of a pressurized industrial gas cylinder against a clean, clinical white and grey laboratory background. The lighting is bright and even, emphasizing the tactical and rigorous aesthetic of the emergency response training system. Subtle red and blue accents in the environment mirror the fire rescue brand colors. The overall mood is serious and informative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHe9D4li-eiHLfU6zkwCsJxQ21TsBb9N9sYJW1YUdOmtnY2BD4XVvbD-l_cG-JHS-QM3uNWX6HiO4X7dnSlDtuwpYgjHOQB-1f1Xr_0DZdKVbvSyUdc9TCErGq-EB0dcTNOZlsNZ8Lj6Uq_Dt9WmnvgDVtuCoHl_o5HKTf9v9zq_0GoFvl3a9CkvICfv6lpE8SUuPN1DkdZy6YkIGNeI2TDtQG1SC579e1pV1h0oF-WHpuMonFUQHV-dgJEP1DmeDnxyCjuOgyb3o">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg mb-1">液化石油气</h2>
+<p class="font-label-md text-label-md opacity-90 tracking-widest uppercase">Liquefied Petroleum Gas (LPG)</p>
+</div>
+</div>
+<!-- Danger Labels -->
+<div class="p-4 flex flex-wrap gap-stack-md">
+<div class="flex items-center gap-2 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg border border-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md font-bold">极易燃气体</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-high text-on-surface rounded-lg border border-outline">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-label-md text-label-md font-bold">高压容器</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-secondary-container text-on-secondary-container rounded-lg border border-secondary">
+<span class="material-symbols-outlined">skull</span>
+<span class="font-label-md text-label-md font-bold">窒息风险</span>
+</div>
+</div>
+</section>
+<!-- Physical & Chemical Properties (Bento Layout) -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-2 mb-4 tactical-border pl-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">理化性质</h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant flex flex-col items-center text-center">
+<span class="text-tertiary font-label-md text-label-md mb-1">外观与性状</span>
+<p class="font-body-md text-body-md font-bold">无色气体，有特殊臭味</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant flex flex-col items-center text-center">
+<span class="text-tertiary font-label-md text-label-md mb-1">闪点 (℃)</span>
+<p class="font-body-md text-body-md font-bold">-74</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant flex flex-col items-center text-center">
+<span class="text-tertiary font-label-md text-label-md mb-1">引燃温度 (℃)</span>
+<p class="font-body-md text-body-md font-bold">426 ~ 537</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-surface-variant flex flex-col items-center text-center">
+<span class="text-tertiary font-label-md text-label-md mb-1">爆炸极限 (%)</span>
+<p class="font-body-md text-body-md font-bold">2.25 ~ 9.65</p>
+</div>
+</div>
+</section>
+<!-- Hazards and Measures (Tactical Document Style) -->
+<div class="space-y-section-gap">
+<!-- 燃烧爆炸危险性 -->
+<section class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant">
+<div class="flex items-center gap-3 mb-3 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+<h3 class="font-headline-sm text-headline-sm">燃烧爆炸危险性</h3>
+</div>
+<div class="space-y-3">
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                        极易燃，与空气混合能形成爆炸性混合物。遇明火、高热极易燃烧爆炸。其蒸气比空气重，能在较低处扩散到相当远的地方，遇火源会着火回燃。
+                    </p>
+<div class="bg-error-container/20 p-3 rounded border border-error/20 flex gap-3">
+<span class="material-symbols-outlined text-error">dangerous</span>
+<p class="text-error font-label-md text-label-md italic">若遇高热，容器内压增大，有开裂和爆炸的危险。</p>
+</div>
+</div>
+</section>
+<!-- 急救措施 -->
+<section class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant">
+<div class="flex items-center gap-3 mb-3 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<h3 class="font-headline-sm text-headline-sm">急救措施</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0 text-on-secondary-container font-bold text-sm">1</div>
+<div>
+<p class="font-bold mb-1">吸入</p>
+<p class="text-on-surface-variant font-body-md">迅速脱离现场至空气新鲜处。保持呼吸道通畅。如呼吸困难，给输氧。如呼吸停止，立即进行人工呼吸。就医。</p>
+</div>
+</li>
+<li class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0 text-on-secondary-container font-bold text-sm">2</div>
+<div>
+<p class="font-bold mb-1">皮肤接触</p>
+<p class="text-on-surface-variant font-body-md">若有冻伤，就医治疗。</p>
+</div>
+</li>
+</ul>
+</section>
+<!-- 防护措施 -->
+<section class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant">
+<div class="flex items-center gap-3 mb-3 text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-headline-sm text-headline-sm">防护措施</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 bg-surface rounded">
+<span class="material-symbols-outlined text-tertiary">masks</span>
+<div>
+<p class="font-label-md text-label-md font-bold">呼吸系统防护</p>
+<p class="text-xs text-on-surface-variant">高浓度环境中，建议佩戴自给式呼吸器。</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded">
+<span class="material-symbols-outlined text-tertiary">checkroom</span>
+<div>
+<p class="font-label-md text-label-md font-bold">身体防护</p>
+<p class="text-xs text-on-surface-variant">穿防静电工作服。</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded">
+<span class="material-symbols-outlined text-tertiary">pan_tool</span>
+<div>
+<p class="font-label-md text-label-md font-bold">手防护</p>
+<p class="text-xs text-on-surface-variant">戴一般作业防护手套。</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded">
+<span class="material-symbols-outlined text-tertiary">smoke_free</span>
+<div>
+<p class="font-label-md text-label-md font-bold">其他防护</p>
+<p class="text-xs text-on-surface-variant">工作现场严禁吸烟。避免长期反复接触。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 泄漏处理 -->
+<section class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant">
+<div class="flex items-center gap-3 mb-3 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cleaning_services</span>
+<h3 class="font-headline-sm text-headline-sm">泄漏处理</h3>
+</div>
+<div class="border-l-2 border-surface-variant pl-4 space-y-3">
+<p class="text-on-surface-variant font-body-md">
+                        迅速撤离泄漏污染区人员至上风处，并进行隔离，严格限制出入。切断火源。建议应急处理人员戴自给正压式呼吸器，穿防静电工作服。
+                    </p>
+<p class="text-on-surface-variant font-body-md">
+                        尽可能切断泄漏源。用工业覆盖层或吸附/吸收剂盖住泄漏点附近的下水道等地方，防止气体进入。合理通风，加速扩散。喷雾状水稀释、溶解。
+                    </p>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Actions (Floating Navigation Shell Concept) -->
+
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon && (icon.innerText === 'star' || icon.innerText === 'favorite')) {
+                    const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                    icon.style.fontVariationSettings = `'FILL' ${isFilled ? 0 : 1}`;
+                    icon.classList.toggle('text-yellow-500', !isFilled);
+                }
+            });
+        });
+    </script>
+
+
+<nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-surface-variant px-4 py-2 flex justify-around items-center z-50">
+  <a href="#" class="flex flex-col items-center gap-1 text-on-surface-variant">
+    <span class="material-symbols-outlined">home</span>
+    <span class="text-label-md font-label-md">首页</span>
+  </a>
+  <a href="#" class="flex flex-col items-center gap-1 text-on-surface-variant">
+    <span class="material-symbols-outlined">forum</span>
+    <span class="text-label-md font-label-md">论坛</span>
+  </a>
+  <a href="#" class="flex flex-col items-center gap-1 text-on-surface-variant">
+    <span class="material-symbols-outlined">shopping_bag</span>
+    <span class="text-label-md font-label-md">商城</span>
+  </a>
+  <a href="#" class="flex flex-col items-center gap-1 text-on-surface-variant">
+    <span class="material-symbols-outlined">person</span>
+    <span class="text-label-md font-label-md">我的</span>
+  </a>
+</nav></body></html>

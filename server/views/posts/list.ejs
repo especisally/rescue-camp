@@ -1,0 +1,96 @@
+<%- include('../layouts/main') %>
+
+<!-- 筛选 -->
+<div class="card border-0 shadow-sm mb-3">
+  <div class="card-body">
+    <form class="row g-2" method="GET">
+      <div class="col-md-4">
+        <input type="text" name="keyword" class="form-control" placeholder="搜索帖子..." value="<%= keyword %>">
+      </div>
+      <div class="col-md-3">
+        <select name="status" class="form-select">
+          <option value="">全部正常</option>
+          <option value="all" <%= statusFilter === 'all' ? 'selected' : '' %>>全 部</option>
+          <option value="pending" <%= statusFilter === 'pending' ? 'selected' : '' %>>待审核</option>
+          <option value="deleted" <%= statusFilter === 'deleted' ? 'selected' : '' %>>已删除</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">筛选</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 列表 -->
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>标题</th>
+          <th>作者</th>
+          <th>类型</th>
+          <th>浏览</th>
+          <th>点赞</th>
+          <th>评论</th>
+          <th>精华</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (list.length === 0) { %>
+          <tr><td colspan="10" class="text-center text-muted py-4">暂无帖子</td></tr>
+        <% } %>
+        <% list.forEach(function(p) { %>
+          <tr>
+            <td><%= p.id %></td>
+            <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><%= p.title %></td>
+            <td><%= p.user ? p.user.nickname : '-' %></td>
+            <td><span class="badge bg-info"><%= p.type %></span></td>
+            <td><%= p.views %></td>
+            <td><%= p.likes %></td>
+            <td><%= p.commentsCount %></td>
+            <td><%= p.isEssence ? '⭐' : '-' %></td>
+            <td>
+              <% if (p.status === 1) { %><span class="badge bg-success">正常</span>
+              <% } else if (p.status === 0) { %><span class="badge bg-warning">待审核</span>
+              <% } else { %><span class="badge bg-danger">已删除</span><% } %>
+            </td>
+            <td>
+              <% if (p.status === 0) { %>
+                <form method="POST" action="/admin/posts/<%= p.id %>/approve" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-success">通过</button>
+                </form>
+                <form method="POST" action="/admin/posts/<%= p.id %>/reject" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确认拒绝？')">拒绝</button>
+                </form>
+              <% } else if (p.status === 1) { %>
+                <form method="POST" action="/admin/posts/<%= p.id %>/essence" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-warning"><%= p.isEssence ? '取消精华' : '设为精华' %></button>
+                </form>
+                <form method="POST" action="/admin/posts/<%= p.id %>/delete" style="display:inline">
+                  <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确认删除？')">删除</button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if (totalPages > 1) { %>
+<nav class="mt-3">
+  <ul class="pagination justify-content-center">
+    <% for (var i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === page ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>&keyword=<%= keyword %>&status=<%= statusFilter %>"><%= i %></a>
+      </li>
+    <% } %>
+  </ul>
+</nav>
+<% } %>

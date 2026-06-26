@@ -1,0 +1,84 @@
+<%- include('../layouts/main') %>
+
+<!-- 搜索 + 操作栏 -->
+<div class="card border-0 shadow-sm mb-3">
+  <div class="card-body">
+    <form class="row g-2" method="GET">
+      <div class="col-md-3">
+        <input type="text" name="keyword" class="form-control" placeholder="搜索视频标题..." value="<%= keyword %>">
+      </div>
+      <div class="col-md-3">
+        <select name="categoryId" class="form-select">
+          <option value="">全部分类</option>
+          <% categories.forEach(function(c) { %>
+            <option value="<%= c.id %>" <%= categoryId == c.id ? 'selected' : '' %>><%= c.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">搜索</button>
+      </div>
+      <div class="col-md-4 text-end">
+        <a href="/admin/videos/create" class="btn btn-success">+ 新增视频</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 数据表格 -->
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>标题</th>
+          <th>分类</th>
+          <th>作者</th>
+          <th>时长</th>
+          <th>播放</th>
+          <th>积分</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (list.length === 0) { %>
+          <tr><td colspan="9" class="text-center text-muted py-4">暂无数据</td></tr>
+        <% } %>
+        <% list.forEach(function(v) { %>
+          <tr>
+            <td><%= v.id %></td>
+            <td><%= v.title %></td>
+            <td><span class="badge bg-secondary"><%= v.category ? v.category.name : '-' %></span></td>
+            <td><%= v.author || '-' %></td>
+            <td><%= v.duration ? Math.floor(v.duration / 60) + '分' + (v.duration % 60) + '秒' : '-' %></td>
+            <td><%= v.views %></td>
+            <td><%= v.points %></td>
+            <td><span class="badge <%= v.status === 1 ? 'bg-success' : 'bg-secondary' %>"><%= v.status === 1 ? '上架' : '下架' %></span></td>
+            <td>
+              <a href="/admin/videos/<%= v.id %>/edit" class="btn btn-sm btn-outline-primary">编辑</a>
+              <form method="POST" action="/admin/videos/<%= v.id %>/delete" style="display:inline">
+                <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="确认删除此视频？" onclick="return confirm('确认删除？')">删除</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 分页 -->
+<% if (totalPages > 1) { %>
+<nav class="mt-3">
+  <ul class="pagination justify-content-center">
+    <% for (var i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === page ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>&keyword=<%= keyword %>&categoryId=<%= categoryId %>"><%= i %></a>
+      </li>
+    <% } %>
+  </ul>
+  <p class="text-center text-muted">共 <%= total %> 条，第 <%= page %>/<%= totalPages %> 页</p>
+</nav>
+<% } %>

@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>发布战训视频 - 应急救援战训营</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#ffdad5",
+                        "outline": "#946e69",
+                        "surface": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-primary-container": "#fff7f6",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-container": "#003b74",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "background": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary": "#0b5eaf",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "outline-variant": "#e9bcb6",
+                        "tertiary": "#5a5a5a",
+                        "on-primary-fixed": "#410001",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-container": "#e60012",
+                        "on-tertiary-container": "#fbf8f8",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#5f3f3b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#737272",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-low": "#f3f3f3",
+                        "primary": "#b7000c",
+                        "on-secondary-fixed-variant": "#004788",
+                        "inverse-primary": "#ffb4aa",
+                        "secondary-container": "#6ba7fd",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001b3b",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#c0000d",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "primary-fixed-dim": "#ffb4aa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "gutter": "12px",
+                        "stack-sm": "8px",
+                        "section-gap": "24px",
+                        "container-margin": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter, PingFang SC"],
+                        "label-md": ["Inter, PingFang SC"],
+                        "headline-sm": ["Inter, PingFang SC"],
+                        "body-md": ["Inter, PingFang SC"],
+                        "headline-md": ["Inter, PingFang SC"],
+                        "headline-lg-mobile": ["Inter, PingFang SC"],
+                        "body-lg": ["Inter, PingFang SC"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: "Inter, PingFang SC", sans-serif;
+            background-color: #f9f9f9;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .tag-pill.active {
+            background-color: #0b5eaf;
+            color: white;
+            border-color: #0b5eaf;
+        }
+        .point-btn.active {
+            border-color: #b7000c;
+            background-color: #ffdad5;
+            color: #410001;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Header / TopAppBar -->
+<header class="flex justify-between items-center px-container-margin h-14 w-full z-50 bg-surface border-b border-surface-variant sticky top-0">
+<button class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            取消
+        </button>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold">发布帖子</h1>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg font-label-md text-label-md font-bold active:scale-95 transition-transform">
+            发布
+        </button>
+</header>
+<main class="flex-1 overflow-y-auto px-container-margin py-4 space-y-section-gap pb-20"><section class="flex border-b border-surface-variant -mx-container-margin px-container-margin bg-surface sticky top-0 z-40"><button class="flex-1 py-3 text-center font-bold text-primary border-b-2 border-primary">发布视频</button><button class="flex-1 py-3 text-center font-bold text-on-surface-variant hover:text-primary transition-colors">发布资料</button><button class="flex-1 py-3 text-center font-bold text-on-surface-variant hover:text-primary transition-colors">发布课件</button></section>
+<!-- Video Upload Area -->
+<section class="space-y-4"><label class="block font-label-md text-label-md text-tertiary uppercase tracking-wider">发布性质</label><div class="flex flex-wrap gap-2"><button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">求助</button><button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">提问</button><button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">闲聊</button><button class="tag-pill active px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">经验分享</button></div></section><section class="relative group">
+<div class="w-full aspect-video bg-surface-container-low rounded-xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center transition-all hover:bg-surface-container hover:border-secondary cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[48px] text-secondary mb-2">upload_file</span>
+<p class="font-headline-sm text-headline-sm text-secondary">点击上传视频、文档或课件</p>
+<p class="font-label-md text-label-md text-tertiary mt-2">支持 MP4, MOV, PDF, PPT, DOC 格式，最大 500MB</p>
+</div>
+</section>
+<!-- Form Content -->
+<section class="space-y-4">
+<!-- Title Input -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-tertiary uppercase tracking-wider">标题</label>
+<input class="w-full bg-transparent border-b border-surface-variant py-3 focus:outline-none focus:border-secondary transition-colors font-headline-md text-headline-md text-on-surface placeholder:text-surface-variant" placeholder="输入视频标题..." type="text">
+</div>
+<!-- Description -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-tertiary uppercase tracking-wider">战术心得 / 经验分享</label>
+<textarea class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl p-4 focus:outline-none focus:ring-1 focus:ring-secondary transition-all font-body-md text-body-md text-on-surface placeholder:text-surface-variant resize-none" placeholder="在此分享您的实战或演练心得，描述训练场景、装备使用要点及关键动作技巧..." rows="4"></textarea>
+</div>
+</section>
+<!-- Download Points Selector -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-tertiary uppercase tracking-wider">下载所需积分</label>
+<span class="text-secondary font-label-md text-label-md">设置获取权限</span>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="point-btn active flex-1 min-w-[64px] py-3 rounded-xl border border-surface-variant text-center font-bold transition-all" onclick="selectPoint(this)">0</button>
+<button class="point-btn flex-1 min-w-[64px] py-3 rounded-xl border border-surface-variant text-center font-bold transition-all" onclick="selectPoint(this)">5</button>
+<button class="point-btn flex-1 min-w-[64px] py-3 rounded-xl border border-surface-variant text-center font-bold transition-all" onclick="selectPoint(this)">10</button>
+<button class="point-btn flex-1 min-w-[64px] py-3 rounded-xl border border-surface-variant text-center font-bold transition-all" onclick="selectPoint(this)">20</button>
+<div class="flex-1 min-w-[80px] relative">
+<input class="w-full py-3 rounded-xl border border-surface-variant bg-transparent text-center font-bold placeholder:font-normal focus:border-primary transition-all" placeholder="自定义" type="number">
+</div>
+</div>
+</section>
+<!-- Tags Selection -->
+<section class="space-y-4">
+<label class="block font-label-md text-label-md text-tertiary uppercase tracking-wider">添加分类标签</label>
+<div class="flex flex-wrap gap-2">
+<button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">灭火救援</button>
+<button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">水域救援</button>
+<button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">装备保养</button>
+<button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">体能训练</button>
+<button class="tag-pill px-4 py-2 rounded-full border border-surface-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all" onclick="toggleTag(this)">战术推演</button>
+<button class="px-3 py-2 rounded-full border border-dashed border-outline-variant text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    自定义
+                </button>
+</div>
+</section>
+<!-- Agreement Toggle -->
+<section class="pt-4 border-t border-surface-variant">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative mt-0.5">
+<input class="peer sr-only" type="checkbox">
+<div class="w-5 h-5 border-2 border-outline-variant rounded peer-checked:bg-secondary peer-checked:border-secondary transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px] scale-0 peer-checked:scale-100 transition-transform">check</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        我已阅读并同意 <span class="text-secondary font-bold">《战训营内容分享协议》</span>
+</p>
+<p class="font-label-md text-label-md text-tertiary mt-1">上传视频即表示您拥有该视频的完整版权或授权，并愿意分享给战友进行学习交流。</p>
+</div>
+</label>
+</section>
+<!-- Decorative Info Card (Tactical Aesthetic) -->
+<section class="bg-secondary/5 rounded-xl p-4 border border-secondary/10 flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="security">security</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-secondary">安全提示</h4>
+<p class="font-body-md text-body-md text-secondary/80 mt-1">发布内容严禁包含敏感位置信息、未脱密的人员及单位细节，请确保内容符合保密管理要求。</p>
+</div>
+</section>
+</main>
+<!-- Script for simple UI interactions -->
+<script>
+        function selectPoint(btn) {
+            document.querySelectorAll('.point-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function toggleTag(btn) {
+            btn.classList.toggle('active');
+        }
+
+        // Simple visual feedback for the upload area
+        const uploadArea = document.querySelector('section:first-of-type div');
+        uploadArea.addEventListener('mousedown', () => uploadArea.style.transform = 'scale(0.98)');
+        uploadArea.addEventListener('mouseup', () => uploadArea.style.transform = 'scale(1)');
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,366 @@
+/* pages/forum/post.wxss */
+
+/* ============================================
+   页面容器
+   ============================================ */
+.page-container {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* ============================================
+   自定义导航栏
+   ============================================ */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #ffffff;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 24rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.nav-btn {
+  font-size: 28rpx;
+}
+
+.nav-cancel {
+  color: #5f3f3b;
+  padding: 8rpx 0;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1a56db;
+}
+
+.nav-publish {
+  background-color: #1a56db;
+  color: #ffffff;
+  padding: 10rpx 32rpx;
+  border-radius: 32rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+/* ============================================
+   Tab 切换器
+   ============================================ */
+.tab-switcher {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 0 0 0;
+  position: relative;
+}
+
+.tab-text {
+  font-size: 28rpx;
+  color: #5f3f3b;
+  margin-bottom: 16rpx;
+}
+
+.tab-item.active .tab-text {
+  color: #1a56db;
+  font-weight: 500;
+}
+
+.tab-indicator {
+  width: 48rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background-color: transparent;
+}
+
+.tab-item.active .tab-indicator {
+  background-color: #1a56db;
+}
+
+/* ============================================
+   通用区块
+   ============================================ */
+.section {
+  margin: 24rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.section-header {
+  margin-bottom: 20rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1c1c;
+}
+
+/* ============================================
+   标签药丸
+   ============================================ */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.tag-pill {
+  padding: 12rpx 28rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: #5f3f3b;
+  background-color: #ffffff;
+}
+
+.tag-pill.active {
+  background-color: #005BAC;
+  color: #ffffff;
+  border-color: #005BAC;
+}
+
+.tag-pill.tag-active {
+  background-color: #005BAC;
+  color: #ffffff;
+  border-color: #005BAC;
+}
+
+.tag-pill.tag-custom {
+  border-style: dashed;
+  border-color: #005BAC;
+  color: #005BAC;
+}
+
+/* ============================================
+   上传区域
+   ============================================ */
+.upload-area {
+  border: 3rpx dashed #d0d0d0;
+  border-radius: 16rpx;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.upload-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon {
+  font-size: 48rpx;
+  color: #b0b0b0;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.upload-text {
+  font-size: 26rpx;
+  color: #5f3f3b;
+}
+
+.upload-hint {
+  font-size: 22rpx;
+  color: #b0b0b0;
+  text-align: center;
+  padding: 0 32rpx;
+}
+
+/* ============================================
+   输入行
+   ============================================ */
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-label {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #1a1c1c;
+  white-space: nowrap;
+  margin-right: 20rpx;
+}
+
+.underline-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1a1c1c;
+  border-bottom: 2rpx solid #e8e8e8;
+  padding: 12rpx 0;
+}
+
+.textarea-row {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   文本域
+   ============================================ */
+.content-textarea {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 26rpx;
+  color: #1a1c1c;
+  background-color: #fafafa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 8rpx;
+}
+
+/* ============================================
+   积分选择器
+   ============================================ */
+.point-selector {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.point-btn {
+  width: 120rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #5f3f3b;
+  background-color: #ffffff;
+}
+
+.point-btn.active {
+  border-color: #1a56db;
+  background-color: #eff6ff;
+  color: #1a56db;
+}
+
+.custom-points-input {
+  margin-top: 16rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+  width: 200rpx;
+}
+
+/* ============================================
+   协议勾选
+   ============================================ */
+.agreement-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.checkbox-custom {
+  width: 36rpx;
+  height: 36rpx;
+  border: 2rpx solid #d0d0d0;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkbox-custom.checked {
+  background-color: #005BAC;
+  border-color: #005BAC;
+}
+
+.check-mark {
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.agreement-text {
+  font-size: 24rpx;
+  color: #5f3f3b;
+  line-height: 1.5;
+}
+
+.agreement-link {
+  color: #005BAC;
+}
+
+/* ============================================
+   安全提示卡片
+   ============================================ */
+.safety-card {
+  display: flex;
+  gap: 16rpx;
+  background-color: #EBF5FB;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  align-items: flex-start;
+}
+
+.safety-icon-wrap {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.safety-icon {
+  font-size: 40rpx;
+}
+
+.safety-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.safety-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #005BAC;
+}
+
+.safety-text {
+  font-size: 22rpx;
+  color: #5f3f3b;
+  line-height: 1.6;
+}

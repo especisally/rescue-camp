@@ -1,0 +1,16 @@
+<!-- 自定义 TabBar -->
+<view class="tab-bar">
+  <view class="tab-bar__item {{selected === index ? 'tab-bar__item--active' : ''}}"
+        wx:for="{{list}}" wx:key="pagePath"
+        bindtap="switchTab" data-index="{{index}}">
+    <!-- 图标 -->
+    <view class="tab-bar__icon-wrap">
+      <!-- 选中态：浅蓝色背景光晕 -->
+      <view class="tab-bar__icon-glow" wx:if="{{selected === index}}"></view>
+      <image class="tab-bar__icon"
+             src="{{selected === index ? item.selectedIconPath : item.iconPath}}" />
+    </view>
+    <!-- 文字：始终灰色 -->
+    <text class="tab-bar__text {{selected === index ? 'tab-bar__text--active' : ''}}">{{item.text}}</text>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/chemicals/' + chemical.id : '/admin/chemicals' %>">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">名称 *</label>
+          <input type="text" name="name" class="form-control" value="<%= chemical.name || '' %>" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">分子式</label>
+          <input type="text" name="formula" class="form-control" value="<%= chemical.formula || '' %>" placeholder="如 C₆H₆">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">UN编号</label>
+          <input type="text" name="unNumber" class="form-control" value="<%= chemical.unNumber || '' %>" placeholder="如 1114">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">危险类别</label>
+          <input type="text" name="hazardClass" class="form-control" value="<%= chemical.hazardClass || '' %>" placeholder="如 第3类 易燃液体">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">危险色标</label>
+          <input type="text" name="hazardColor" class="form-control" value="<%= chemical.hazardColor || '' %>" placeholder="如 #FF0000">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= chemical.status == 1 ? 'selected' : '' %>>上架</option>
+            <option value="0" <%= chemical.status == 0 ? 'selected' : '' %>>下架</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">理化性质（JSON对象，如 {"分子量":"78.11","沸点":"80.1℃"}）</label>
+          <textarea name="properties" class="form-control" rows="3" placeholder='{"分子量":"78.11","沸点":"80.1℃","密度":"0.88","外观":"无色透明液体"}'><%= chemical.properties ? JSON.stringify(chemical.properties) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">危险性（JSON数组）</label>
+          <textarea name="dangers" class="form-control" rows="3" placeholder='[{"title":"易燃","desc":"遇明火极易燃烧爆炸"}]'><%= chemical.dangers ? JSON.stringify(chemical.dangers) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">处置要点（JSON数组）</label>
+          <textarea name="steps" class="form-control" rows="3" placeholder='[{"title":"泄漏处置","desc":"用沙土围堵"}]'><%= chemical.steps ? JSON.stringify(chemical.steps) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">防护措施（JSON数组）</label>
+          <textarea name="protections" class="form-control" rows="3" placeholder='[{"title":"呼吸防护","desc":"佩戴自给式呼吸器"}]'><%= chemical.protections ? JSON.stringify(chemical.protections) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/chemicals" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

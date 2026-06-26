@@ -1,0 +1,56 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/learning/' + learning.id : '/admin/learning' %>">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">标题 *</label>
+          <input type="text" name="title" class="form-control" value="<%= learning.title || '' %>" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">类型</label>
+          <select name="type" class="form-select">
+            <option value="video" <%= learning.type === 'video' ? 'selected' : '' %>>视频</option>
+            <option value="doc" <%= learning.type === 'doc' ? 'selected' : '' %>>文档</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= learning.status == 1 ? 'selected' : '' %>>上架</option>
+            <option value="0" <%= learning.status == 0 ? 'selected' : '' %>>下架</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">作者</label>
+          <input type="text" name="author" class="form-control" value="<%= learning.author || '' %>">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">封面 URL</label>
+          <input type="text" name="coverUrl" class="form-control" value="<%= learning.coverUrl || '' %>">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">文件 URL</label>
+          <input type="text" name="fileUrl" class="form-control" value="<%= learning.fileUrl || '' %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">时长（秒）</label>
+          <input type="number" name="duration" class="form-control" value="<%= learning.duration || '' %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">文件大小</label>
+          <input type="text" name="fileSize" class="form-control" value="<%= learning.fileSize || '' %>" placeholder="如 15MB">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">分类标签</label>
+          <input type="text" name="category" class="form-control" value="<%= learning.category || '' %>" placeholder="如 消防安全">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/learning" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

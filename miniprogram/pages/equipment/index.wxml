@@ -1,0 +1,78 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">应急救援战训营</view>
+      <view class="nav-right">
+        <text class="nav-icon nav-icon-red">📦</text>
+        <text class="nav-icon">🔍</text>
+        <text class="nav-icon">👤</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分栏布局 -->
+  <view class="split-layout">
+    <!-- 左侧边栏 -->
+    <scroll-view class="sidebar" scroll-y enhanced>
+      <view class="sidebar-item {{activeCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="onCategoryChange">
+        <text class="sidebar-icon">{{item.icon}}</text>
+        <text class="sidebar-text">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧主区域 -->
+    <scroll-view class="main-area" scroll-y enhanced>
+      <!-- 搜索栏 -->
+      <view class="search-wrap">
+        <view class="search-bar">
+          <text class="search-icon">🔍</text>
+          <input class="search-input" placeholder="搜索器材装备..." value="{{keyword}}" bindinput="onSearchInput" />
+        </view>
+      </view>
+
+      <!-- 列表头 -->
+      <view class="list-header">
+        <text class="list-count">器材列表 共{{filteredList.length}}件</text>
+        <view class="list-toggle">
+          <text class="toggle-icon {{viewMode === 'list' ? 'active' : ''}}" data-mode="list" bindtap="onToggleView">☰</text>
+          <text class="toggle-icon {{viewMode === 'grid' ? 'active' : ''}}" data-mode="grid" bindtap="onToggleView">⚏</text>
+        </view>
+      </view>
+
+      <!-- 器材列表 -->
+      <view class="equipment-list {{viewMode}}">
+        <navigator url="/pages/equipment/detail?id={{item.id}}" class="equip-card" wx:for="{{filteredList}}" wx:key="id">
+          <view class="equip-img" style="background: {{item.bgColor}};">
+            <text class="equip-img-icon">{{item.icon}}</text>
+          </view>
+          <view class="equip-info">
+            <text class="equip-name">{{item.name}}</text>
+            <text class="equip-model">{{item.model}}</text>
+            <text class="equip-desc">{{item.description}}</text>
+            <view class="equip-tags">
+              <text class="equip-tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+            </view>
+            <view class="equip-status" style="background: {{item.statusColor}};">
+              {{item.status}}
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <view class="empty-tip" wx:if="{{filteredList.length === 0}}">
+        <text>暂无器材数据</text>
+      </view>
+
+      <view style="height: 200rpx;"></view>
+    </scroll-view>
+  </view>
+
+  <!-- FAB 悬浮按钮 -->
+  <view class="fab" bindtap="onFabTap">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-center">
+        <view class="search-bar" bindtap="onSearchTap">
+          <text class="search-icon">🔍</text>
+          <text class="search-placeholder">搜索战训工具...</text>
+        </view>
+      </view>
+      <view class="nav-right">
+        <text class="nav-icon filter-icon">☰</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <!-- 四大工具入口卡片 2x2 网格 -->
+    <view class="hero-grid">
+      <navigator url="/pages/tools/chemical" class="hero-card card-primary">
+        <view class="card-overlay"></view>
+        <view class="card-content">
+          <text class="card-icon">🧪</text>
+          <text class="card-title">危化品查询</text>
+          <text class="card-subtitle">快速检索理化特性与处置对策</text>
+        </view>
+      </navigator>
+
+      <view class="hero-card card-blue" data-url="/pages/tools/index" bindtap="onPlaceholderTap">
+        <view class="card-overlay"></view>
+        <view class="card-content">
+          <text class="card-icon">🚗</text>
+          <text class="card-title">火灾扑救要点</text>
+          <text class="card-subtitle">各类建筑及特殊场所作战规程</text>
+        </view>
+      </view>
+
+      <view class="hero-card card-gray" data-url="/pages/tools/index" bindtap="onPlaceholderTap">
+        <view class="card-overlay"></view>
+        <view class="card-content">
+          <text class="card-icon">⚙</text>
+          <text class="card-title">抢险救援要点</text>
+          <text class="card-subtitle">交通事故、建筑坍塌等专项技术</text>
+        </view>
+      </view>
+
+      <view class="hero-card card-green" data-url="/pages/tools/index" bindtap="onPlaceholderTap">
+        <view class="card-overlay"></view>
+        <view class="card-content">
+          <text class="card-icon">🏋</text>
+          <text class="card-title">体能标准</text>
+          <text class="card-subtitle">各年龄段及岗位体能考核基准</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 常用换算与参考 -->
+    <view class="section-title">常用换算与参考</view>
+    <view class="quick-tools">
+      <view class="quick-card">
+        <text class="quick-icon">🔢</text>
+        <text class="quick-label">流量计算器</text>
+      </view>
+      <view class="quick-card">
+        <text class="quick-icon">⚡</text>
+        <text class="quick-label">等级考核表</text>
+      </view>
+    </view>
+  </view>
+</view>

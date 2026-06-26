@@ -1,0 +1,67 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>用户</th>
+          <th>内容</th>
+          <th>联系方式</th>
+          <th>状态</th>
+          <th>回复</th>
+          <th>时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (list.length === 0) { %>
+          <tr><td colspan="8" class="text-center text-muted py-4">暂无反馈</td></tr>
+        <% } %>
+        <% list.forEach(function(f) { %>
+          <tr>
+            <td><%= f.id %></td>
+            <td><%= f.user ? f.user.nickname : '-' %></td>
+            <td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><%= f.content %></td>
+            <td><%= f.contact || '-' %></td>
+            <td><span class="badge <%= f.status === 1 ? 'bg-success' : 'bg-warning' %>"><%= f.status === 1 ? '已处理' : '待处理' %></span></td>
+            <td><%= f.reply || '-' %></td>
+            <td><%= f.createdAt ? new Date(f.createdAt).toLocaleDateString('zh-CN') : '-' %></td>
+            <td>
+              <% if (f.status === 0) { %>
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#replyModal<%= f.id %>">回复</button>
+                <!-- 回复弹窗 -->
+                <div class="modal fade" id="replyModal<%= f.id %>" tabindex="-1">
+                  <div class="modal-dialog"><div class="modal-content">
+                    <form method="POST" action="/admin/feedbacks/<%= f.id %>/reply">
+                      <div class="modal-header"><h5 class="modal-title">回复反馈</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                      <div class="modal-body">
+                        <p><strong>用户反馈：</strong><%= f.content %></p>
+                        <label class="form-label">回复内容</label>
+                        <textarea name="reply" class="form-control" rows="3" required></textarea>
+                      </div>
+                      <div class="modal-footer"><button type="submit" class="btn btn-primary">提交回复</button></div>
+                    </form>
+                  </div></div>
+                </div>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if (totalPages > 1) { %>
+<nav class="mt-3">
+  <ul class="pagination justify-content-center">
+    <% for (var i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === page ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+      </li>
+    <% } %>
+  </ul>
+</nav>
+<% } %>

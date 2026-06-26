@@ -1,0 +1,140 @@
+<%- include('../layouts/main') %>
+
+<!-- Banner 管理 -->
+<div class="card border-0 shadow-sm mb-4">
+  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+    <strong>🎯 轮播图列表</strong>
+    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#bannerModal" onclick="document.getElementById('bannerForm').action='/admin/banners/banner'; document.getElementById('bannerTitle').textContent='新增轮播图'; document.getElementById('banner_id').value=''; document.getElementById('banner_title').value=''; document.getElementById('banner_imageUrl').value=''; document.getElementById('banner_linkUrl').value=''; document.getElementById('banner_sort').value='0';">
+      + 新增
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr><th>排序</th><th>标题</th><th>图片</th><th>链接</th><th>状态</th><th>操作</th></tr>
+      </thead>
+      <tbody>
+        <% if (banners.length === 0) { %>
+          <tr><td colspan="6" class="text-center text-muted py-3">暂无轮播图</td></tr>
+        <% } %>
+        <% banners.forEach(function(b) { %>
+          <tr>
+            <td><%= b.sort %></td>
+            <td><%= b.title %></td>
+            <td><%= b.imageUrl ? b.imageUrl.substring(0, 30) + '...' : '-' %></td>
+            <td><%= b.linkUrl || '-' %></td>
+            <td><span class="badge <%= b.status === 1 ? 'bg-success' : 'bg-secondary' %>"><%= b.status === 1 ? '显示' : '隐藏' %></span></td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" onclick="editBanner('<%= b.id %>', '<%= b.title %>', '<%= b.imageUrl || '' %>', '<%= b.linkUrl || '' %>', '<%= b.sort %>', '<%= b.status %>')">编辑</button>
+              <form method="POST" action="/admin/banners/banner/<%= b.id %>/delete" style="display:inline">
+                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确认删除？')">删除</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 推荐管理 -->
+<div class="card border-0 shadow-sm mb-4">
+  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+    <strong>⭐ 推荐内容</strong>
+    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#recommendModal" onclick="document.getElementById('recommendForm').action='/admin/banners/recommend'; document.getElementById('rec_id').value=''; document.getElementById('rec_title').value=''; document.getElementById('rec_type').value='video'; document.getElementById('rec_targetId').value=''; document.getElementById('rec_coverUrl').value=''; document.getElementById('rec_tag').value=''; document.getElementById('rec_sort').value='0';">
+      + 新增推荐
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr><th>排序</th><th>标题</th><th>类型</th><th>关联ID</th><th>标签</th><th>操作</th></tr>
+      </thead>
+      <tbody>
+        <% if (recommends.length === 0) { %>
+          <tr><td colspan="6" class="text-center text-muted py-3">暂无推荐</td></tr>
+        <% } %>
+        <% recommends.forEach(function(r) { %>
+          <tr>
+            <td><%= r.sort %></td>
+            <td><%= r.title %></td>
+            <td><span class="badge bg-info"><%= r.type %></span></td>
+            <td><%= r.targetId %></td>
+            <td><%= r.tag || '-' %></td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" onclick="editRecommend('<%= r.id %>', '<%= r.title %>', '<%= r.type %>', '<%= r.targetId %>', '<%= r.coverUrl || '' %>', '<%= r.tag || '' %>', '<%= r.sort %>', '<%= r.status %>')">编辑</button>
+              <form method="POST" action="/admin/banners/recommend/<%= r.id %>/delete" style="display:inline">
+                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确认删除？')">删除</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Banner 编辑弹窗 -->
+<div class="modal fade" id="bannerModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <form id="bannerForm" method="POST">
+      <div class="modal-header"><h5 class="modal-title" id="bannerTitle">编辑轮播图</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" id="banner_id" name="id">
+        <div class="mb-3"><label class="form-label">标题</label><input type="text" id="banner_title" name="title" class="form-control" required></div>
+        <div class="mb-3"><label class="form-label">图片 URL</label><input type="text" id="banner_imageUrl" name="imageUrl" class="form-control"></div>
+        <div class="mb-3"><label class="form-label">链接 URL</label><input type="text" id="banner_linkUrl" name="linkUrl" class="form-control"></div>
+        <div class="row"><div class="col-6 mb-3"><label class="form-label">排序</label><input type="number" id="banner_sort" name="sort" class="form-control" value="0"></div>
+        <div class="col-6 mb-3"><label class="form-label">状态</label><select id="banner_status" name="status" class="form-select"><option value="1">显示</option><option value="0">隐藏</option></select></div></div>
+      </div>
+      <div class="modal-footer"><button type="submit" class="btn btn-primary">保 存</button></div>
+    </form>
+  </div></div>
+</div>
+
+<!-- Recommend 编辑弹窗 -->
+<div class="modal fade" id="recommendModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <form id="recommendForm" method="POST">
+      <div class="modal-header"><h5 class="modal-title">编辑推荐</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="mb-3"><label class="form-label">标题</label><input type="text" id="rec_title" name="title" class="form-control" required></div>
+        <div class="mb-3"><label class="form-label">类型</label><select id="rec_type" name="type" class="form-select"><option value="video">视频</option><option value="training">操法</option><option value="learning">学习</option></select></div>
+        <div class="mb-3"><label class="form-label">关联内容 ID</label><input type="number" id="rec_targetId" name="targetId" class="form-control"></div>
+        <div class="mb-3"><label class="form-label">封面 URL</label><input type="text" id="rec_coverUrl" name="coverUrl" class="form-control"></div>
+        <div class="mb-3"><label class="form-label">标签</label><input type="text" id="rec_tag" name="tag" class="form-control"></div>
+        <div class="row"><div class="col-6 mb-3"><label class="form-label">排序</label><input type="number" id="rec_sort" name="sort" class="form-control" value="0"></div>
+        <div class="col-6 mb-3"><label class="form-label">状态</label><select id="rec_status" name="status" class="form-select"><option value="1">上架</option><option value="0">下架</option></select></div></div>
+      </div>
+      <div class="modal-footer"><button type="submit" class="btn btn-primary">保 存</button></div>
+    </form>
+  </div></div>
+</div>
+
+<script>
+function editBanner(id, title, imageUrl, linkUrl, sort, status) {
+  document.getElementById('bannerForm').action = '/admin/banners/banner/' + id;
+  document.getElementById('bannerTitle').textContent = '编辑轮播图';
+  document.getElementById('banner_id').value = id;
+  document.getElementById('banner_title').value = title;
+  document.getElementById('banner_imageUrl').value = imageUrl;
+  document.getElementById('banner_linkUrl').value = linkUrl;
+  document.getElementById('banner_sort').value = sort;
+  document.getElementById('banner_status').value = status;
+  var modal = new bootstrap.Modal(document.getElementById('bannerModal'));
+  modal.show();
+}
+
+function editRecommend(id, title, type, targetId, coverUrl, tag, sort, status) {
+  document.getElementById('recommendForm').action = '/admin/banners/recommend/' + id;
+  document.getElementById('rec_title').value = title;
+  document.getElementById('rec_type').value = type;
+  document.getElementById('rec_targetId').value = targetId;
+  document.getElementById('rec_coverUrl').value = coverUrl;
+  document.getElementById('rec_tag').value = tag;
+  document.getElementById('rec_sort').value = sort;
+  document.getElementById('rec_status').value = status;
+  var modal = new bootstrap.Modal(document.getElementById('recommendModal'));
+  modal.show();
+}
+</script>

@@ -1,0 +1,54 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/trainings/' + training.id : '/admin/trainings' %>">
+      <div class="row g-3">
+        <div class="col-md-8">
+          <label class="form-label">标题 *</label>
+          <input type="text" name="title" class="form-control" value="<%= training.title || '' %>" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">分类 *</label>
+          <select name="categoryId" class="form-select" required>
+            <option value="">请选择</option>
+            <% categories.forEach(function(c) { %>
+              <option value="<%= c.id %>" <%= training.categoryId == c.id ? 'selected' : '' %>><%= c.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">封面图片 URL</label>
+          <input type="text" name="coverUrl" class="form-control" value="<%= training.coverUrl || '' %>" placeholder="/uploads/images/xxx.jpg">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">教学视频 URL</label>
+          <input type="text" name="videoUrl" class="form-control" value="<%= training.videoUrl || '' %>" placeholder="/uploads/videos/xxx.mp4">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= training.status == 1 ? 'selected' : '' %>>上架</option>
+            <option value="0" <%= training.status == 0 ? 'selected' : '' %>>下架</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">装备清单（JSON数组，如 ["水带","分水器"]）</label>
+          <input type="text" name="equipment" class="form-control" value="<%= training.equipment ? JSON.stringify(training.equipment) : '' %>" placeholder='["水带","分水器","水枪"]'>
+        </div>
+        <div class="col-12">
+          <label class="form-label">操作步骤（JSON数组，如 [{"title":"准备","desc":"..."}]）</label>
+          <textarea name="steps" class="form-control" rows="4" placeholder='[{"title":"第一步","desc":"说明文字"}]'><%= training.steps ? JSON.stringify(training.steps) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">注意事项</label>
+          <textarea name="cautions" class="form-control" rows="3"><%= training.cautions || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/trainings" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

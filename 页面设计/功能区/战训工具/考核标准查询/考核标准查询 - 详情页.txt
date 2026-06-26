@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>体能标准详情 - 应急救援战训营</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#c0000d",
+                    "surface-bright": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "surface": "#f9f9f9",
+                    "primary-container": "#e60012",
+                    "primary": "#b7000c",
+                    "outline-variant": "#e9bcb6",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-variant": "#e2e2e2",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "surface-container": "#eeeeee",
+                    "primary-fixed": "#ffdad5",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9f9",
+                    "tertiary-container": "#737272",
+                    "on-error": "#ffffff",
+                    "outline": "#946e69",
+                    "inverse-primary": "#ffb4aa",
+                    "on-surface": "#1a1c1c",
+                    "secondary": "#0b5eaf",
+                    "on-primary-fixed": "#410001",
+                    "surface-container-low": "#f3f3f3",
+                    "on-secondary-container": "#003b74",
+                    "on-secondary-fixed": "#001b3b",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "tertiary": "#5a5a5a",
+                    "on-secondary-fixed-variant": "#004788",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "inverse-surface": "#2f3131",
+                    "on-surface-variant": "#5f3f3b",
+                    "on-primary-fixed-variant": "#930007",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-container": "#6ba7fd",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#fff7f6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fbf8f8",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-tertiary-fixed": "#1b1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "gutter": "12px",
+                    "stack-md": "16px",
+                    "container-margin": "16px",
+                    "section-gap": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter, PingFang SC"],
+                    "body-md": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .table-sticky-col {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: inherit;
+        }
+        .table-sticky-col::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to right, rgba(0,0,0,0.05), transparent);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen p-4 pb-20">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin h-14 w-full z-50 bg-surface border-b border-surface-variant sticky top-0">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary active:scale-95 duration-100" onclick="history.back()">arrow_back</button>
+<h1 class="text-headline-md-mobile font-headline-md font-bold text-primary">3000米跑考核标准</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95">share</span>
+<span class="material-symbols-outlined text-primary hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95">account_circle</span>
+</div>
+</header>
+<main class="px-container-margin py-stack-md">
+<!-- Header Info Card -->
+<section class="mb-section-gap">
+<div class="relative overflow-hidden rounded-xl h-48 flex flex-col justify-end p-6 mb-stack-md shadow-sm border border-surface-variant">
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A cinematic, high-contrast photograph of rescue personnel training in a professional stadium environment. The scene is illuminated by dramatic morning light, emphasizing the tactical readiness and discipline of the firefighters. The overall aesthetic follows a rigorous corporate modernism style with a clean, high-key atmosphere, using a professional palette of deep reds and rescue blues." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAhzkDYs37BkHyJ71dNlKpYhUmhqApjbnelUxgawpkOgbe6G7AaMW74nABR5DIKUv8im87ZtuyXoqaoUHZPzkEdO80XB1nQVAuBjxNUbrWMS3Xa-iLMpT14Y8rqRipWIKBuQpH0W0V5UBOSSzYYepgc0e5l5CxMHoR2_Q1rDRVld6qW1zSqtGBya8COB2qky0diauSbQmizSuYIvm80aNGouakL0aa1XnjNp_QMGEGBI1q_0UL1Ux_blKTF5wr_HJGCEXSYLxFJZmg&quot;);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="relative z-20">
+<span class="bg-primary px-3 py-1 text-white font-label-md text-label-md rounded-sm mb-2 inline-block">必考课目</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-white font-bold leading-tight">基础体能：3000米跑</h2>
+<p class="text-white/80 font-body-md text-body-md mt-1">考核要求：平整场地，穿着训练服，禁止助跑器。</p>
+</div>
+</div>
+<!-- Mode Switcher -->
+<div class="flex bg-surface-container-low p-1 rounded-lg gap-1 border border-surface-variant mb-stack-md">
+<button class="flex-1 py-2 text-center font-label-md text-label-md rounded bg-surface text-primary shadow-sm font-bold border border-outline-variant/30">按年龄段查询</button>
+<button class="flex-1 py-2 text-center font-label-md text-label-md rounded text-tertiary hover:bg-surface-container-high transition-colors">按分数等级查询</button>
+</div>
+</section>
+<!-- Standard Table Section -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-stack-sm">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+                    24岁及以下人员标准
+                </h3>
+<span class="text-label-md font-label-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">swipe_left</span> 左右滑动
+                </span>
+</div>
+<!-- Optimized Scrollable Table -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="bg-surface-container-high border-b border-surface-variant">
+<th class="table-sticky-col px-4 py-4 font-label-md text-label-md text-on-surface whitespace-nowrap bg-surface-container-high">分数档位</th>
+<th class="px-4 py-4 font-label-md text-label-md text-on-surface whitespace-nowrap">优秀 (11'00")</th>
+<th class="px-4 py-4 font-label-md text-label-md text-on-surface whitespace-nowrap">良好 (12'10")</th>
+<th class="px-4 py-4 font-label-md text-label-md text-on-surface whitespace-nowrap">及格 (13'40")</th>
+<th class="px-4 py-4 font-label-md text-label-md text-on-surface whitespace-nowrap">不及格</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<tr class="hover:bg-surface-container-high transition-colors bg-white">
+<td class="table-sticky-col px-4 py-4 font-bold text-primary font-label-md text-label-md whitespace-nowrap">100 分</td>
+<td class="px-4 py-4 whitespace-nowrap">≤ 10'50"</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors bg-surface-container-low/30">
+<td class="table-sticky-col px-4 py-4 font-bold text-primary font-label-md text-label-md whitespace-nowrap">90-95 分</td>
+<td class="px-4 py-4 whitespace-nowrap">11'00" - 11'30"</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors bg-white">
+<td class="table-sticky-col px-4 py-4 font-bold text-secondary font-label-md text-label-md whitespace-nowrap">80-85 分</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap font-medium">12'10" - 12'40"</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors bg-surface-container-low/30">
+<td class="table-sticky-col px-4 py-4 font-bold text-on-surface-variant font-label-md text-label-md whitespace-nowrap">60-75 分</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap font-medium">13'40" - 14'40"</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors bg-white">
+<td class="table-sticky-col px-4 py-4 font-bold text-error font-label-md text-label-md whitespace-nowrap">不及格</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-tertiary">/</td>
+<td class="px-4 py-4 whitespace-nowrap text-error font-medium">&gt; 14'40"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Bento Grid Analysis -->
+<section class="mb-section-gap">
+<h3 class="font-headline-sm text-headline-sm mb-stack-md flex items-center gap-2">
+<span class="w-1 h-5 bg-secondary rounded-full"></span>
+                训练建议
+            </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-secondary-container/10 border border-secondary/20 p-4 rounded-xl">
+<div class="flex items-start gap-3">
+<div class="bg-secondary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<div>
+<h4 class="font-bold text-secondary font-headline-sm text-headline-sm">耐力基石</h4>
+<p class="font-body-md text-body-md mt-1 text-on-secondary-container">建议每周进行2-3次5000米慢跑，心率控制在140-150bpm。</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-surface-variant p-4 rounded-xl">
+<h4 class="font-bold font-label-md text-label-md text-tertiary mb-2">频率</h4>
+<p class="font-headline-md text-headline-md text-primary">每周4次</p>
+</div>
+<div class="bg-surface-container border border-surface-variant p-4 rounded-xl">
+<h4 class="font-bold font-label-md text-label-md text-tertiary mb-2">重点</h4>
+<p class="font-headline-md text-headline-md text-secondary">呼吸节奏</p>
+</div>
+</div>
+</section>
+<!-- Bottom Actions -->
+<div class="fixed bottom-20 left-0 w-full px-container-margin z-40">
+
+</div>
+</main>
+<!-- BottomNavBar -->
+
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('nav button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('nav button').forEach(b => {
+                    b.classList.remove('text-secondary', 'font-bold');
+                    b.classList.add('text-tertiary');
+                    b.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+                });
+                btn.classList.remove('text-tertiary');
+                btn.classList.add('text-secondary', 'font-bold');
+                btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Mode Switching UI Placeholder
+        const modeButtons = document.querySelectorAll('.flex.bg-surface-container-low button');
+        modeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modeButtons.forEach(b => {
+                    b.classList.remove('bg-surface', 'text-primary', 'shadow-sm', 'font-bold', 'border', 'border-outline-variant/30');
+                    b.classList.add('text-tertiary');
+                });
+                btn.classList.add('bg-surface', 'text-primary', 'shadow-sm', 'font-bold', 'border', 'border-outline-variant/30');
+                btn.classList.remove('text-tertiary');
+            });
+        });
+    </script>
+
+
+<nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-surface-variant flex justify-around items-center h-16 z-50 px-4"><button class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">home</span><span class="text-label-md">首页</span></button><button class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">forum</span><span class="text-label-md">论坛</span></button><button class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">shopping_bag</span><span class="text-label-md">商城</span></button><button class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">person</span><span class="text-label-md">我的</span></button></nav>
+
+</body></html>

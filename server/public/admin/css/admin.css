@@ -1,0 +1,15 @@
+/* 侧边栏导航链接 */
+.nav-link:hover { background: rgba(255,255,255,0.1); border-radius: 6px; }
+
+/* 表格优化 */
+.table th { white-space: nowrap; }
+.table td { vertical-align: middle; }
+
+/* 缩略图 */
+.img-thumb-sm { width: 60px; height: 40px; object-fit: cover; border-radius: 4px; }
+
+/* 表单优化 */
+.form-label { font-weight: 500; }
+
+/* 卡片微调 */
+.card { border-radius: 10px; }

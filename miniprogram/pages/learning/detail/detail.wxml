@@ -1,0 +1,71 @@
+<!-- 拓展学习详情页 -->
+<view class="detail-page" wx:if="{{item}}">
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+  <view class="detail-nav">
+    <view class="detail-nav__inner">
+      <view class="detail-nav__back" bindtap="goBack"><text class="detail-nav__back-icon">←</text></view>
+      <text class="detail-nav__title text-lg font-bold truncate">详情</text>
+      <view class="detail-nav__placeholder"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="detail-scroll">
+    <!-- 视频/文档预览 -->
+    <view class="media-hero" wx:if="{{type === 'video'}}" style="background: {{item.bg}};">
+      <view class="media-hero__overlay flex items-center justify-center">
+        <view class="media-hero__play flex items-center justify-center">
+          <text style="font-size:48rpx;color:#fff;">▶</text>
+        </view>
+      </view>
+      <view class="media-hero__info">
+        <text class="media-hero__duration">{{item.duration}}</text>
+      </view>
+    </view>
+    <view class="media-hero doc-hero flex items-center justify-center" wx:else style="background: {{item.iconBg}};">
+      <text style="font-size:120rpx;">{{item.icon}}</text>
+      <view class="doc-hero__format">{{item.format}}</view>
+    </view>
+
+    <!-- 标题信息 -->
+    <view class="info-section">
+      <text class="info-title text-lg font-bold">{{item.title}}</text>
+      <view class="flex items-center gap-16 mt-8" wx:if="{{type === 'video'}}">
+        <text class="text-xs text-on-surface-variant">🌍 {{item.region}}</text>
+        <text class="text-xs text-on-surface-variant">📅 {{item.date}}</text>
+        <text class="text-xs text-on-surface-variant">👁 {{item.views}}次播放</text>
+      </view>
+      <view class="flex items-center gap-16 mt-8" wx:else>
+        <text class="text-xs text-on-surface-variant">📄 {{item.format}} ({{item.size}})</text>
+        <text class="text-xs text-on-surface-variant">📖 来源：{{item.source}}</text>
+      </view>
+    </view>
+
+    <!-- 内容描述 -->
+    <view class="content-section">
+      <text class="content-text text-md">{{item.description}}</text>
+    </view>
+
+    <!-- 相关推荐 -->
+    <view class="related-section" wx:if="{{type === 'video' && item.relatedVideos}}">
+      <text class="section-label text-md font-bold mb-12">相关推荐</text>
+      <view class="related-item flex items-center gap-8" wx:for="{{item.relatedVideos}}" wx:key="id" bindtap="onRelatedTap" data-id="{{item.id}}" data-type="video">
+        <view class="related-item__thumb flex items-center justify-center" style="background:{{item.bg}};">
+          <text style="font-size:36rpx;">{{item.icon}}</text>
+        </view>
+        <view class="flex-1"><text class="text-sm font-semibold truncate">{{item.title}}</text><text class="text-xs text-on-surface-variant mt-4">{{item.region}} · {{item.duration}}</text></view>
+        <text class="text-on-surface-variant">›</text>
+      </view>
+    </view>
+    <view class="related-section" wx:if="{{type === 'doc' && item.relatedDocs}}">
+      <text class="section-label text-md font-bold mb-12">相关推荐</text>
+      <view class="related-item flex items-center gap-8" wx:for="{{item.relatedDocs}}" wx:key="id" bindtap="onRelatedTap" data-id="{{item.id}}" data-type="doc">
+        <view class="related-item__thumb flex items-center justify-center" style="background:{{item.iconBg}};">
+          <text style="font-size:36rpx;">{{item.icon}}</text>
+        </view>
+        <view class="flex-1"><text class="text-sm font-semibold truncate">{{item.title}}</text><text class="text-xs text-on-surface-variant mt-4">{{item.format}} · {{item.source}}</text></view>
+        <text class="text-on-surface-variant">›</text>
+      </view>
+    </view>
+    <view style="height:80rpx;"></view>
+  </scroll-view>
+</view>

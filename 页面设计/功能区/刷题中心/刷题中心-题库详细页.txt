@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: "Inter, PingFang SC", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 12px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #EEEEEE;
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#fff7f6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004788",
+                        "on-primary-fixed-variant": "#930007",
+                        "outline": "#946e69",
+                        "primary-container": "#e60012",
+                        "tertiary": "#5a5a5a",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1a1c1c",
+                        "primary-fixed": "#ffdad5",
+                        "on-tertiary-container": "#fbf8f8",
+                        "on-secondary-fixed": "#001b3b",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#410001",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#f9f9f9",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed": "#d5e3ff",
+                        "tertiary-fixed": "#e4e2e1",
+                        "surface-container-highest": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-dim": "#dadada",
+                        "surface-tint": "#c0000d",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "tertiary-container": "#737272",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "secondary-container": "#6ba7fd",
+                        "on-secondary-container": "#003b74",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#5f3f3b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary": "#b7000c",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#0b5eaf",
+                        "outline-variant": "#e9bcb6",
+                        "inverse-primary": "#ffb4aa",
+                        "secondary-fixed-dim": "#a7c8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "12px",
+                        "section-gap": "24px",
+                        "container-margin": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["\"Inter, PingFang SC\""],
+                        "headline-sm": ["\"Inter, PingFang SC\""],
+                        "label-md": ["\"Inter, PingFang SC\""],
+                        "headline-lg-mobile": ["\"Inter, PingFang SC\""],
+                        "body-md": ["\"Inter, PingFang SC\""],
+                        "body-lg": ["\"Inter, PingFang SC\""],
+                        "headline-lg": ["\"Inter, PingFang SC\""]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-surface-variant flex justify-between items-center px-container-margin h-14 w-full">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-primary tracking-tight">题库详情预览</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-14 pb-24 px-container-margin space-y-section-gap">
+<!-- Header Banner Section -->
+<section class="mt-4">
+<div class="relative w-full h-48 rounded-xl overflow-hidden shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A professional tactical rescue training scene with emergency responders in high-visibility gear working in a structured urban environment. The lighting is bright and clear, reflecting a mission-critical military or firefighter training context. Deep red and rescue blue color accents are visible in the equipment and gear, maintaining a disciplined and authoritative atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhSudBGHvpRDMKAYcJF_HA67LGpAqjbGYCKgCB0uMoJOMZTjuVzhZZHhXPsFwdQfsAY7yLPxF7YcnP0e2fIoxD4ABf1gpRXad-Ek0gVdOf6rhsR3Rs01Cz8NuMOt2QjOtb2Adz-ZWXYhynQp_Cebds-j2F3IODSwLOmt5st8nXkcO07FSei2SzFA2mFazp5GXcPkcLEKYC0sZRfWRRPOvOFPVqIMLtB8Em3-D5v2LYxA2l8pic_Lnk-tGxj-pVk4giGiS4UoIljWg')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-stack-md">
+<span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-sm w-fit mb-2 font-bold tracking-widest uppercase">Level: Advanced</span>
+<h2 class="text-white font-headline-lg-mobile text-headline-lg-mobile">高层建筑火灾救援战术题库</h2>
+<div class="flex items-center gap-4 text-white/80 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-label-md font-label-md">12,450 参与</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="text-label-md font-label-md">灭火战术</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Action Buttons -->
+<section class="grid grid-cols-3 gap-stack-sm">
+<button class="flex flex-col items-center justify-center p-stack-md bg-primary text-on-primary rounded-xl shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-2 text-[28px]">play_circle</span>
+<span class="font-label-md text-label-md font-bold">开始刷题</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md bg-secondary text-on-secondary rounded-xl shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-2 text-[28px]">visibility</span>
+<span class="font-label-md text-label-md font-bold">背题模式</span>
+</button>
+<button class="flex flex-col items-center justify-center p-stack-md bg-surface-container-highest text-primary border border-primary/20 rounded-xl shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-2 text-[28px]">assignment</span>
+<span class="font-label-md text-label-md font-bold text-tertiary">生成试卷</span>
+</button>
+</section>
+<!-- Question Preview & Stats (Bento Layout) -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+                题库内容预览
+            </h3>
+<div class="bento-grid">
+<!-- Stat Card 1 -->
+<div class="col-span-2 row-span-1 glass-card rounded-xl p-stack-md flex flex-col justify-between">
+<span class="text-tertiary font-label-md text-label-md">题目总计</span>
+<div class="flex items-baseline gap-1">
+<span class="text-headline-lg font-headline-lg text-primary">850</span>
+<span class="text-tertiary font-label-md text-label-md">道</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="col-span-2 row-span-1 glass-card rounded-xl p-stack-md flex flex-col justify-between">
+<span class="text-tertiary font-label-md text-label-md">平均难度</span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+<!-- Preview Question Card -->
+<div class="col-span-4 glass-card rounded-xl p-stack-md space-y-stack-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-[64px]">quiz</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 font-bold rounded">题目示例</span>
+<span class="text-tertiary font-label-md text-label-md">单选题</span>
+</div>
+<p class="font-body-lg text-body-lg leading-relaxed text-on-surface">在高层建筑火灾扑救中，进入着火层实施侦察、搜救、灭火的人员应不少于几人？</p>
+<div class="grid grid-cols-1 gap-2 mt-4">
+<div class="p-stack-sm bg-surface-container rounded border border-outline-variant/30 text-body-md font-body-md">A. 2人</div>
+<div class="p-stack-sm bg-surface-container rounded border border-outline-variant/30 text-body-md font-body-md">B. 3人</div>
+<div class="p-stack-sm bg-surface-container rounded border border-outline-variant/30 text-body-md font-body-md">C. 4人</div>
+</div>
+</div>
+<!-- Analysis Card -->
+<div class="col-span-4 glass-card rounded-xl p-stack-md flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<p class="font-body-lg font-bold">考点覆盖率</p>
+<p class="text-tertiary font-label-md text-label-md">包含95%的实战关键点</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-headline-md font-headline-md text-secondary">95%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Material -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+                配套学习手册
+            </h3>
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+<div class="min-w-[140px] space-y-2">
+<div class="w-full aspect-[3/4] bg-surface-container-high rounded-lg overflow-hidden shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A clean, professional book cover design for a fire rescue manual. The cover is predominantly white with bold rescue blue and fire red accents, featuring a silhouette of a high-rise building and tactical gear icons. The style is modern corporate minimalist, with clear sans-serif typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfYeJpgBbafrvarYWy5URfYXog40OjF5Jf2bXJMIkDWda5jTGhyMFxS8tjKwTGnbLwg_9P5GR0pO-ZK-PeSMWxX4Hs9qVfo5JtwaA2m1WVyDOFmZSElFC2K8rOFcu9h0mSjvlcYM6UbioxxshD0NC-bH8f5U61xZ2T-xp8XsBP_rCDSDkPurgA9mcZ5sCJVkO4x3T02q1kFfzj1C855xF-rcSX_0hxbaXxvVfmrs66-2YfSK_0_sn8SM55gL9o9etPw0kIx295Pxo">
+</div>
+<p class="text-body-md font-bold line-clamp-1">高层救援指挥手册</p>
+<p class="text-primary font-label-md text-label-md">免费领取</p>
+</div>
+<div class="min-w-[140px] space-y-2">
+<div class="w-full aspect-[3/4] bg-surface-container-high rounded-lg overflow-hidden shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A tactical training guide book cover focused on structural fire fighting. High-contrast design with a deep red background and white technical diagrams of emergency equipment. Professional and authoritative look for tactical training personnel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKznIXqq-mP5JyABPGumSuFeHfsK5DnRe_wwwlnbHXjlFbV6ggcr5vseHOlYCPiMpUu59AboyLT4VyKdv6YFgoA9YaWFGZP8QbCS23oNTj2q24FhDtCCVbTyBbwLsqvAfQPrpysAj-_1nh_JuNvtXXDqLadIB_DfMkSjWeH_r0eyT7t4FkPyOuBJUPLjHXqlFRRfFtDOQ1zXLcF2LXEKttWfDjYEItVlG9Vq4gFk3a7P-1ktQ82r-Wmy2X70FNgJNVH6xDe4l5Km8">
+</div>
+<p class="text-body-md font-bold line-clamp-1">结构火灾扑救指南</p>
+<p class="text-primary font-label-md text-label-md">¥ 29.00</p>
+</div>
+<div class="min-w-[140px] space-y-2 opacity-60">
+<div class="w-full aspect-[3/4] bg-surface-container-high rounded-lg overflow-hidden shadow-sm relative flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-4xl">add</span>
+</div>
+<p class="text-body-md font-bold text-center">更多资料</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-surface-variant flex justify-around items-center h-16 w-full pb-safe shadow-sm">
+<a class="flex flex-col items-center justify-center text-tertiary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for feedback on button clicks
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.opacity = '0.7';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.opacity = '1';
+            });
+        });
+
+        // Hide bottom nav on scroll down for focused reading (Optional immersive feature)
+        let lastScrollTop = 0;
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.style.transform = 'translateY(100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            nav.style.transition = 'transform 0.3s ease';
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
+
+</body></html>

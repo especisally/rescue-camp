@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TACTICAL READINESS - 拓展学习</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#fff7f6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004788",
+                    "on-primary-fixed-variant": "#930007",
+                    "outline": "#946e69",
+                    "primary-container": "#e60012",
+                    "tertiary": "#5a5a5a",
+                    "surface-container-low": "#f3f3f3",
+                    "on-surface": "#1a1c1c",
+                    "primary-fixed": "#ffdad5",
+                    "on-tertiary-container": "#fbf8f8",
+                    "on-secondary-fixed": "#001b3b",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410001",
+                    "background": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9f9",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3131",
+                    "secondary-fixed": "#d5e3ff",
+                    "tertiary-fixed": "#e4e2e1",
+                    "surface-container-highest": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-dim": "#dadada",
+                    "surface-tint": "#c0000d",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "tertiary-container": "#737272",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "secondary-container": "#6ba7fd",
+                    "on-secondary-container": "#003b74",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface-variant": "#5f3f3b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "primary": "#b7000c",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "secondary": "#0b5eaf",
+                    "outline-variant": "#e9bcb6",
+                    "inverse-primary": "#ffb4aa",
+                    "secondary-fixed-dim": "#a7c8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "gutter": "12px",
+                    "section-gap": "24px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter, PingFang SC"],
+                    "headline-sm": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "body-md": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .video-card-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+        }
+        body {
+            font-family: "Inter, PingFang SC", sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-surface-variant flex justify-between items-center px-container-margin h-14">
+<div class="flex items-center gap-2">
+<a href="../../index.html" class="no-underline"><span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 transition-opacity">arrow_back</span></a>
+<h1 class="font-headline-sm text-headline-sm text-primary tracking-tight">拓展学习</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 transition-opacity">search</span>
+</div>
+</header>
+<main class="mt-14 px-container-margin">
+<!-- Search & Filter Section -->
+<section class="py-stack-md">
+<div class="relative mb-stack-md">
+<input class="w-full h-12 bg-surface-container border-none rounded-lg px-12 font-body-md text-on-surface focus:ring-2 focus:ring-secondary transition-all outline-none" placeholder="搜索全球救援实操案例..." type="text">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-tertiary">search</span>
+</div>
+<div class="flex gap-stack-sm overflow-x-auto hide-scrollbar whitespace-nowrap pb-2">
+<button class="px-5 py-2 bg-secondary text-on-secondary font-label-md rounded-full shadow-sm">全部</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-secondary-fixed transition-colors">内涝救援</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-secondary-fixed transition-colors">高层火灾</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-secondary-fixed transition-colors">山岳绳索</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-secondary-fixed transition-colors">工业灾害</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant font-label-md rounded-full hover:bg-secondary-fixed transition-colors">地震搜救</button>
+</div>
+</section>
+<!-- Feature Spotlight (Bento-style focus) -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md mb-stack-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+                精选视频流
+            </h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Large Feature Card -->
+<div class="relative rounded-xl overflow-hidden aspect-video group cursor-pointer border border-surface-variant shadow-sm transition-transform active:scale-[0.98]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A cinematic, high-action wide shot of a professional mountain rescue team in the Swiss Alps using advanced carbon-fiber stretchers. The lighting is crisp, natural alpine sunlight with a cool blue atmosphere. Rescue personnel wear high-visibility gear with reflective stripes. The style is professional, rigorous, and documentary-like with high contrast and sharp focus." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn9yHEWxTRARSY1fXFK1-_CDeim3wpjkjxJmGt3avJrYKG9-5BQNuGC5CSkta3WxKuokmfrc2mtyOS2xene2O3Ol4s6bkEl53k85N0gUr_JqoINfW97ydpsw12YL53tRUfAO27_UtP3FbZrn_wWG1qAZ_SfZAneeVbt2qCvEZxCPG8w0KjAA1B0KZDQ_Cy0Qv8yD-RkSye4KIvUr58wRaCqIC4jI0FKNa69lxnrbtrvQYh8Y4fi0w8LvJNUnC2hFCvP9HJdTTyZAg')"></div>
+<div class="absolute inset-0 video-card-overlay flex flex-col justify-end p-stack-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">Breaking</span>
+<span class="text-on-primary-container/80 text-[11px] font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">public</span> 瑞士 (Switzerland)
+                            </span>
+</div>
+<h3 class="text-on-primary font-headline-md text-headline-md leading-tight mb-2">阿尔卑斯山脉高海拔复杂地形救援实录</h3>
+<div class="flex justify-between items-center text-on-primary/70 font-label-md">
+<span class="">发布于 2023.10.15</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span> 12.5k
+                            </div>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<!-- Secondary Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Card 2 -->
+<div class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative rounded-lg overflow-hidden aspect-[4/3] border border-surface-variant bg-surface-container">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="An intense rescue scene in a flooded urban environment in Germany. Professional rescue boats and personnel in specialized drysuits are navigating through narrow streets. The lighting is overcast, moody, and dramatic. The color palette is dominated by rescue-red equipment and deep steel-blue waters, maintaining a highly technical and disciplined visual tone." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBa01ui-bWjcVqIbj77sV9gtln_iPfduO5i6RGjQI_IWwpuln8LoyCcYDo44Mw8VR692Roz8xBRm1LkweadgeIWqsez2QaZQuUeFUToJsjwZsFTeONcHbED9SX51UFPP8t8WyrlBrZID2f6lQFo2wZABM5rdrBawJjeoGVPFIoK783-zYiKelmgeo8ZKkiDXgFyihUmMhiN1tFcR8GBEf9n6plbpb8bsGTw3A6_51CTZ92W13h_PyOoPZ9CXAbx25lg8tfNgeOHXtU')"></div>
+<span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded">08:45</span>
+</div>
+<div>
+<p class="font-label-md text-secondary mb-1">德国 (Germany)</p>
+<h4 class="font-body-md font-bold text-on-surface line-clamp-2 leading-snug group-hover:text-primary transition-colors">THW城市内涝快速反应机制与排涝设备演示</h4>
+<p class="text-[11px] text-tertiary mt-1">2023.09.28 • 4.2k次播放</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative rounded-lg overflow-hidden aspect-[4/3] border border-surface-variant bg-surface-container">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A tactical training session for firefighters in the United States, showing structural breach techniques in a smoke-filled room. Bright orange sparks from a saw illuminate the dark, grimy industrial setting. High-contrast lighting focuses on the rugged gear and steady hands of the rescuer. The mood is tense and professional, capturing a mission-critical moment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD5vv_eOCYgXuLwyggvILUsz02ZHhODB0V21YAyvQIutmMVUme6k3XPfjJ5kdJmRiCNFWi1OGMoUMg8JzTZ3hvEIDxyLaGX55U_qF3i8xCsnKmr2SnSjrUMmGDNABgHkSVEOFozhy2rHS42p-s1cOrjMnkpAcpXWh-cl3nDVzlPegFZ60jbbku3K0RX_ttyQlq_8GmFpccOqeUGilJCNMN-hs2s5L9eNLdMJXbzGTq57az1b7qKS92-qWThejKEZXkIqoYyWR1N7p4')"></div>
+<span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded">12:20</span>
+</div>
+<div>
+<p class="font-label-md text-secondary mb-1">美国 (USA)</p>
+<h4 class="font-body-md font-bold text-on-surface line-clamp-2 leading-snug group-hover:text-primary transition-colors">NFPA标准下的高层建筑强制破拆技术解析</h4>
+<p class="text-[11px] text-tertiary mt-1">2023.10.02 • 8.1k次播放</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Documents / 資料庫 -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-center mb-stack-sm">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                    前沿资料库
+                </h2>
+<button class="text-secondary font-label-md flex items-center">查看更多 <span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
+</div>
+<div class="space-y-3">
+<!-- Doc Item -->
+<div class="flex items-center p-3 bg-surface-container-lowest border border-surface-variant rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary/10 rounded flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">picture_as_pdf</span>
+</div>
+<div class="ml-4 flex-grow">
+<h4 class="font-body-md font-bold text-on-surface">2024年全球地震救援新技术白皮书</h4>
+<div class="flex gap-3 text-[11px] text-tertiary mt-1">
+<span class="">PDF (14.2 MB)</span>
+<span class="">来源：联合国INSARAG</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary">download</span>
+</div>
+<!-- Doc Item -->
+<div class="flex items-center p-3 bg-surface-container-lowest border border-surface-variant rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">article</span>
+</div>
+<div class="ml-4 flex-grow">
+<h4 class="font-body-md font-bold text-on-surface">日本东京消防厅：密集型木质住宅区防火规范</h4>
+<div class="flex gap-3 text-[11px] text-tertiary mt-1">
+<span class="">DOCX (2.5 MB)</span>
+<span class="">来源：东京消防厅</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary">download</span>
+</div>
+</div>
+</section>
+<!-- Global Trends Bento -->
+<section class="mb-8">
+<h2 class="font-headline-md text-headline-md mb-stack-sm">全球趋势概览</h2>
+<div class="grid grid-cols-2 grid-rows-2 gap-3 h-64">
+<div class="col-span-1 row-span-2 bg-secondary-container rounded-xl p-4 flex flex-col justify-between text-on-secondary-container relative overflow-hidden">
+<div class="z-10">
+<h5 class="font-headline-sm text-headline-sm">无人机<br>空中侦察</h5>
+<p class="text-[11px] opacity-80 mt-2">实时三维建模在山岳救援的应用</p>
+</div>
+<div class="z-10 bg-white/20 backdrop-blur px-2 py-1 rounded w-fit text-[10px] font-bold">54个国家已部署</div>
+<!-- Subtle pattern -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">airplanemode_active</span>
+</div>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-4 flex flex-col justify-center">
+<span class="text-primary font-bold text-2xl">85%</span>
+<p class="text-[11px] text-on-surface-variant">数字化预案覆盖率增长</p>
+</div>
+<div class="bg-tertiary-fixed rounded-xl p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">language</span>
+<span class="font-label-md font-bold">跨国救援<br>协同协议</span>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Tab switching logic (simple visual mock)
+        const tabs = document.querySelectorAll('nav a');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                tabs.forEach(t => {
+                    t.classList.remove('text-secondary', 'font-bold');
+                    t.classList.add('text-tertiary');
+                    t.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+                });
+                tab.classList.add('text-secondary', 'font-bold');
+                tab.classList.remove('text-tertiary');
+                tab.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Filter chips switching logic
+        const chips = document.querySelectorAll('button[class*="rounded-full"]');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-secondary', 'text-on-secondary');
+                    c.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                });
+                chip.classList.add('bg-secondary', 'text-on-secondary');
+                chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            });
+        });
+    </script>
+
+
+
+
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest border-t border-surface-variant">
+<a href="../../index.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">首页</span>
+</a>
+<a href="../../论坛/论坛主页.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md mt-1">论坛</span>
+</a>
+<a href="../../商城/商城主页.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md mt-1">商城</span>
+</a>
+<a href="../../我的/个人中心.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">我的</span>
+</a>
+</nav>
+</body></html>

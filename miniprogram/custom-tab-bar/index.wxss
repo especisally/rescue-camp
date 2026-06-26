@@ -1,0 +1,61 @@
+/* 自定义 TabBar 样式 */
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: #ffffff;
+  border-top: 1rpx solid #f0f0f0;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 999;
+}
+
+.tab-bar__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 0;
+  position: relative;
+}
+
+.tab-bar__icon-wrap {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 选中态浅蓝色光晕 */
+.tab-bar__icon-glow {
+  position: absolute;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: rgba(135, 206, 235, 0.3);
+  z-index: 0;
+}
+
+.tab-bar__icon {
+  width: 48rpx;
+  height: 48rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.tab-bar__text {
+  font-size: 20rpx;
+  color: #5a5a5a;
+  margin-top: 4rpx;
+  line-height: 1.2;
+}
+
+.tab-bar__text--active {
+  color: #5a5a5a;
+  font-weight: 500;
+}

@@ -1,0 +1,164 @@
+/* pages/tools/standard.wxss */
+.page {
+  min-height: 100vh;
+  background: #f9f9f9;
+  padding-bottom: 40rpx;
+}
+
+/* 导航栏 */
+.custom-nav {
+  background: #1a56db;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 24rpx;
+}
+
+.nav-left {
+  width: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.nav-title {
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+.nav-right {
+  width: 60rpx;
+}
+
+/* 搜索栏 */
+.search-wrap {
+  padding: 20rpx 24rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 32rpx;
+  padding: 16rpx 24rpx;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  color: #999;
+  margin-right: 12rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 26rpx;
+  color: #1a1c1c;
+}
+
+/* 分类筛选 */
+.filter-bar {
+  white-space: nowrap;
+  padding: 20rpx 24rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: 16rpx;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  color: #5f3f3b;
+  background: #f1f1f1;
+}
+
+.filter-item.active {
+  color: #fff;
+  background: #1a56db;
+}
+
+/* 标准列表 */
+.standard-list {
+  padding: 20rpx 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.standard-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1rpx solid #eee;
+  border-radius: 12rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 16rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+  margin-right: 16rpx;
+  flex: 1;
+}
+
+.card-tag {
+  font-size: 20rpx;
+  color: #fff;
+  padding: 6rpx 14rpx;
+  border-radius: 6rpx;
+  white-space: nowrap;
+}
+
+.card-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.card-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+  margin-left: 16rpx;
+}
+
+/* 空状态 */
+.empty-tip {
+  text-align: center;
+  padding: 80rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}

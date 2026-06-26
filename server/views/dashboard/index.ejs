@@ -1,0 +1,103 @@
+<%- include('../layouts/main') %>
+
+<!-- 待处理提醒 -->
+<% if (stats.feedbackPendingCount > 0 || stats.postPendingCount > 0) { %>
+<div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
+  &#x26A0;&#xFE0F; 有待处理事项：
+  <% if (stats.postPendingCount > 0) { %><a href="/admin/posts?status=pending" class="alert-link"><%= stats.postPendingCount %> 条待审核帖子</a><% } %>
+  <% if (stats.feedbackPendingCount > 0) { %><a href="/admin/feedbacks" class="alert-link ms-3"><%= stats.feedbackPendingCount %> 条未处理反馈</a><% } %>
+</div>
+<% } %>
+
+<!-- 核心统计 -->
+<div class="row g-4">
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-4">
+        <h1 class="text-primary mb-0"><%= stats.userCount %></h1>
+        <p class="text-muted mt-2 mb-0">&#x1F465; 总用户数</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-4">
+        <h1 class="text-success mb-0"><%= stats.videoCount %></h1>
+        <p class="text-muted mt-2 mb-0">&#x1F4F9; 视频总数</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-4">
+        <h1 class="text-info mb-0"><%= stats.postCount %></h1>
+        <p class="text-muted mt-2 mb-0">&#x1F4AC; 帖子总数</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-4">
+        <h1 class="text-warning mb-0"><%= stats.todaySignCount %></h1>
+        <p class="text-muted mt-2 mb-0">&#x1F4C5; 今日签到</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 内容统计 -->
+<div class="row g-4 mt-2">
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-3">
+        <h3 class="text-success mb-0"><%= stats.trainingCount %></h3>
+        <p class="text-muted mt-1 mb-0 small">&#x1F3CB; 训练操法</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-3">
+        <h3 class="text-danger mb-0"><%= stats.chemicalCount %></h3>
+        <p class="text-muted mt-1 mb-0 small">&#x2697; 危化品数据</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-3">
+        <h3 class="text-secondary mb-0"><%= stats.equipmentCount %></h3>
+        <p class="text-muted mt-1 mb-0 small">&#x1F527; 器材装备</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body text-center py-3">
+        <h3 class="text-dark mb-0"><%= stats.quizBankCount %></h3>
+        <p class="text-muted mt-1 mb-0 small">&#x1F4DD; 题库数量</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 快速操作 -->
+<div class="card border-0 shadow-sm mt-4">
+  <div class="card-header bg-white fw-bold">&#x26A1; 快速操作</div>
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <a href="/admin/videos/create" class="btn btn-outline-primary w-100">&#x2795; 新增视频</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/admin/trainings/create" class="btn btn-outline-success w-100">&#x2795; 新增操法</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/admin/quiz/banks" class="btn btn-outline-info w-100">&#x1F4DD; 管理题库</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/admin/posts" class="btn btn-outline-warning w-100">&#x1F4AC; 审核帖子</a>
+      </div>
+    </div>
+  </div>
+</div>

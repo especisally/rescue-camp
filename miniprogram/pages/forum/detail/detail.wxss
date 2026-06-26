@@ -1,0 +1,230 @@
+/* 论坛帖子详情页样式 */
+
+/* ========== 页面容器 ========== */
+.detail-page {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+/* ========== 自定义导航栏 ========== */
+.detail-nav {
+  background: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.detail-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 24rpx;
+}
+
+.detail-nav__back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  background: #f1f1f1;
+  flex-shrink: 0;
+}
+
+.detail-nav__back:active {
+  background: #e2e2e2;
+}
+
+.detail-nav__back-icon {
+  font-size: 36rpx;
+  color: var(--color-on-surface);
+  font-weight: bold;
+}
+
+.detail-nav__title {
+  color: var(--color-on-surface);
+  flex: 1;
+  text-align: center;
+}
+
+.detail-nav__placeholder {
+  width: 64rpx;
+  flex-shrink: 0;
+}
+
+/* ========== 内容区 ========== */
+.detail-scroll {
+  height: calc(100vh - 88rpx);
+}
+
+.detail-section {
+  padding: 24rpx;
+  background: #ffffff;
+  margin-bottom: 2rpx;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== 积分标签 ========== */
+.detail-points {
+  padding: 6rpx 16rpx;
+  background: rgba(26, 86, 219, 0.08);
+  border-radius: 20rpx;
+  flex-shrink: 0;
+}
+
+/* ========== 标题 ========== */
+.detail-title {
+  color: var(--color-on-surface);
+  line-height: 1.4;
+}
+
+/* ========== 正文 ========== */
+.detail-content {
+  color: var(--color-on-surface);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ========== 图片网格 ========== */
+.detail-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.detail-images__item {
+  width: calc((100% - 16rpx) / 3);
+  aspect-ratio: 1;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== 视频占位 ========== */
+.detail-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-video__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.detail-video__play {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4rpx);
+}
+
+.detail-video__duration {
+  position: absolute;
+  bottom: 12rpx;
+  right: 12rpx;
+  padding: 4rpx 12rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+}
+
+/* ========== 互动栏 ========== */
+.detail-actions {
+  padding: 8rpx 0;
+}
+
+.detail-actions__item {
+  padding: 12rpx 24rpx;
+  border-radius: 12rpx;
+  transition: background 0.2s;
+}
+
+.detail-actions__item:active {
+  background: #f1f1f1;
+}
+
+.detail-actions__item.active {
+  color: var(--color-error);
+}
+
+/* ========== 评论区 ========== */
+.detail-comments__item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.detail-comments__item:last-child {
+  border-bottom: none;
+}
+
+/* ========== 相关帖子 ========== */
+.detail-related__item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.detail-related__item:last-child {
+  border-bottom: none;
+}
+
+.detail-related__item:active {
+  background: #f9f9f9;
+  margin: 0 -24rpx;
+  padding: 20rpx 24rpx;
+  border-radius: 8rpx;
+}
+
+/* ========== 空状态 ========== */
+.detail-empty {
+  height: 60vh;
+}
+
+/* ========== 底部评论输入栏 ========== */
+.detail-input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1rpx solid #f0f0f0;
+  padding: 12rpx 24rpx;
+  padding-bottom: calc(12rpx + env(safe-area-inset-bottom));
+  z-index: 100;
+}
+
+.detail-input-bar__inner {
+  width: 100%;
+}
+
+.detail-input-bar__input {
+  height: 72rpx;
+  background: #f1f1f1;
+  border-radius: 36rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  border: none;
+  outline: none;
+}
+
+.detail-input-bar__send {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.detail-input-bar__send:active {
+  background: var(--color-primary-dark);
+}

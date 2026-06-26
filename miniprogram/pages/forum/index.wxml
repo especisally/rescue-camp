@@ -1,0 +1,141 @@
+<!-- 论坛 - 战训论坛 -->
+<view class="page-body">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 论坛头部：logo + 标题 + 签到 + 通知 -->
+  <view class="forum-header container flex items-center gap-8 mt-8">
+    <view class="forum-header__logo">
+      <text style="font-size:52rpx;">🌊</text>
+    </view>
+    <view class="text-xl font-bold">战训论坛</view>
+    <view class="forum-header__sign" style="background:#1a56db; color:#fff; font-size:24rpx; padding:8rpx 24rpx; border-radius:20rpx;" bindtap="onSignIn">
+      {{signedIn ? '已签到' : '签到'}}
+    </view>
+    <view class="forum-nav__icon flex items-center justify-center" bindtap="onNotificationTap">
+      <text style="font-size:36rpx;">🔔</text>
+    </view>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="forum-nav">
+    <view class="search-bar flex-1" bindtap="onSearchTap">
+      <text class="icon-sm">🔍</text>
+      <input placeholder="搜索帖子、话题..." placeholder-class="text-on-surface-variant text-sm" />
+    </view>
+  </view>
+
+  <!-- 积分横幅 -->
+  <view class="container mt-8">
+    <view class="forum-banner" style="background: linear-gradient(135deg, #1a56db, #3b82f6);">
+      <view class="forum-banner__left">
+        <text style="font-size:44rpx;">⭐</text>
+        <text class="text-white text-md font-semibold ml-8">分享视频赚积分</text>
+      </view>
+      <text class="text-white text-sm" style="opacity:0.85;">&gt;</text>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="forum-tabs container flex items-center gap-12 mt-12">
+    <view class="forum-tabs__item {{currentTab === 'latest' ? 'forum-tabs__active' : ''}}" bindtap="onSwitchTab" data-tab="latest">
+      <text class="text-md {{currentTab === 'latest' ? 'font-bold text-secondary' : 'text-on-surface-variant'}}">最新</text>
+      <view wx:if="{{currentTab === 'latest'}}" class="forum-tabs__indicator"></view>
+    </view>
+    <view class="forum-tabs__item {{currentTab === 'hot' ? 'forum-tabs__active' : ''}}" bindtap="onSwitchTab" data-tab="hot">
+      <text class="text-md {{currentTab === 'hot' ? 'font-bold text-secondary' : 'text-on-surface-variant'}}">热门</text>
+      <view wx:if="{{currentTab === 'hot'}}" class="forum-tabs__indicator"></view>
+    </view>
+    <view class="forum-tabs__item {{currentTab === 'essence' ? 'forum-tabs__active' : ''}}" bindtap="onSwitchTab" data-tab="essence">
+      <text class="text-md {{currentTab === 'essence' ? 'font-bold text-secondary' : 'text-on-surface-variant'}}">精华</text>
+      <view wx:if="{{currentTab === 'essence'}}" class="forum-tabs__indicator"></view>
+    </view>
+    <view class="forum-tabs__item {{currentTab === 'resource' ? 'forum-tabs__active' : ''}}" bindtap="onSwitchTab" data-tab="resource">
+      <text class="text-md {{currentTab === 'resource' ? 'font-bold text-secondary' : 'text-on-surface-variant'}}">资源</text>
+      <view wx:if="{{currentTab === 'resource'}}" class="forum-tabs__indicator"></view>
+    </view>
+  </view>
+
+  <!-- 帖子列表 -->
+  <view class="container mt-8">
+    <block wx:for="{{posts}}" wx:key="id">
+      <view class="forum-post card mt-8 p-12" bindtap="onPostTap" data-id="{{item.id}}">
+        <!-- 作者信息 -->
+        <view class="flex items-center justify-between">
+          <view class="flex items-center gap-8">
+            <view class="avatar avatar-sm" style="background-color: {{item.avatarBg}};">
+              <text style="font-size:28rpx;">{{item.avatar}}</text>
+            </view>
+            <view>
+              <view class="flex items-center gap-4">
+                <text class="text-sm font-semibold">{{item.username}}</text>
+                <view class="tag tag-secondary" style="font-size:18rpx; padding:2rpx 10rpx;">Lv.{{item.level}}</view>
+              </view>
+              <text class="text-xs text-on-surface-variant">{{item.time}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 标题和摘要 -->
+        <view class="mt-12">
+          <view class="text-md font-semibold line-clamp-2">{{item.title}}</view>
+          <view wx:if="{{item.excerpt}}" class="text-sm text-on-surface-variant mt-4 line-clamp-2">{{item.excerpt}}</view>
+        </view>
+
+        <!-- 视频缩略图 -->
+        <view wx:if="{{item.videoThumb}}" class="forum-post__video mt-8" style="background-color: {{item.thumbBg}};">
+          <view class="forum-post__play-btn">
+            <text style="font-size:56rpx; color:#fff;">▶</text>
+          </view>
+          <view class="forum-post__duration" wx:if="{{item.duration}}">
+            <text class="text-xs text-white">{{item.duration}}</text>
+          </view>
+        </view>
+
+        <!-- 多图 -->
+        <view wx:if="{{item.images}}" class="forum-post__images mt-8">
+          <block wx:for="{{item.images}}" wx:for-item="img" wx:key="index">
+            <view class="forum-post__img" style="background-color: {{img.bg}};">
+              <text style="font-size:36rpx;">{{img.icon}}</text>
+              <view wx:if="{{img.overlay}}" class="overlay flex items-center justify-center">
+                <text class="text-white text-sm font-semibold">{{img.overlay}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+
+        <!-- 互动栏 -->
+        <view class="flex items-center justify-between mt-12">
+          <view class="flex items-center gap-16">
+            <view class="flex items-center gap-4 text-xs text-on-surface-variant">
+              <text>❤️</text>
+              <text>{{item.like}}</text>
+            </view>
+            <view class="flex items-center gap-4 text-xs text-on-surface-variant">
+              <text>💬</text>
+              <text>{{item.comment}}</text>
+            </view>
+            <view class="flex items-center gap-4 text-xs text-on-surface-variant">
+              <text>📤</text>
+              <text>{{item.share}}</text>
+            </view>
+          </view>
+          <view class="forum-post__points tag tag-primary text-xs">
+            <text wx:if="{{item.points > 0}}" style="color:#1a56db;">{{item.points}}积分</text>
+            <text wx:else style="color:#999;">0积分</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- FAB 发布按钮 -->
+  <navigator url="/pages/forum/post" class="forum-fab">
+    <text style="font-size:44rpx; color:#fff;">✎</text>
+  </navigator>
+
+  <!-- 底部安全区 -->
+  <view class="safe-bottom" style="height:140rpx;"></view>
+
+</view>

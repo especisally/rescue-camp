@@ -1,0 +1,78 @@
+<!-- 视频学习 - 播放页 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">视频详情</text>
+      <view class="nav-placeholder"></view>
+    </view>
+  </view>
+
+  <!-- 视频播放器占位 -->
+  <view class="video-container" style="margin-top: calc(88rpx + {{statusBarHeight}}px);">
+    <view class="video-placeholder">
+      <text class="play-btn">▶</text>
+      <text class="play-hint">点击播放</text>
+    </view>
+  </view>
+
+  <!-- 视频信息 -->
+  <view class="video-info">
+    <text class="video-title">高层建筑灭火救援技战术解析</text>
+    <view class="video-meta">
+      <text class="meta-text">1.2w播放</text>
+      <text class="meta-divider">·</text>
+      <text class="meta-text">15:40</text>
+      <text class="meta-divider">·</text>
+      <text class="meta-text">2024-10-15</text>
+    </view>
+    <view class="video-tags">
+      <text class="tag tag-red">灭火救援</text>
+      <text class="tag tag-blue">高层建筑</text>
+    </view>
+  </view>
+
+  <!-- 作者信息 -->
+  <view class="author-card">
+    <view class="author-avatar">
+      <text class="author-avatar-text">张</text>
+    </view>
+    <view class="author-info">
+      <text class="author-name">火线教官_张</text>
+      <text class="author-level">Lv.14 精英</text>
+    </view>
+    <view class="follow-btn">
+      <text class="follow-text">+ 关注</text>
+    </view>
+  </view>
+
+  <!-- 简介 -->
+  <view class="desc-section">
+    <text class="desc-text {{descExpanded ? 'desc-expanded' : ''}}">
+      本课程详细讲解高层建筑火灾扑救中的技战术要点，包括火情侦察、力量部署、供水保障、人员疏散等关键环节。结合近年来典型高层建筑火灾案例，深入剖析作战经验与教训。
+    </text>
+    <text class="desc-toggle" bindtap="toggleDesc">
+      {{descExpanded ? '收起' : '展开'}}
+    </text>
+  </view>
+
+  <!-- 相关推荐 -->
+  <view class="section-header">
+    <text class="section-title">相关推荐</text>
+  </view>
+
+  <view class="related-list">
+    <view class="related-card" wx:for="{{relatedVideos}}" wx:key="id" bindtap="onRelatedTap" data-id="{{item.id}}">
+      <view class="related-thumb" style="background-color: {{item.thumbColor}};">
+        <text class="related-duration">{{item.duration}}</text>
+      </view>
+      <view class="related-info">
+        <text class="related-title">{{item.title}}</text>
+        <text class="related-meta">{{item.views}}播放 · {{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

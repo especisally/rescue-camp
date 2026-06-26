@@ -1,0 +1,238 @@
+/* pages/tools/chemical-detail.wxss */
+.page {
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+/* 导航栏 */
+.custom-nav {
+  background: #1a56db;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  padding: 0 24rpx;
+}
+
+.nav-left {
+  width: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.nav-title {
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-right {
+  width: 60rpx;
+}
+
+/* 内容 */
+.content {
+  padding: 24rpx;
+  padding-bottom: 60rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* UN信息卡片 */
+.info-card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 0;
+}
+
+.info-row:first-child {
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #5f3f3b;
+}
+
+.info-value {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+}
+
+.hazard-tag {
+  font-size: 24rpx;
+  color: #fff;
+  padding: 8rpx 20rpx;
+  border-radius: 6rpx;
+}
+
+/* 区块 */
+.section {
+  margin-bottom: 24rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+  margin-bottom: 16rpx;
+  padding-left: 8rpx;
+  border-left: 6rpx solid #1a56db;
+}
+
+/* 理化性质网格 */
+.props-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.prop-item {
+  width: calc(50% - 8rpx);
+  background: #f1f1f1;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.prop-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.prop-value {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1c1c;
+}
+
+/* 危险性 */
+.danger-list {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.danger-item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f9f9f9;
+}
+
+.danger-item:last-child {
+  border-bottom: none;
+}
+
+.danger-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+  color: #1a56db;
+}
+
+.danger-text {
+  font-size: 26rpx;
+  color: #1a1c1c;
+  flex: 1;
+}
+
+/* 处置步骤 */
+.step-list {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f9f9f9;
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #1a56db;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 26rpx;
+  color: #1a1c1c;
+  line-height: 1.6;
+  flex: 1;
+  padding-top: 6rpx;
+}
+
+/* 防护措施 */
+.protection-list {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.protection-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f9f9f9;
+}
+
+.protection-item:last-child {
+  border-bottom: none;
+}
+
+.protection-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1a1c1c;
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.protection-value {
+  font-size: 26rpx;
+  color: #5f3f3b;
+  flex: 1;
+}

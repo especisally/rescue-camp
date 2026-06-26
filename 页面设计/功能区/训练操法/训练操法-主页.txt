@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1a1c1c",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#5f3f3b",
+                    "outline-variant": "#e9bcb6",
+                    "on-secondary-fixed": "#001b3b",
+                    "secondary": "#0b5eaf",
+                    "tertiary-fixed": "#e4e2e1",
+                    "surface-variant": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#946e69",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-primary-fixed-variant": "#930007",
+                    "inverse-primary": "#ffb4aa",
+                    "tertiary": "#5a5a5a",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e8e8e8",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary-container": "#fff7f6",
+                    "on-tertiary-container": "#fbf8f8",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#b7000c",
+                    "tertiary-container": "#737272",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary-container": "#003b74",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "secondary-container": "#6ba7fd",
+                    "surface-container": "#eeeeee",
+                    "surface-tint": "#c0000d",
+                    "on-primary-fixed": "#410001",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#e60012",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#004788",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-fixed": "#d5e3ff",
+                    "background": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "primary-fixed": "#ffdad5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "section-gap": "24px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"],
+                    "headline-sm": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #f9f9f9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .tactical-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tactical-card:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-surface-variant dark:border-outline-variant docked full-width top-0 sticky z-50 flex items-center justify-between px-container-margin h-12 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim active:opacity-80 transition-all duration-200 cursor-pointer">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">战训营</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant active:opacity-80 transition-all duration-200">filter_list</span>
+</div>
+</header>
+<main class="pb-24">
+<!-- Search Section -->
+<section class="px-container-margin pt-stack-md">
+<div class="relative flex items-center">
+<input class="w-full h-12 pl-12 pr-4 bg-[#F1F1F1] border-none rounded-lg font-body-md focus:ring-2 focus:ring-secondary/50 transition-all" placeholder="搜索训练项目或关键词..." type="text">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">search</span>
+</div>
+</section>
+<!-- Category Quick Filter -->
+<section class="mt-stack-md px-container-margin">
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<button class="shrink-0 px-4 py-1.5 bg-primary text-on-primary rounded-full font-label-md">全部操法</button>
+<button class="shrink-0 px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-full font-label-md">灭火操法</button>
+<button class="shrink-0 px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-full font-label-md">救人操法</button>
+<button class="shrink-0 px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-full font-label-md">体能竞技</button>
+<button class="shrink-0 px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-full font-label-md">装备应用</button>
+</div>
+</section>
+<!-- Content: Bento Grid Tactical Cards -->
+<section class="mt-section-gap px-container-margin">
+<div class="bento-grid">
+<!-- Large Featured Card -->
+<div class="col-span-2 tactical-card relative overflow-hidden rounded-xl h-48 bg-surface-container shadow-sm border border-[#EEEEEE]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A cinematic action shot of professional firefighters in high-visibility gear performing a complex indoor rescue drill. The environment is atmospheric with soft smoke and intense emergency red lighting highlights. The photography is crisp, professional, and follows a tactical aesthetic with a slightly high-contrast finish, conveying a sense of disciplined urgency." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCekXlz2MDZKGcm4cK6XJfr1Xa9kMzQPWx9fjRnAs1eKiTQCmazc9euvV8G23pTrUsE4esNeR0TaJqFdiJbD4wOzt175TnuJj21c3hq5POYQeTPlauG87chtZccPwiolWD8I19eejELxnUkcwSPLwF4mO6LC1JVBkqq13cf3FVgidov8jMmrynI8jIBtQtAyrRBAzY9yvNKyeYjIZjJutkTimGKfAZfdTBOyugiOkW365jZMZ2OaUt1ptrIVvU9IyuC79f4nSt_tqE')"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<span class="inline-block px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-bold rounded mb-2">HOT 推荐</span>
+<h2 class="text-white font-headline-md text-headline-md mb-1">建筑室内综合灭火操法</h2>
+<p class="text-white/80 font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> 灭火操法
+                        </p>
+</div>
+</div>
+<!-- Regular Card 1 -->
+<div class="tactical-card flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-[#EEEEEE]">
+<div class="h-32 bg-cover bg-center" data-alt="A focused close-up of a rescue professional securing a rappelling harness in a high-altitude training environment. The lighting is bright, natural daylight, emphasizing the metallic textures of the equipment and the technical precision of the task. The color palette is dominated by rescue blue and steel grays, maintaining a professional and rigorous tactical atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4BvyEj95Lwx6mHE5c65jPTzpd2ZnM-9gsOh1wxQlv_jeSLz6JZlYafZdcGkUAZKa2F7aMVFGxFnsBGKkeCNPWYs6gg4I47iryZAUrNQKyXPxA2QX-d2c-L_zO4LH3ccWFmWBEGBrSKmqzdOix-JU7CePzJtQuM12lVNph_65pAXChb8us2iRBYtZ2yz45VfOf7T6rBcmEDB0JV9m9Z6_DeCEZbFoc9SiL_AQZKcMG-BLAogQLMTO5hwg-4L2rSSMRnBTeZOT_rKs')"></div>
+<div class="p-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">深井救人操法</h3>
+<div class="flex items-center justify-between">
+<span class="text-secondary font-label-md text-label-md bg-secondary/10 px-2 py-0.5 rounded">救人操法</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Regular Card 2 -->
+<div class="tactical-card flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-[#EEEEEE]">
+<div class="h-32 bg-cover bg-center" data-alt="Dynamic tactical training scene showing firefighters efficiently handling a high-pressure water hose in a controlled industrial setting. High-speed photography captures water droplets and the steam from the fire suppression drill. The lighting is focused and dramatic, highlighting the power of the equipment and the structural order of the team's maneuvers." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJUgu8m6l3fzFxZc2YmZhWqpCRx1kDt-hMBOrpGJLEOz99iQBtmzKDPe3ZE7MNJ2TQLvP8Zag3zR1QwMWXUTf8JN-t9lHpqRXTxbFSjwJbq2tfodlXHuE8I45AvXgHNCprFbZ3Oujxb8WUn1pCTRggbwRWb0-zU6_45bX47HowpILHuadJ8lkJIeNHWzo2D1LhTdIR5shwN3lTkaCrQ8SzliuQIhUspYDfYqXnz0CFDN5aGFfU-wEzhtyyZ8w4Akq7Eb8pUKHutNo')"></div>
+<div class="p-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">两车三枪操法</h3>
+<div class="flex items-center justify-between">
+<span class="text-secondary font-label-md text-label-md bg-secondary/10 px-2 py-0.5 rounded">灭火操法</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Regular Card 3 -->
+<div class="tactical-card flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-[#EEEEEE]">
+<div class="h-32 bg-cover bg-center" data-alt="Detailed view of specialized emergency equipment laid out on a clean gray tactical surface. The scene includes hydraulic cutters and spreaders, illuminated by clean studio lighting that highlights their professional-grade engineering. The mood is one of mission-critical readiness and technical discipline, with a focus on institutional reliability." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACLDivdi96QvyVLTQPtioM1APOw3_bnPamDUMCvp2qpXHXAe1u0Brka8u13UhPw6rtdfhhtk0IBsn8Wdcwrr2sKBTgHemUjJtt_F85F186UQMGQoTQLhyrT9W2MCmThFjXfxZ4RHaj2fR00A8g5QMjTw_f1KYNzWHHCVATbRdP5GwHvDGORbbcVXn2OZT17cB3ER_8iUT9uEaxG-kgX88wuCsBeAPbev11UIbuVpQGHCQjuWEik_c3-nrR_qnt7_pGO9eEFj9Wlqk')"></div>
+<div class="p-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">破拆工具组合应用</h3>
+<div class="flex items-center justify-between">
+<span class="text-secondary font-label-md text-label-md bg-secondary/10 px-2 py-0.5 rounded">装备应用</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Regular Card 4 -->
+<div class="tactical-card flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-[#EEEEEE]">
+<div class="h-32 bg-cover bg-center" data-alt="Rescue team members in dark blue uniforms performing a coordinated stretcher carry through a challenging obstacle course. The lighting is overcast and moody, creating a serious and rigorous training atmosphere. High-contrast details emphasize the physical exertion and discipline required for tactical rescue missions." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSjLhZ5CBlxipOvMPoArRNu_6V4UlDtzSOBvs2W0xXv2KakCQa5zMC6zJaQpMtyPcg6zalcSVi9mqs2okG5jLFzkaZEuqF8kkPQu4kqMoq6XZSqDdU9M2DpoVN9HtfhGYdvHIJK-6mVOoLSBGEl8CvNknuRbRgfYW6fFvLWpdj56J7mVIL44nl9bS--aOWiZUntFLO-1aqSZa2b466Pp_Z2nrweOiobzDVwD38EI-bmC6hJ5f4RG2SQuTyRJ40x7q6s1r9RTOaYrI')"></div>
+<div class="p-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 line-clamp-1">山岳救助技术</h3>
+<div class="flex items-center justify-between">
+<span class="text-secondary font-label-md text-label-md bg-secondary/10 px-2 py-0.5 rounded">救人操法</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">more_vert</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="mt-section-gap px-container-margin">
+<div class="bg-surface-container-high rounded-xl p-4 flex justify-between items-center border border-[#EEEEEE]">
+<div>
+<h4 class="font-headline-sm text-headline-sm">操法学习进度</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">本周已完成 4/12 项训练</p>
+</div>
+<div class="relative w-12 h-12">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-variant" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125" stroke-dashoffset="83" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">33%</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface-dim border-t border-surface-variant dark:border-outline-variant fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-gutter pb-safe">
+<a class="flex flex-col items-center justify-center dark:text-secondary-fixed-dim active:scale-95 transition-transform duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for filtering
+        const filterButtons = document.querySelectorAll('button.shrink-0');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+                btn.classList.add('bg-primary', 'text-on-primary');
+            });
+        });
+
+        // Search input animation
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+
+
+
+
+</body></html>

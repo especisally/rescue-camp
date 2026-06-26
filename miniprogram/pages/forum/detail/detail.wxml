@@ -1,0 +1,174 @@
+<!-- 论坛帖子详情页 -->
+<view class="page-body detail-page">
+
+  <!-- 状态栏占位 -->
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义导航栏 -->
+  <view class="detail-nav">
+    <view class="detail-nav__inner">
+      <view class="detail-nav__back" bindtap="goBack">
+        <text class="detail-nav__back-icon">←</text>
+      </view>
+      <text class="detail-nav__title text-lg font-bold truncate">帖子详情</text>
+      <view class="detail-nav__placeholder"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="detail-scroll" wx:if="{{post}}">
+
+    <!-- 作者信息 -->
+    <view class="detail-section">
+      <view class="flex items-center">
+        <view class="avatar avatar-lg" style="background: {{post.avatarBg}};">
+          <text style="font-size:44rpx;">{{post.avatar}}</text>
+        </view>
+        <view class="ml-12 flex-1">
+          <view class="flex items-center gap-8">
+            <text class="text-md font-bold">{{post.username}}</text>
+            <view class="tag tag-secondary text-xs">Lv.{{post.level}}</view>
+          </view>
+          <text class="text-xs text-on-surface-variant mt-4">{{post.time}}</text>
+        </view>
+        <view class="detail-points flex items-center gap-4" wx:if="{{post.points > 0}}">
+          <text style="font-size:24rpx;">⭐</text>
+          <text class="text-sm font-semibold" style="color: #1a56db;">+{{post.points}}积分</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标题 -->
+    <view class="detail-section">
+      <text class="detail-title text-xl font-bold">{{post.title}}</text>
+    </view>
+
+    <!-- 正文 -->
+    <view class="detail-section">
+      <text class="detail-content text-md">{{post.content}}</text>
+    </view>
+
+    <!-- 图片网格 -->
+    <view class="detail-section" wx:if="{{post.images && post.images.length > 0}}">
+      <view class="detail-images">
+        <view class="detail-images__item" wx:for="{{post.images}}" wx:key="*this" wx:for-item="img" style="background: {{img.bg}};">
+          <text style="font-size:72rpx;">{{img.icon}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 视频占位 -->
+    <view class="detail-section" wx:if="{{post.videoThumb}}">
+      <view class="detail-video" style="background: {{post.thumbBg}};">
+        <view class="detail-video__overlay flex items-center justify-center">
+          <view class="detail-video__play flex items-center justify-center">
+            <text style="font-size:48rpx; color: #fff;">▶</text>
+          </view>
+        </view>
+        <view class="detail-video__duration">{{post.duration}}</view>
+      </view>
+    </view>
+
+    <!-- 互动栏 -->
+    <view class="detail-section">
+      <view class="detail-actions flex items-center justify-around">
+        <view class="detail-actions__item flex items-center gap-4 {{isLiked ? 'active' : ''}}" bindtap="onLikeTap">
+          <text style="font-size:36rpx;">{{isLiked ? '❤️' : '🤍'}}</text>
+          <text class="text-sm {{isLiked ? 'text-error' : 'text-on-surface-variant'}}">{{post.like}}</text>
+        </view>
+        <view class="detail-actions__item flex items-center gap-4">
+          <text style="font-size:36rpx;">💬</text>
+          <text class="text-sm text-on-surface-variant">{{post.comment}}</text>
+        </view>
+        <view class="detail-actions__item flex items-center gap-4" bindtap="onShareTap">
+          <text style="font-size:36rpx;">📤</text>
+          <text class="text-sm text-on-surface-variant">{{post.share}}</text>
+        </view>
+        <view class="detail-actions__item flex items-center gap-4" bindtap="onFavTap">
+          <text style="font-size:36rpx;">{{isFaved ? '⭐' : '☆'}}</text>
+          <text class="text-sm {{isFaved ? 'text-primary' : 'text-on-surface-variant'}}">{{isFaved ? '已收藏' : '收藏'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 评论区 -->
+    <view class="detail-section">
+      <view class="flex items-center justify-between mb-12">
+        <text class="text-lg font-bold">全部评论 ({{comments.length}})</text>
+      </view>
+
+      <view class="detail-comments">
+        <view class="detail-comments__item" wx:for="{{comments}}" wx:key="id">
+          <view class="flex items-start gap-8">
+            <view class="avatar avatar-sm flex-shrink-0" style="background: {{item.avatarBg}};">
+              <text style="font-size:28rpx;">{{item.avatar}}</text>
+            </view>
+            <view class="flex-1" style="overflow:hidden;">
+              <view class="flex items-center gap-8">
+                <text class="text-sm font-semibold">{{item.author}}</text>
+                <text class="text-xs text-on-surface-variant">{{item.time}}</text>
+              </view>
+              <text class="text-sm mt-4">{{item.content}}</text>
+              <view class="flex items-center gap-16 mt-8">
+                <view class="flex items-center gap-4">
+                  <text style="font-size:24rpx;">🤍</text>
+                  <text class="text-xs text-on-surface-variant">{{item.likes}}</text>
+                </view>
+                <text class="text-xs text-secondary">回复</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 相关帖子 -->
+    <view class="detail-section" wx:if="{{relatedPosts.length > 0}}">
+      <text class="text-lg font-bold mb-12">相关帖子</text>
+      <view class="detail-related">
+        <view class="detail-related__item flex items-center gap-8" wx:for="{{relatedPosts}}" wx:key="id" bindtap="onRelatedTap" data-id="{{item.id}}">
+          <view class="avatar" style="background: {{item.avatarBg}}; width: 72rpx; height: 72rpx; border-radius: 12rpx;">
+            <text style="font-size:36rpx;">{{item.avatar}}</text>
+          </view>
+          <view class="flex-1" style="overflow:hidden;">
+            <text class="text-sm font-semibold truncate">{{item.title}}</text>
+            <view class="flex items-center gap-12 mt-4">
+              <text class="text-xs text-on-surface-variant">{{item.username}}</text>
+              <text class="text-xs text-on-surface-variant">{{item.like}}赞</text>
+            </view>
+          </view>
+          <text class="text-on-surface-variant" style="font-size:28rpx;">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view style="height: 160rpx;"></view>
+  </scroll-view>
+
+  <!-- 未找到帖子 -->
+  <view class="detail-empty flex flex-col items-center justify-center" wx:else>
+    <text style="font-size:80rpx;">📝</text>
+    <text class="text-md text-on-surface-variant mt-16">帖子不存在或已被删除</text>
+    <view class="btn btn-outline mt-24" bindtap="goBack">返回论坛</view>
+  </view>
+
+  <!-- 底部评论输入栏 -->
+  <view class="detail-input-bar" wx:if="{{post}}">
+    <view class="detail-input-bar__inner flex items-center gap-12">
+      <input class="detail-input-bar__input flex-1"
+             placeholder="写评论..."
+             value="{{commentText}}"
+             bindinput="onCommentInput"
+             confirm-type="send"
+             bindconfirm="onSubmitComment" />
+      <view class="detail-input-bar__send flex items-center justify-center" bindtap="onSubmitComment">
+        <text style="font-size:32rpx;">📨</text>
+      </view>
+    </view>
+  </view>
+
+</view>

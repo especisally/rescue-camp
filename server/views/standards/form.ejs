@@ -1,0 +1,46 @@
+<%- include('../layouts/main') %>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body">
+    <form method="POST" action="<%= isEdit ? '/admin/standards/' + standard.id : '/admin/standards' %>">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">标题 *</label>
+          <input type="text" name="title" class="form-control" value="<%= standard.title || '' %>" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">分类 *</label>
+          <select name="category" class="form-select" required>
+            <option value="">请选择</option>
+            <% categories.forEach(function(c) { %>
+              <option value="<%= c %>" <%= standard.category == c ? 'selected' : '' %>><%= c %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">状态</label>
+          <select name="status" class="form-select">
+            <option value="1" <%= standard.status == 1 ? 'selected' : '' %>>上架</option>
+            <option value="0" <%= standard.status == 0 ? 'selected' : '' %>>下架</option>
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">适用对象</label>
+          <input type="text" name="targetUser" class="form-control" value="<%= standard.targetUser || '' %>" placeholder="如 全体消防员">
+        </div>
+        <div class="col-12">
+          <label class="form-label">考核项目（JSON数组，如 [{"name":"优秀","standard":"≤11分30秒"}]）</label>
+          <textarea name="items" class="form-control" rows="4" placeholder='[{"name":"优秀","standard":"≤11分30秒"},{"name":"合格","standard":"≤13分30秒"}]'><%= standard.items ? JSON.stringify(standard.items) : '' %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">评分细则</label>
+          <textarea name="detail" class="form-control" rows="3"><%= standard.detail || '' %></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">保 存</button>
+          <a href="/admin/standards" class="btn btn-secondary ms-2">取 消</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

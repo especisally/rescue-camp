@@ -1,0 +1,321 @@
+/* pages/equipment/detail.wxss */
+.page {
+  min-height: 100vh;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 导航栏 */
+.custom-nav {
+  background: #1a56db;
+  flex-shrink: 0;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  padding: 0 24rpx;
+}
+
+.nav-left {
+  width: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.nav-title {
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+.nav-right {
+  width: 60rpx;
+}
+
+/* 内容 */
+.content {
+  flex: 1;
+}
+
+/* 器材图片 */
+.image-gallery {
+  padding: 0;
+}
+
+.main-image {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.main-image-icon {
+  font-size: 140rpx;
+}
+
+.status-badge {
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 8rpx 20rpx;
+  border-radius: 8rpx;
+}
+
+/* 标题区域 */
+.title-section {
+  background: #fff;
+  padding: 28rpx 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.title-row {
+  margin-bottom: 12rpx;
+}
+
+.equip-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: #2E7D32;
+  margin-right: 24rpx;
+}
+
+.equip-code {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 区块 */
+.section {
+  margin-bottom: 24rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1a1c1c;
+  margin-bottom: 16rpx;
+  padding: 0 24rpx;
+  border-left: 6rpx solid #1a56db;
+  margin-left: 24rpx;
+}
+
+/* 规格参数 */
+.specs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rpx;
+  padding: 0 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spec-item {
+  width: calc(50% - 1rpx);
+  background: #fff;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.spec-item:nth-child(odd) {
+  border-right: 1rpx solid #f1f1f1;
+}
+
+.spec-item:nth-child(-n+4) {
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.spec-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.spec-value {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1c1c;
+}
+
+/* 描述 */
+.desc-card {
+  background: #fff;
+  margin: 0 24rpx;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.desc-text {
+  font-size: 26rpx;
+  color: #5f3f3b;
+  line-height: 1.7;
+}
+
+/* 适用场景标签 */
+.scene-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 0 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scene-tag {
+  font-size: 24rpx;
+  color: #005BAC;
+  background: rgba(0, 91, 172, 0.08);
+  padding: 10rpx 22rpx;
+  border-radius: 32rpx;
+}
+
+/* 操作规程 */
+.step-list {
+  background: #fff;
+  margin: 0 24rpx;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f9f9f9;
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #005BAC;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 26rpx;
+  color: #1a1c1c;
+  line-height: 1.6;
+  flex: 1;
+  padding-top: 6rpx;
+}
+
+/* 维护保养 */
+.maintain-list {
+  background: #fff;
+  margin: 0 24rpx;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.maintain-item {
+  display: flex;
+  align-items: baseline;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f9f9f9;
+}
+
+.maintain-item:last-child {
+  border-bottom: none;
+}
+
+.maintain-dot {
+  font-size: 36rpx;
+  color: #1a56db;
+  margin-right: 12rpx;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 20rpx;
+  text-align: center;
+}
+
+.maintain-text {
+  font-size: 26rpx;
+  color: #1a1c1c;
+  line-height: 1.5;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 底部操作栏 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  z-index: 50;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.action-btn.outline {
+  border: 2rpx solid #1a56db;
+  color: #1a56db;
+  background: #fff;
+}
+
+.action-btn.primary {
+  background: #1a56db;
+  color: #fff;
+}

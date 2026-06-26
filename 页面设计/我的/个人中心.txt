@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" style="width: 390px; height: 884px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>我的 - 应急救援战训营</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f3f3f3",
+                    "on-primary-container": "#fff7f6",
+                    "inverse-primary": "#ffb4aa",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-variant": "#e2e2e2",
+                    "on-secondary-fixed-variant": "#004788",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eeeeee",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#930007",
+                    "on-secondary-container": "#003b74",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f1f1f1",
+                    "secondary-fixed": "#d5e3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#005BAC",
+                    "on-surface": "#1a1c1c",
+                    "surface-tint": "#c0000d",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "primary": "#E60012",
+                    "outline": "#946e69",
+                    "on-secondary-fixed": "#001b3b",
+                    "primary-fixed": "#ffdad5",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#fbf8f8",
+                    "on-surface-variant": "#5f3f3b",
+                    "inverse-surface": "#2f3131",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "background": "#F8F8F8",
+                    "outline-variant": "#e9bcb6",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-primary-fixed": "#410001",
+                    "surface": "#ffffff",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#6ba7fd",
+                    "tertiary-container": "#737272",
+                    "primary-container": "#e60012",
+                    "surface-dim": "#dadada",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "tertiary-fixed": "#e4e2e1",
+                    "tertiary": "#5a5a5a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "container-margin": "16px",
+                    "section-gap": "24px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"],
+                    "body-md": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "headline-sm": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8F8F8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .list-item-active:active {
+            background-color: #F1F1F1;
+        }
+        /* Tactical rigor: subtle separation */
+        .tactical-border {
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .tactical-border:last-child {
+            border-bottom: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased text-on-surface">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-container-margin h-14 w-full z-50 bg-surface border-b border-surface-variant sticky top-0">
+<span class="text-headline-md font-headline-md font-bold text-primary">应急救援战训营</span>
+<div class="flex gap-4"><button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-1 rounded-full active:scale-95 duration-100" data-icon="search">search</button>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-1 rounded-full active:scale-95 duration-100" data-icon="settings">settings</button></div>
+</header>
+<main class="pb-24">
+<!-- User Profile Section -->
+<section class="bg-surface px-container-margin py-8 mb-4 flex items-center gap-4 transition-all duration-300 cursor-pointer list-item-active" id="user-profile" onclick="toggleLoginState()">
+<div class="relative" id="avatar-container">
+<!-- Guest Avatar -->
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center" id="guest-avatar">
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="person">person</span>
+</div>
+<!-- Logged In Avatar (Hidden by default) -->
+<div class="hidden w-16 h-16 rounded-full overflow-hidden border-2 border-secondary" id="user-avatar">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a Chinese emergency rescue officer in a formal dark blue duty uniform. The background is a clean, neutral gray studio setting with soft side lighting that emphasizes authority and readiness. The officer has a disciplined expression, short hair, and the overall image has a high-contrast, sharp tactical aesthetic consistent with modern institutional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaTZpCM0_mTE3vLQ2cXUK1Lonx8HH34jRIw8YXR9o0jakoMZGaEIzRt891vcGS2sQMHwxZignmuSo2hVowbLB9wZ5fUjd7Fk_f_DzBxmxSXwLm6S24JbmwKJUVEDwkqqb7qgvbzFiYjdW5NxGidpoLJ2LgontLUy_I4LIm7wxl0v8xTyjoIAunvY695BwGbSeo-yWHUB63ahfpWExmwUdd7GUxECz2WDKmUgx08oQm7qak9z99JW9bfTnTYYK9PNbDhe7pzFlDsKVj">
+</div>
+</div>
+<div class="flex flex-col">
+<div id="profile-text-guest">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">点击授权登录</h2>
+<p class="font-label-md text-label-md text-tertiary mt-1">登录后同步学习进度</p>
+</div>
+<div class="hidden" id="profile-text-user">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">张建国</h2>
+<p class="font-label-md text-label-md text-tertiary mt-1">ID: 10243982</p>
+<div class="mt-2 flex gap-2">
+<span class="bg-secondary/10 text-secondary text-[10px] px-2 py-0.5 rounded-full border border-secondary/20">高级指挥员</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">monetization_on</span>
+<span class="font-label-md text-label-md">我的积分: 1,280</span>
+</div></div>
+</div>
+<span class="material-symbols-outlined ml-auto text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</section>
+<!-- Functional Bento/List Sections -->
+<div class="px-container-margin space-y-4">
+<!-- Main Group -->
+<div class="bg-surface rounded-lg overflow-hidden border border-[#EEEEEE]">
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="star">star</span>
+<span class="font-body-md text-body-md flex-grow">我的收藏</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-body-md text-body-md flex-grow">我的评论</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="upload_file">upload_file</span>
+<span class="font-body-md text-body-md flex-grow">我的上传</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div></div>
+<!-- Tactical Tools Group -->
+<div class="bg-surface rounded-lg overflow-hidden border border-[#EEEEEE]">
+
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="verified">verified</span>
+<span class="font-body-md text-body-md flex-grow">职业技能鉴定</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Support Group -->
+<div class="bg-surface rounded-lg overflow-hidden border border-[#EEEEEE]">
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="help">help</span>
+<span class="font-body-md text-body-md flex-grow">帮助反馈</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center px-4 h-14 list-item-active tactical-border">
+<span class="material-symbols-outlined text-secondary mr-3" data-icon="info">info</span>
+<span class="font-body-md text-body-md flex-grow">关于战训资源</span>
+<span class="material-symbols-outlined text-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Logout Action (Only shown when logged in) -->
+<div class="hidden pt-4" id="logout-btn">
+<button class="w-full bg-surface h-14 text-error font-headline-sm rounded-lg border border-[#EEEEEE] active:bg-error-container transition-colors" onclick="toggleLoginState()">
+                    退出登录
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest border-t border-surface-variant"><a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md mt-1">论坛</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md mt-1">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">我的</span>
+</a></nav>
+<script>
+        let isLoggedIn = false;
+
+        function toggleLoginState() {
+            isLoggedIn = !isLoggedIn;
+            const guestAvatar = document.getElementById('guest-avatar');
+            const userAvatar = document.getElementById('user-avatar');
+            const guestText = document.getElementById('profile-text-guest');
+            const userText = document.getElementById('profile-text-user');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            if (isLoggedIn) {
+                guestAvatar.classList.add('hidden');
+                userAvatar.classList.remove('hidden');
+                guestText.classList.add('hidden');
+                userText.classList.remove('hidden');
+                logoutBtn.classList.remove('hidden');
+            } else {
+                guestAvatar.classList.remove('hidden');
+                userAvatar.classList.add('hidden');
+                guestText.classList.remove('hidden');
+                userText.classList.add('hidden');
+                logoutBtn.classList.add('hidden');
+            }
+        }
+    </script>
+
+
+
+
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

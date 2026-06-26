@@ -1,0 +1,70 @@
+<!-- 帮助反馈 -->
+<view class="page-body help-page">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义顶部导航栏 -->
+  <view class="help-nav flex items-center">
+    <view class="help-nav__back flex items-center justify-center" bindtap="goBack">
+      <text style="font-size:36rpx;">&lt;</text>
+    </view>
+    <text class="text-lg font-bold" style="flex:1; text-align:center; margin-right:60rpx;">帮助反馈</text>
+  </view>
+
+  <!-- FAQ 折叠面板 -->
+  <view class="container mt-12">
+    <view class="help-section-title">
+      <text class="text-md font-bold">常见问题</text>
+    </view>
+
+    <view class="help-faq card mt-8">
+      <view
+        class="help-faq__item"
+        wx:for="{{faqList}}"
+        wx:key="id"
+        wx:for-item="faq"
+        wx:for-index="faqIndex"
+      >
+        <view
+          class="help-faq__question flex items-center justify-between"
+          bindtap="onFaqToggle"
+          data-index="{{faqIndex}}"
+        >
+          <view class="flex items-center gap-8 flex-1">
+            <text style="font-size:32rpx;">❓</text>
+            <text class="text-sm font-semibold">{{faq.question}}</text>
+          </view>
+          <text class="help-faq__arrow {{faq.expanded ? 'help-faq__arrow--expanded' : ''}}" style="font-size:28rpx; color:#999;">&gt;</text>
+        </view>
+        <view class="help-faq__answer" wx:if="{{faq.expanded}}">
+          <text class="text-sm text-on-surface-variant" style="line-height:1.7;">{{faq.answer}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 意见反馈 -->
+  <view class="container mt-16">
+    <view class="help-section-title">
+      <text class="text-md font-bold">意见反馈</text>
+    </view>
+
+    <view class="help-feedback card-padded mt-8">
+      <textarea
+        class="help-feedback__textarea"
+        placeholder="请输入您的反馈或建议..."
+        placeholder-style="color:#999; font-size:28rpx;"
+        value="{{feedbackText}}"
+        bindinput="onFeedbackInput"
+        maxlength="500"
+      />
+      <view class="flex items-center justify-between mt-12">
+        <text class="text-xs text-on-surface-variant">{{feedbackText.length}}/500</text>
+        <view class="btn btn-primary btn-sm" bindtap="onSubmitFeedback">提交反馈</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

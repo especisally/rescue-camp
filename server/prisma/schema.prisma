@@ -1,0 +1,437 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== 用户与认证 ====================
+
+model User {
+  id        Int      @id @default(autoincrement())
+  openid    String   @unique
+  unionid   String?
+  nickname  String?
+  avatar    String?
+  phone     String?
+  level     String   @default("普通用户")
+  points    Int      @default(0)
+  role      String   @default("user")
+  status    Int      @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  posts          Post[]
+  comments       Comment[]
+  quizRecords    QuizRecord[]
+  signRecords    SignRecord[]
+  favorites      Favorite[]
+  likes          Like[]
+  notifications  Notification[]
+  feedbacks      Feedback[]
+  orders         Order[]
+
+  @@map("users")
+}
+
+// ==================== 分类 ====================
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  type     String
+  parentId Int?      @map("parent_id")
+  sort     Int       @default(0)
+  status   Int       @default(1)
+
+  videos     Video[]
+  trainings  Training[]
+  equipment  Equipment[]
+  quizBanks  QuizBank[]
+  posts      Post[]
+
+  @@map("categories")
+}
+
+// ==================== 视频 ====================
+
+model Video {
+  id          Int      @id @default(autoincrement())
+  title       String
+  categoryId  Int      @map("category_id")
+  coverUrl    String?  @map("cover_url")
+  videoUrl    String?  @map("video_url")
+  duration    Int?
+  author      String?
+  views       Int      @default(0)
+  likes       Int      @default(0)
+  description String?  @db.Text
+  tags        Json?
+  points      Int      @default(0)
+  status      Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  category Category @relation(fields: [categoryId], references: [id])
+
+  @@map("videos")
+}
+
+// ==================== 训练操法 ====================
+
+model Training {
+  id          Int      @id @default(autoincrement())
+  title       String
+  categoryId  Int      @map("category_id")
+  coverUrl    String?  @map("cover_url")
+  steps       Json?
+  equipment   Json?
+  cautions    String?  @db.Text
+  videoUrl    String?  @map("video_url")
+  status      Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  category Category @relation(fields: [categoryId], references: [id])
+
+  @@map("trainings")
+}
+
+// ==================== 危化品 ====================
+
+model Chemical {
+  id          Int      @id @default(autoincrement())
+  name        String
+  formula     String?
+  unNumber    String?  @map("un_number")
+  hazardClass String?  @map("hazard_class")
+  hazardColor String?  @map("hazard_color")
+  properties  Json?
+  dangers     Json?
+  steps       Json?
+  protections Json?
+  status      Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("chemicals")
+}
+
+// ==================== 考核标准 ====================
+
+model Standard {
+  id          Int      @id @default(autoincrement())
+  title       String
+  category    String
+  targetUser  String?  @map("target_user")
+  items       Json?
+  detail      String?  @db.Text
+  status      Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("standards")
+}
+
+// ==================== 器材装备 ====================
+
+model Equipment {
+  id          Int      @id @default(autoincrement())
+  name        String
+  model       String?
+  categoryId  Int      @map("category_id")
+  imageUrl    String?  @map("image_url")
+  status      Int      @default(1)
+  specs       Json?
+  usage       String?  @db.Text
+  scenario    String?  @db.Text
+  maintenance String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  category         Category          @relation(fields: [categoryId], references: [id])
+  repairRequests   RepairRequest[]
+  requisitionForms RequisitionForm[]
+
+  @@map("equipment")
+}
+
+model RepairRequest {
+  id          Int       @id @default(autoincrement())
+  equipmentId Int       @map("equipment_id")
+  userId      Int       @map("user_id")
+  reason      String    @db.Text
+  status      Int       @default(0)
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  equipment Equipment @relation(fields: [equipmentId], references: [id])
+
+  @@map("repair_requests")
+}
+
+model RequisitionForm {
+  id          Int       @id @default(autoincrement())
+  equipmentId Int       @map("equipment_id")
+  userId      Int       @map("user_id")
+  reason      String    @db.Text
+  status      Int       @default(0)
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  equipment Equipment @relation(fields: [equipmentId], references: [id])
+
+  @@map("requisition_forms")
+}
+
+// ==================== 拓展学习 ====================
+
+model Learning {
+  id          Int      @id @default(autoincrement())
+  title       String
+  type        String
+  coverUrl    String?  @map("cover_url")
+  fileUrl     String?  @map("file_url")
+  category    String?
+  author      String?
+  duration    Int?
+  fileSize    String?  @map("file_size")
+  views       Int      @default(0)
+  status      Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("learning")
+}
+
+// ==================== 刷题 ====================
+
+model QuizBank {
+  id            Int      @id @default(autoincrement())
+  title         String
+  categoryId    Int      @map("category_id")
+  icon          String?
+  questionCount Int      @default(0) @map("question_count")
+  status        Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  category  Category        @relation(fields: [categoryId], references: [id])
+  questions QuizQuestion[]
+  records   QuizRecord[]
+
+  @@map("quiz_banks")
+}
+
+model QuizQuestion {
+  id            Int    @id @default(autoincrement())
+  bankId        Int    @map("bank_id")
+  type          String
+  question      String @db.Text
+  options       Json?
+  correctAnswer String @map("correct_answer")
+  explanation   String? @db.Text
+
+  bank QuizBank @relation(fields: [bankId], references: [id])
+
+  @@map("quiz_questions")
+}
+
+model QuizRecord {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  bankId    Int      @map("bank_id")
+  score     Int
+  total     Int
+  answers   Json?
+  duration  Int?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User     @relation(fields: [userId], references: [id])
+  bank QuizBank @relation(fields: [bankId], references: [id])
+
+  @@map("quiz_records")
+}
+
+// ==================== 论坛 ====================
+
+model Post {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @map("user_id")
+  title         String
+  content       String?  @db.Text
+  type          String   @default("text")
+  images        Json?
+  videoUrl      String?  @map("video_url")
+  categoryId    Int?     @map("category_id")
+  tags          Json?
+  points        Int      @default(0)
+  views         Int      @default(0)
+  likes         Int      @default(0)
+  commentsCount Int      @default(0) @map("comments_count")
+  isEssence     Boolean  @default(false) @map("is_essence")
+  status        Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user     User      @relation(fields: [userId], references: [id])
+  category Category? @relation(fields: [categoryId], references: [id])
+  comments Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  postId     Int      @map("post_id")
+  parentId   Int?     @map("parent_id")
+  replyToUid Int?     @map("reply_to_uid")
+  content    String   @db.Text
+  likes      Int      @default(0)
+  status     Int      @default(1)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user    User      @relation(fields: [userId], references: [id])
+  post    Post      @relation(fields: [postId], references: [id])
+  parent  Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies Comment[] @relation("CommentReplies")
+
+  @@map("comments")
+}
+
+// ==================== 互动 ====================
+
+model Favorite {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  targetType String   @map("target_type")
+  targetId   Int      @map("target_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, targetType, targetId])
+  @@map("favorites")
+}
+
+model Like {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  targetType String   @map("target_type")
+  targetId   Int      @map("target_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, targetType, targetId])
+  @@map("likes")
+}
+
+// ==================== 通知 ====================
+
+model Notification {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  type       String
+  content    String
+  targetType String?  @map("target_type")
+  targetId   Int?     @map("target_id")
+  isRead     Boolean  @default(false) @map("is_read")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("notifications")
+}
+
+// ==================== 签到 ====================
+
+model SignRecord {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  signDate  DateTime @map("sign_date") @db.Date
+  points    Int      @default(5)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, signDate])
+  @@map("sign_records")
+}
+
+// ==================== 轮播图/推荐 ====================
+
+model Banner {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imageUrl  String?  @map("image_url")
+  linkUrl   String?  @map("link_url")
+  sort      Int      @default(0)
+  status    Int      @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("banners")
+}
+
+model Recommend {
+  id        Int      @id @default(autoincrement())
+  title     String
+  type      String
+  targetId  Int      @map("target_id")
+  coverUrl  String?  @map("cover_url")
+  tag       String?
+  sort      Int      @default(0)
+  status    Int      @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("recommends")
+}
+
+// ==================== 反馈 ====================
+
+model Feedback {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  content   String   @db.Text
+  images    Json?
+  contact   String?
+  status    Int      @default(0)
+  reply     String?  @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("feedbacks")
+}
+
+// ==================== 管理员 ====================
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  role      String   @default("admin")
+  status    Int      @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("admins")
+}
+
+// ==================== 订单 ====================
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  orderNo     String   @map("order_no") @unique
+  items       Json
+  totalAmount Int      @map("total_amount")
+  status      Int      @default(1)
+  address     Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("orders")
+}

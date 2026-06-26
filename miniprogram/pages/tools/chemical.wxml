@@ -1,0 +1,52 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">危化品查询</view>
+      <view class="nav-right">
+        <text class="nav-icon">🔍</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-wrap">
+    <view class="search-bar" bindtap="onSearchTap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="输入危化品名称或UN编号..." value="{{keyword}}" bindinput="onSearchInput" confirm-type="search" bindconfirm="onSearch" />
+    </view>
+  </view>
+
+  <!-- 分类筛选 -->
+  <scroll-view class="filter-bar" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="filter-item {{activeCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="onCategoryChange">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 危化品列表 -->
+  <view class="chemical-list">
+    <navigator url="/pages/tools/chemical-detail?id={{item.id}}" class="chemical-card" wx:for="{{filteredList}}" wx:key="id">
+      <view class="card-left">
+        <view class="un-badge">{{item.unNumber}}</view>
+      </view>
+      <view class="card-center">
+        <view class="chem-name">{{item.name}}</view>
+        <view class="chem-formula">{{item.formula}}</view>
+      </view>
+      <view class="card-right">
+        <view class="hazard-badge" style="background: {{item.hazardColor}};">
+          {{item.hazardClass}}
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </navigator>
+
+    <view class="empty-tip" wx:if="{{filteredList.length === 0}}">
+      <text>未找到匹配的危化品</text>
+    </view>
+  </view>
+</view>

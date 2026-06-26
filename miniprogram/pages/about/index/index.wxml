@@ -1,0 +1,67 @@
+<!-- 关于我们 -->
+<view class="page-body about-page">
+
+  <!-- 状态栏占位 -->
+  <view style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 自定义顶部导航栏 -->
+  <view class="about-nav flex items-center">
+    <view class="about-nav__back flex items-center justify-center" bindtap="goBack">
+      <text style="font-size:36rpx;">&lt;</text>
+    </view>
+    <text class="text-lg font-bold" style="flex:1; text-align:center; margin-right:60rpx;">关于我们</text>
+  </view>
+
+  <!-- App 信息 -->
+  <view class="about-info flex flex-col items-center mt-24">
+    <!-- Logo -->
+    <view class="about-info__logo flex items-center justify-center">
+      <text style="font-size:96rpx;">{{appInfo.icon}}</text>
+    </view>
+
+    <!-- 名称 -->
+    <text class="text-xl font-bold mt-16">{{appInfo.name}}</text>
+
+    <!-- 版本 -->
+    <view class="about-info__version mt-8">
+      <text class="text-sm text-on-surface-variant">版本 {{appInfo.version}}</text>
+    </view>
+
+    <!-- 描述 -->
+    <view class="about-info__desc mt-16">
+      <text class="text-sm text-on-surface-variant" style="line-height:1.8;">{{appInfo.description}}</text>
+    </view>
+  </view>
+
+  <!-- 功能亮点 -->
+  <view class="container mt-24">
+    <view class="about-features card-padded">
+      <text class="text-md font-semibold">功能亮点</text>
+      <view class="about-features__grid mt-12">
+        <view class="about-features__item flex flex-col items-center">
+          <text style="font-size:48rpx;">📚</text>
+          <text class="text-sm text-on-surface-variant mt-8">专业课程</text>
+        </view>
+        <view class="about-features__item flex flex-col items-center">
+          <text style="font-size:48rpx;">✏️</text>
+          <text class="text-sm text-on-surface-variant mt-8">刷题练习</text>
+        </view>
+        <view class="about-features__item flex flex-col items-center">
+          <text style="font-size:48rpx;">🔧</text>
+          <text class="text-sm text-on-surface-variant mt-8">装备管理</text>
+        </view>
+        <view class="about-features__item flex flex-col items-center">
+          <text style="font-size:48rpx;">👥</text>
+          <text class="text-sm text-on-surface-variant mt-8">社区交流</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版权信息 -->
+  <view class="about-copyright text-center mt-24">
+    <text class="text-xs text-on-surface-variant">{{appInfo.copyright}}</text>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

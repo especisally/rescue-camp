@@ -1,0 +1,97 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">器材详情</view>
+      <view class="nav-right"></view>
+    </view>
+  </view>
+
+  <scroll-view class="content" scroll-y enhanced>
+    <!-- 器材图片 -->
+    <view class="image-gallery">
+      <view class="main-image" style="background: {{equipment.bgColor}};">
+        <text class="main-image-icon">{{equipment.icon}}</text>
+        <view class="status-badge" style="background: {{equipment.statusColor}};">
+          {{equipment.status}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 标题与状态 -->
+    <view class="title-section">
+      <view class="title-row">
+        <text class="equip-title">{{equipment.name}} {{equipment.model}}</text>
+      </view>
+      <view class="status-row">
+        <view class="status-indicator" style="background: {{equipment.statusColor}};"></view>
+        <text class="status-text">可用</text>
+        <text class="equip-code">编号: {{equipment.code}}</text>
+      </view>
+    </view>
+
+    <!-- 规格参数 -->
+    <view class="section">
+      <view class="section-title">规格参数</view>
+      <view class="specs-grid">
+        <view class="spec-item" wx:for="{{equipment.specs}}" wx:key="label">
+          <text class="spec-label">{{item.label}}</text>
+          <text class="spec-value">{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 器材描述 -->
+    <view class="section">
+      <view class="section-title">器材描述</view>
+      <view class="desc-card">
+        <text class="desc-text">{{equipment.description}}</text>
+      </view>
+    </view>
+
+    <!-- 适用场景 -->
+    <view class="section">
+      <view class="section-title">适用场景</view>
+      <view class="scene-tags">
+        <view class="scene-tag" wx:for="{{equipment.scenes}}" wx:key="*this">{{item}}</view>
+      </view>
+    </view>
+
+    <!-- 操作规程 -->
+    <view class="section">
+      <view class="section-title">操作规程</view>
+      <view class="step-list">
+        <view class="step-item" wx:for="{{equipment.procedures}}" wx:key="*this" wx:for-index="idx">
+          <view class="step-number">{{idx + 1}}</view>
+          <text class="step-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 维护保养 -->
+    <view class="section">
+      <view class="section-title">维护保养</view>
+      <view class="maintain-list">
+        <view class="maintain-item" wx:for="{{equipment.maintenance}}" wx:key="*this">
+          <text class="maintain-dot">•</text>
+          <text class="maintain-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="height: 160rpx;"></view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="action-btn outline" bindtap="onRepair">
+      <text>报修</text>
+    </view>
+    <view class="action-btn primary" bindtap="onApply">
+      <text>申请领用</text>
+    </view>
+  </view>
+</view>

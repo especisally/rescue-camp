@@ -1,0 +1,277 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>高强度战术水枪 | 战术商城</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#b7000c",
+                    "primary-container": "#e60012",
+                    "on-primary": "#ffffff",
+                    "secondary": "#0b5eaf",
+                    "secondary-container": "#6ba7fd",
+                    "on-secondary-container": "#003b74",
+                    "background": "#f4f4f4",
+                    "surface": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-surface": "#1a1c1c",
+                    "on-surface-variant": "#5f3f3b",
+                    "outline-variant": "#e9bcb6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "gutter": "12px",
+                    "container-margin": "12px",
+                    "section-gap": "10px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter, PingFang SC"],
+                    "label-md": ["Inter, PingFang SC"],
+                    "headline-lg": ["Inter, PingFang SC"],
+                    "headline-md": ["Inter, PingFang SC"],
+                    "body-lg": ["Inter, PingFang SC"],
+                    "headline-lg-mobile": ["Inter, PingFang SC"],
+                    "body-md": ["Inter, PingFang SC"]
+            },
+            "fontSize": {
+                    "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'PingFang SC', 'Inter', sans-serif; background-color: #f4f4f4; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .price-gradient { background: linear-gradient(90deg, #ff4200 0%, #ff0000 100%); }
+        .buy-gradient { background: linear-gradient(90deg, #ff9000 0%, #ff5000 100%); }
+        .cart-gradient { background: linear-gradient(90deg, #ffc500 0%, #ff9402 100%); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Nav -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-12 bg-transparent pointer-events-none">
+<a href="../index.html"><span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span></a>
+<div class="flex gap-2 pointer-events-auto">
+<button class="w-8 h-8 rounded-full bg-black/30 text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-black/30 text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</header>
+<main class="pb-24">
+<!-- Image Carousel -->
+<section class="relative w-full aspect-square bg-white overflow-hidden">
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full" id="gallery">
+<div class="snap-center shrink-0 w-full h-full">
+<img alt="产品主图 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu3rRp-__Cd8J-6X3T1lsWG-N2AuXsYgsbRWNMQzYLkMnVGeBGS4o4cWhImpWGI-uARJZnWUwSMPZ18-vp5rQ59Ot2CB0t83p2wjn2juOOgCuA1Sa5mQzy9tKIzSHdQf2VHgkNv_VQlI5IdrJVh4XCEoe0Hqkg-rt6HID65eGOMOoRjStGguLKTvB29-4fTVKzOdJ5txJxHtOuB_vSlYiJWyQpJCr1ER5rronYB42K3RegXsdSCNANEByU5L9gmlFVIP2dHTUeSgw">
+</div>
+<div class="snap-center shrink-0 w-full h-full">
+<img alt="产品详情 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXY5JUefrDtCd027wzv-zwSUeTeRUo6gmeFcoS7_4IZyDtUysEbtTAv7ZqBW3Tb3PaNmFt46QYVZuP0VRf4N0JeOZEw2nMch9-8aULnLEXpdX3Fd377q_naONBYK1OL1pGcjIWL0ZZ40NeO50YcFrosanWAY88TST5DBKO7k9Scac6ibgMRd4KDlkKrGrfjOhwsJd43o5x37t9OrRKSBJw2U3MqHV8WiYvhtsdpdhye9a6vkNwsfueTEl9nPLlNj8lU0ZyClyXbv4">
+</div>
+<div class="snap-center shrink-0 w-full h-full">
+<img alt="产品展示 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6TfERhZd3drPr9Yc5vHkOrdkIWXeJuWF5xVt4oMAYE3s2tpaUuWAWXeQf-1fuhPPblgHrv-IC9gvaTCJiYPplCszaOArmTACDQWozMwG8myEoHjMwFIOn-yJemtBhQIjHFT2Mfj1q3hUrjFZ8aWMwzRZLPX_67aXo1U5qv3bQLXcwtJgDIuEOV5ZyBdYvYc30cY_bfBN97_hk27JPBmNy0u5LqFVqgB1YJhWPUDM6CxZ_PaLk7mf7y1hxjNpARp3-8-9aCItv_C4">
+</div>
+</div>
+<div class="absolute bottom-3 right-4 bg-black/20 text-white text-[10px] px-2 py-0.5 rounded-full" id="gallery-index">
+                1 / 3
+            </div>
+</section>
+<!-- Pricing & Title -->
+<section class="bg-white p-container-margin">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1 text-primary">
+<span class="text-sm font-bold">¥</span>
+<span class="text-3xl font-bold">899.00</span>
+<span class="ml-2 text-on-surface-variant text-sm line-through decoration-on-surface-variant">¥1299.00</span>
+</div>
+<div class="text-on-surface-variant text-[12px]">月销 2000+</div>
+</div>
+<div class="mt-2 flex gap-2">
+<span class="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded">官方认证</span>
+<span class="bg-secondary/10 text-secondary text-[10px] px-1.5 py-0.5 rounded">救援级</span>
+</div>
+<div class="mt-3 flex justify-between items-start gap-4">
+<h1 class="text-body-lg font-bold leading-tight">高强度战术水枪 TP-900系列 专业级救援加压设备 碳纤维增强材质</h1>
+<button class="flex flex-col items-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite">favorite</span>
+<span class="text-[10px] text-on-surface-variant">收藏</span>
+</button>
+</div>
+</section>
+<!-- Coupons & Points -->
+<section class="mt-section-gap bg-white px-container-margin py-3 divide-y divide-surface-variant">
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant text-sm shrink-0">优惠</span>
+<div class="flex gap-2 overflow-hidden">
+<span class="border border-primary text-primary text-[10px] px-1 rounded">淘金币抵3%</span>
+<span class="border border-primary text-primary text-[10px] px-1 rounded">下单返899积分</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant text-sm shrink-0">服务</span>
+<span class="text-sm">7天无理由退货 · 极速退款 · 官方包邮</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</div>
+</section>
+<!-- Specs & Features -->
+<section class="mt-section-gap bg-white px-container-margin py-3">
+<details class="group border-b border-surface-variant pb-3" open="">
+<summary class="flex items-center justify-between list-none cursor-pointer">
+<h3 class="text-sm font-bold">技术规格</h3>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-3 grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant uppercase">最大压力</span>
+<span class="text-sm font-semibold">12.5 BAR</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant uppercase">空重</span>
+<span class="text-sm font-semibold">1.85 KG</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant uppercase">射程</span>
+<span class="text-sm font-semibold">15 米</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant uppercase">流量</span>
+<span class="text-sm font-semibold">4.2 升/分</span>
+</div>
+</div>
+</details>
+<details class="group pt-3">
+<summary class="flex items-center justify-between list-none cursor-pointer">
+<h3 class="text-sm font-bold">核心特性</h3>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-3 space-y-2">
+<p class="text-sm text-on-surface-variant leading-relaxed">TP-900 系列采用加固碳纤维底盘和双级压缩室设计，专为高强度战术模拟和专业训练环境打造。</p>
+<ul class="text-[13px] space-y-1.5">
+<li class="flex gap-2 items-center"><span class="w-1 h-1 rounded-full bg-primary"></span> 快拆式加压储水罐系统</li>
+<li class="flex gap-2 items-center"><span class="w-1 h-1 rounded-full bg-primary"></span> 可调式流向-雾化喷嘴组件</li>
+<li class="flex gap-2 items-center"><span class="w-1 h-1 rounded-full bg-primary"></span> 耐冲击工业级聚合物外壳</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- Reviews -->
+<section class="mt-section-gap bg-white px-container-margin py-3">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-1">
+<h3 class="text-sm font-bold">宝贝评价 (128)</h3>
+</div>
+<span class="text-primary text-[12px] flex items-center">查看全部 <span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span></span>
+</div>
+<div class="bg-background/50 p-3 rounded-lg">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold">RC</div>
+<span class="text-[12px] font-medium">Rescue_Commander_01</span>
+<div class="flex text-primary ml-auto">
+<span class="material-symbols-outlined text-[12px] fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-[13px] text-on-surface line-clamp-2 italic">“极其出色的制造质量。在部门训练演习中使用过，压力一致性令人印象深刻。真正的战术手感。”</p>
+</div>
+</section>
+</main>
+<!-- Bottom Actions -->
+<footer class="fixed bottom-16 w-full bg-white border-t border-surface-variant px-3 py-2 z-40 flex items-center gap-3">
+<div class="flex gap-4 shrink-0">
+<button class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+<span class="text-[10px]">店铺</span>
+</button>
+<button class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+<span class="text-[10px]">客服</span>
+</button>
+<button class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-[10px]">购物车</span>
+</button>
+</div>
+<div class="flex-1 flex gap-0.5 overflow-hidden rounded-full">
+<button class="flex-1 h-10 cart-gradient text-white font-bold text-sm active:opacity-90">
+                加入购物车
+            </button>
+<button class="flex-1 h-10 buy-gradient text-white font-bold text-sm active:opacity-90">
+                立即购买
+            </button>
+</div>
+</footer>
+<script>
+        // Gallery indicator script
+        const gallery = document.getElementById('gallery');
+        const indicator = document.getElementById('gallery-index');
+        
+        gallery.addEventListener('scroll', () => {
+            const scrollIndex = Math.round(gallery.scrollLeft / gallery.clientWidth) + 1;
+            indicator.innerText = `${scrollIndex} / 3`;
+        });
+
+        // Toggle favorite
+        const favBtn = document.querySelector('button .material-symbols-outlined[data-icon="favorite"]');
+        favBtn.parentElement.addEventListener('click', () => {
+            const isFilled = favBtn.style.fontVariationSettings.includes("'FILL' 1");
+            favBtn.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+            favBtn.classList.toggle('text-primary', !isFilled);
+        });
+    </script>
+
+
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest border-t border-surface-variant">
+<a href="../index.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">首页</span>
+</a>
+<a href="../论坛/论坛主页.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md mt-1">论坛</span>
+</a>
+<a href="../商城/商城主页.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md mt-1">商城</span>
+</a>
+<a href="../我的/个人中心.html" class="flex flex-col items-center justify-center text-tertiary transition-transform active:scale-90 no-underline">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">我的</span>
+</a>
+</nav>
+</body></html>

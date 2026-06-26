@@ -1,0 +1,72 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">{{chemical.name}} ({{chemical.formula}})</view>
+      <view class="nav-right"></view>
+    </view>
+  </view>
+
+  <scroll-view class="content" scroll-y enhanced>
+    <!-- UN信息卡片 -->
+    <view class="info-card">
+      <view class="info-row">
+        <text class="info-label">UN编号</text>
+        <text class="info-value">{{chemical.unNumber}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">危险类别</text>
+        <view class="hazard-tag" style="background: {{chemical.hazardColor}};">
+          {{chemical.hazardClass}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 理化性质 -->
+    <view class="section">
+      <view class="section-title">理化性质</view>
+      <view class="props-grid">
+        <view class="prop-item" wx:for="{{chemical.properties}}" wx:key="label">
+          <text class="prop-label">{{item.label}}</text>
+          <text class="prop-value">{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 危险性 -->
+    <view class="section">
+      <view class="section-title">危险性</view>
+      <view class="danger-list">
+        <view class="danger-item" wx:for="{{chemical.dangers}}" wx:key="*this">
+          <text class="danger-icon">⚠</text>
+          <text class="danger-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 处置要点 -->
+    <view class="section">
+      <view class="section-title">处置要点</view>
+      <view class="step-list">
+        <view class="step-item" wx:for="{{chemical.steps}}" wx:key="*this" wx:for-index="idx">
+          <view class="step-number">{{idx + 1}}</view>
+          <text class="step-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 防护措施 -->
+    <view class="section">
+      <view class="section-title">防护措施</view>
+      <view class="protection-list">
+        <view class="protection-item" wx:for="{{chemical.protections}}" wx:key="label">
+          <text class="protection-label">{{item.label}}</text>
+          <text class="protection-value">{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

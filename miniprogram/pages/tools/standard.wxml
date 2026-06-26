@@ -1,0 +1,49 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <view class="nav-title">考核标准查询</view>
+      <view class="nav-right"></view>
+    </view>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-wrap">
+    <view class="search-bar" bindtap="onSearchTap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索考核标准..." value="{{keyword}}" bindinput="onSearchInput" />
+    </view>
+  </view>
+
+  <!-- 分类筛选 -->
+  <scroll-view class="filter-bar" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="filter-item {{activeCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="onCategoryChange">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 标准列表 -->
+  <view class="standard-list">
+    <navigator url="/pages/tools/standard-detail?id={{item.id}}" class="standard-card" wx:for="{{filteredList}}" wx:key="id">
+      <view class="card-body">
+        <view class="card-header">
+          <text class="card-title">{{item.title}}</text>
+          <view class="card-tag" style="background: {{item.tagColor}};">
+            {{item.tag}}
+          </view>
+        </view>
+        <text class="card-desc">{{item.description}}</text>
+      </view>
+      <view class="card-arrow">
+        <text>›</text>
+      </view>
+    </navigator>
+
+    <view class="empty-tip" wx:if="{{filteredList.length === 0}}">
+      <text>未找到匹配的考核标准</text>
+    </view>
+  </view>
+</view>

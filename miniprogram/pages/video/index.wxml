@@ -1,0 +1,40 @@
+<!-- 视频学习 - 主页 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">视频学习</text>
+      <view class="nav-avatar">
+        <text class="nav-avatar-icon">👤</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-wrap" style="margin-top: calc(88rpx + {{statusBarHeight}}px);">
+    <view class="search-bar" bindtap="onSearchTap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索课程、案例、器材手册..." placeholder-class="search-placeholder" />
+    </view>
+  </view>
+
+  <!-- 视频学习标题 -->
+  <view class="section-header">
+    <text class="section-title">视频学习</text>
+    <text class="section-subtitle">全领域实战课程</text>
+  </view>
+
+  <!-- 分类网格 单列满行 -->
+  <view class="category-grid">
+    <view class="category-card" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onCategoryTap">
+      <view class="card-bg" style="background: linear-gradient(135deg, {{item.bgColor}}, {{item.bgColor2}});"></view>
+      <view class="card-overlay"></view>
+      <text class="card-icon">{{item.icon}}</text>
+      <text class="card-text">{{item.name}}</text>
+      <text class="card-arrow">›</text>
+    </view>
+  </view>
+</view>

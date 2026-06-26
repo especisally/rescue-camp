@@ -1,0 +1,75 @@
+<!-- 刷题中心 - 主页 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-back-icon">←</text>
+      </view>
+      <text class="nav-title">刷题中心</text>
+      <view class="nav-search" bindtap="onSearchTap">
+        <text class="nav-search-icon">🔍</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Hero 搜索区域 -->
+  <view class="hero-section" style="margin-top: calc(88rpx + {{statusBarHeight}}px);">
+    <view class="hero-bg"></view>
+    <view class="hero-content">
+      <text class="hero-title">题库搜索中心</text>
+      <view class="hero-search-bar" bindtap="onSearchTap">
+        <text class="hero-search-icon">🔍</text>
+        <input class="hero-search-input" placeholder="搜索战术规范、专业技能或鉴定题目..." placeholder-class="hero-search-placeholder" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类筛选标签 -->
+  <scroll-view class="filter-tabs" scroll-x="true" enable-flex="true">
+    <view
+      class="filter-tab {{currentTab === index ? 'filter-tab-active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="index"
+      data-index="{{index}}"
+      bindtap="onTabSwitch"
+    >{{item}}</view>
+  </scroll-view>
+
+  <!-- 题库列表 -->
+  <view class="bank-list">
+    <view
+      class="bank-card"
+      wx:for="{{bankList}}"
+      wx:key="id"
+      bindtap="onBankTap"
+      data-id="{{item.id}}"
+    >
+      <!-- 角标 -->
+      <view class="bank-badge" wx:if="{{item.badge}}" style="background-color: {{item.badgeColor}};">{{item.badge}}</view>
+
+      <view class="bank-icon" style="background-color: {{item.iconBg}};">
+        <text>{{item.icon}}</text>
+      </view>
+      <view class="bank-info">
+        <text class="bank-title">{{item.title}}</text>
+        <text class="bank-count">{{item.count}}题 · {{item.date}}</text>
+      </view>
+      <view class="bank-action" style="background-color: {{item.btnBg || '#1a56db'}};">
+        <text class="bank-action-text">{{item.btnText || '→'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-row">
+    <view class="stat-card stat-blue">
+      <text class="stat-label">今日已刷题</text>
+      <text class="stat-value">156题</text>
+    </view>
+    <view class="stat-card stat-gray">
+      <text class="stat-label">平均正确率</text>
+      <text class="stat-value">94.2%</text>
+    </view>
+  </view>
+</view>

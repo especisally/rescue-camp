@@ -1,0 +1,75 @@
+<!-- 答题结果页 -->
+<view class="page-body result-page">
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 导航栏 -->
+  <view class="result-nav">
+    <view class="result-nav__inner">
+      <view class="detail-nav__back" bindtap="goBack"><text class="detail-nav__back-icon">←</text></view>
+      <text class="result-nav__title text-lg font-bold">答题结果</text>
+      <view class="detail-nav__placeholder"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="result-scroll">
+    <!-- 得分圆环 -->
+    <view class="score-section">
+      <view class="score-circle">
+        <view class="score-circle__outer">
+          <text class="score-number">{{accuracy}}</text>
+          <text class="score-percent">%</text>
+        </view>
+        <text class="score-label text-sm text-on-surface-variant mt-12">正确率</text>
+      </view>
+
+      <!-- 统计卡片 -->
+      <view class="stats-row flex gap-12 mt-24">
+        <view class="stat-card flex-1 flex flex-col items-center">
+          <text class="stat-card__num" style="color:#4CAF50;">{{correctCount}}</text>
+          <text class="stat-card__label text-xs text-on-surface-variant">✓ 正确</text>
+        </view>
+        <view class="stat-card flex-1 flex flex-col items-center">
+          <text class="stat-card__num" style="color:#ba1a1a;">{{wrongCount}}</text>
+          <text class="stat-card__label text-xs text-on-surface-variant">✗ 错误</text>
+        </view>
+        <view class="stat-card flex-1 flex flex-col items-center">
+          <text class="stat-card__num" style="color:#1a56db;">{{totalCount}}</text>
+          <text class="stat-card__label text-xs text-on-surface-variant">📝 总题数</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评价文字 -->
+    <view class="comment-section text-center">
+      <text wx:if="{{accuracy >= 90}}" style="font-size:60rpx;">🎉</text>
+      <text wx:elif="{{accuracy >= 70}}" style="font-size:60rpx;">👍</text>
+      <text wx:else style="font-size:60rpx;">💪</text>
+      <text wx:if="{{accuracy >= 90}}" class="text-lg font-bold mt-8">优秀！继续保持！</text>
+      <text wx:elif="{{accuracy >= 70}}" class="text-lg font-bold mt-8">不错，还有提升空间！</text>
+      <text wx:else class="text-lg font-bold mt-8">加油，多练习就会进步！</text>
+    </view>
+
+    <!-- 答题回顾 -->
+    <view class="review-section">
+      <text class="text-md font-bold mb-12">答题回顾</text>
+      <view class="review-item flex items-center justify-between" wx:for="{{questions}}" wx:key="index">
+        <view class="flex items-center gap-8 flex-1">
+          <text class="review-item__num text-sm">{{item.index}}.</text>
+          <text class="review-item__title text-sm truncate">{{item.title}}</text>
+        </view>
+        <view class="flex items-center gap-8">
+          <text wx:if="{{item.isCorrect}}" style="color:#4CAF50;font-size:28rpx;">✓</text>
+          <text wx:else style="color:#ba1a1a;font-size:28rpx;">✗</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="height:160rpx;"></view>
+  </scroll-view>
+
+  <!-- 底部按钮 -->
+  <view class="result-actions">
+    <view class="btn btn-outline flex-1" bindtap="onReviewWrong">📋 错题本</view>
+    <view class="btn btn-primary flex-1" bindtap="onBackToQuiz">🔄 返回题库</view>
+  </view>
+</view>

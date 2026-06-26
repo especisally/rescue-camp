@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar suppression for a cleaner tactical look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "on-primary-container": "#fff7f6",
+                        "inverse-primary": "#ffb4aa",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004788",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeeeee",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-secondary-container": "#003b74",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#0b5eaf",
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#c0000d",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "primary": "#b7000c",
+                        "outline": "#946e69",
+                        "on-secondary-fixed": "#001b3b",
+                        "primary-fixed": "#ffdad5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fbf8f8",
+                        "on-surface-variant": "#5f3f3b",
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "background": "#f9f9f9",
+                        "outline-variant": "#e9bcb6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-primary-fixed": "#410001",
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#6ba7fd",
+                        "tertiary-container": "#737272",
+                        "primary-container": "#e60012",
+                        "surface-dim": "#dadada",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "tertiary-fixed": "#e4e2e1",
+                        "tertiary": "#5a5a5a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-margin": "16px",
+                        "section-gap": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter, PingFang SC"],
+                        "body-lg": ["Inter, PingFang SC"],
+                        "label-md": ["Inter, PingFang SC"],
+                        "headline-md": ["Inter, PingFang SC"],
+                        "body-md": ["Inter, PingFang SC"],
+                        "headline-lg-mobile": ["Inter, PingFang SC"],
+                        "headline-sm": ["Inter, PingFang SC"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin h-14 w-full z-50 bg-surface dark:bg-surface-dim border-b border-surface-variant dark:border-outline-variant fixed top-0 left-0"><div class="flex-1 flex justify-start"><button class="active:scale-95 transition-transform cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant dark:text-surface-variant">arrow_back</span></button></div><h1 class="text-headline-md-mobile font-headline-md font-bold text-primary dark:text-on-primary-fixed">视频学习</h1><div class="flex-1 flex justify-end"><span class="material-symbols-outlined text-on-surface-variant dark:text-surface-variant">account_circle</span></div></header>
+<!-- Main Content -->
+<main class="flex-grow pt-20 pb-24 px-container-margin">
+<!-- Search Bar Section -->
+<div class="mb-section-gap">
+<div class="relative flex items-center bg-surface-container rounded shadow-sm">
+<span class="material-symbols-outlined absolute left-3 text-tertiary">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-3 pl-10 pr-4 text-body-md placeholder:text-tertiary" placeholder="搜索课程、案例、器材手册..." type="text">
+</div>
+</div>
+<!-- Section Title -->
+<div class="mb-stack-md flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">视频学习</h2>
+<span class="text-label-md font-label-md text-tertiary">全领域实战课程</span>
+</div>
+<!-- Training Grid (Bento Style Variation) -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Fire Rescue -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="fire">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A cinematic, high-contrast photograph of professional firefighters in full tactical gear training amidst controlled flames and thick smoke at night. The lighting is dominated by intense orange fire glows and cool blue moonlight, reflecting the tactical readiness and professional rigor of the emergency rescue environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuQbanJabdQijFGnsU1MIup_hkwaNSTabL-LKnwSM-7sn1sb6TaB4BMFNPqMVFrbFIsnx1YXbeg-aG68h-ooUFxaPew3BSvuhyDzcULY9C-LlaH1UXge9X23QFGLoYJCj33hK8xCL-vLIsvPEeUHYYVRq5PxYmowaoCC-L7dDtGJbn7nBCO59I4YE-4et8J7wdtGXkltUzvR23fJIgMAHFSHrES1ti8HUGii-YyCtcnlozFdPw0KaW8NnEyBagxpjRVDwUe1_sFsIX')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">火灾</span>
+</div>
+</div>
+<!-- Earthquake Rescue -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="earthquake">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A structured aerial view of heavy rescue equipment and personnel working on simulated concrete rubble during an earthquake disaster response training. The aesthetic is clean and institutional, featuring the primary red and blue color palette of rescue uniforms against gray concrete textures under clear, bright daylight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRJq9Hd0iuml_NLBFwJBbImlfJs9pEYkw6gWjmce0aSytgdqEp_SOAaj3Gqiwwr2U1ZneyHWuoXdGFX2oHz3wC2J0U8eDrrwcvaCxn2rAUnMrxIavEc9DXmD0-uIURoFqptlfFVUf_-lPVN7sdOfZYmw3stW6kqJ-4_cFaNW7Nvz48LFWp-Sh4wWD2PY-2nfga0p-62bOrhhnVpWVR6vmWMDOeKPrV349e7YMShLig-8_5UK6xKEO-esw6q_6G4_ZoKlDe87R1YivS')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">地震</span>
+</div>
+</div>
+<!-- Water Rescue -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="water">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Rescue personnel in professional blue water-rescue suits operating a specialized orange inflatable craft in turbulent river conditions. The image conveys high pressure and tactical efficiency, with a cool blue and sharp white color palette emphasizing clarity and professional discipline in extreme environments." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpfE8LDteD_JBROdbPPchjTKc9CiB8uAslWwimNxDbD_kI2DbusvC4SKbHRbRCZrJsTAx-8KSqd1YwRL_BJ1EcKQQDMhuoYG5M-iEOSrT-LkFR5AhMFZrmIJjRYacgcr-Jl_IIy7yN5qY504e4kUklLC7QQJtR_CFqWjBF-SPIgy0q_bkAL04lX90z0pUZNZ46n7yRUOlzJgPBuefmi3Uy27NKljWywZikgDWUMZDsFmE0dXHWuUo13-16hnIv3JKDmfpYOywt3W5I')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">水域</span>
+</div>
+</div>
+<!-- Rope Rescue -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="rope">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Close-up of technical rope rescue equipment, including high-visibility climbing ropes, metal carabiners, and pulleys, arranged neatly against a dark tactical background. The lighting is crisp and detailed, showcasing the structural integrity and mission-critical reliability of the gear used in mountain or high-rise rescue." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBZOOluaoYCWs8EcAIZwpIeqaNUQfR7ZvRgUknxVQlacegVuVKXwOZLHGnIqwtpz0MiKVclGFfFiB3bkv62z29KDS4tuqlZyqmFK8QGLNIs0MFhDl6axSO3AmA03JDSG7bEGlL4wTlV1-k6FewxhZ0CkNR8hxDNHc5M3BjkRxWZUYXGqEK7rp8ZHcyW8VEOvMf_arwmJeedOk5THoDjV0iP4xpBU7WQZM5dDWyXdEC4GeUTxPNQmJt52JC8k7Qs1_lZWgLzWTaOHiw')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">绳索</span>
+</div>
+</div>
+<!-- Vehicle Accident -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="vehicle">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A professional demonstration of hydraulic rescue tools (the Jaws of Life) being used on a vehicle chassis during a training exercise. The scene is lit by professional workspace lighting, emphasizing the metallic textures and the intense rescue blue and fire red of the equipment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYcihnAui8Cr921pLMmKlGOpo_CbzJqr1SaEuNuaANQGZrEh-vafixhLg4NShvkGwYLaHhwjIzoEJOYARKf2UYrqdFHfoRKwHVDureP1zJDEJ6V7jW_itFtTI0MyrZ_PHANwftvr2aX0PRjSQ08-9337UmQM3VGp85Oz0j3UZy4tTWD2LK_s7csLWCydLuG2JLdzp0zPkKWdc9sijPQWf7pKeEqFKuy-Kl0D9bCqetYiOnBRxiReV7LDfoVeDhmyH9lJepxLrtQfcZ')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">车辆事故</span>
+</div>
+</div>
+<!-- Hazardous Materials -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="hazmat">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Experts in yellow level-A hazardous material protection suits working in a laboratory or industrial decontamination zone. The visual style is clinical, rigorous, and highly organized, using high-key lighting to emphasize the precision and safety of dangerous chemical handling procedures." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYgfTg5mwzd7tBt43dTPUNlciBvggkekUjAeGmdsCqzc4sgvI7mOUSl_lmxG3KqImky1Ex9zdiudDJXe66xedfN6ZbQsQhjl20hRUFY0Ei_-xLchCzyMrVaRATXs5yS_edMHbsL2D7HvPbtcQAoEaHptKThNCEisiZOfKNHJYP3qWgPodp6iaUncP0dK1ZDSYNrGS-80mgNyHScVoStqeBKQzuT0uMUIayTZNlJnM1ZjAirxsaNssBfpttBXGWRppAq1NVVmyvLJgA')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">危化品</span>
+</div>
+</div>
+<!-- Petrochemical -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="petro">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Industrial petrochemical facility silhouetted against a deep twilight sky, with tactical firefighting monitors spraying water towards storage tanks. The lighting is dramatic and authoritative, highlighting the massive scale and structural complexity of modern energy infrastructure under protection." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiOwy0WnkVCh1KS7tdDNh5mxaKGNvXXkUstc8OF9XtEIpavqUh0XIdyxs3zg-R7y01lu_dakX7IU1S_ivBXdKwKRj2Tcu54jAdhH_E-GgV_DpmJfEDS8qxBJCpQSLM5rPSaF6vVzlxKJPLEtScSSA6g5xMOPwmNiI7IrNK86yE8yluMcG_3PwFIJkXugCLGfXvZPdDgAkMc2MTwvME_EUCZZZYE1EVyytEL96NF7EGIKUd66rhDl177AkiGiCrzCKWzRdS2QqhhU59')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">石油化工</span>
+</div>
+</div>
+<!-- Mountain Rescue -->
+<div class="relative h-[100px] rounded-lg overflow-hidden active:scale-95 transition-transform duration-100 cursor-pointer group" data-type="mountain">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A rescue team navigating a rugged mountain terrain at dawn, carrying specialized stretcher equipment. The mood is heroic and disciplined, with soft morning light illuminating the mountain peak and the high-visibility tactical uniforms of the rescue personnel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXevr7QQ_6xp2KKNRkb4oD60JVwwVmRMGbwCVmDtH-AQjIRQaf1ySsZwCmXagNdNFrQTw1pRfvblD4tW-tPDq7fn6EdQgpXe4LbHQnrG2M70EKKShLeNVHgav34BGnGEgCqJTZTOdffqUm88mYxopC5CcvNZYlNwJ0pbLAPokCBQtLFvwt-Ce9gJS0LDUmuChq74rSMCZvFQO0MVPxV2GeUuZ6hkX2vklgIbbScronbJ98HUU-IqZH-DWW8tlwSUilQOWxxFySCfTr')"></div>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+<span class="text-white font-headline-md text-headline-md-mobile">山岳救援</span>
+</div>
+</div>
+</div>
+<!-- Recent Progress (Supplementary Component) -->
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-variant dark:border-outline-variant"><!-- 首页 -->
+<a class="flex flex-col items-center justify-center transition-transform active:scale-90 text-tertiary dark:text-tertiary-fixed-dim" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</a>
+<!-- 论坛 -->
+<a class="flex flex-col items-center justify-center text-tertiary dark:text-tertiary-fixed-dim hover:bg-surface-container-high transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</a>
+<!-- 商城 -->
+<a class="flex flex-col items-center justify-center text-tertiary dark:text-tertiary-fixed-dim hover:bg-surface-container-high transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">商城</span>
+</a>
+<!-- 我的 -->
+<a class="flex flex-col items-center justify-center text-tertiary dark:text-tertiary-fixed-dim hover:bg-surface-container-high transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</a></nav>
+<script>
+        // Micro-interaction for category cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.getAttribute('data-type');
+                console.log(`Navigating to ${type} rescue training...`);
+                // Interactive feedback visual could be added here
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body></html>

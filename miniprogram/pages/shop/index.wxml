@@ -1,0 +1,32 @@
+<!-- 商城 - 即将接入微信小店 -->
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-content">
+      <text class="nav-title">装备商城</text>
+    </view>
+  </view>
+
+  <!-- 占位内容 -->
+  <view class="content">
+    <view class="placeholder">
+      <text class="placeholder-icon">🛒</text>
+      <text class="placeholder-title">商城即将上线</text>
+      <text class="placeholder-desc">我们将接入微信小店，提供更多优质消防装备供您选购</text>
+      <view class="placeholder-btn" bindtap="onOpenShop">
+        <text>即将跳转微信小店</text>
+      </view>
+    </view>
+
+    <!-- 分类预览 -->
+    <view class="preview-section">
+      <text class="preview-title">预计上架品类</text>
+      <view class="preview-grid">
+        <view class="preview-card" wx:for="{{categories}}" wx:key="id">
+          <text class="preview-card-icon">{{item.icon}}</text>
+          <text class="preview-card-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

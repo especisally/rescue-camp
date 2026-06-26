@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>视频详情 - 战训营</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter,+PingFang+SC:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb4aa",
+                        "inverse-primary": "#ffb4aa",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#5a5a5a",
+                        "surface-variant": "#e2e2e2",
+                        "primary": "#b7000c",
+                        "background": "#f9f9f9",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#5f3f3b",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-container": "#fbf8f8",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-secondary-fixed": "#001b3b",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "surface-container": "#eeeeee",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#c0000d",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-container": "#e60012",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004788",
+                        "tertiary-container": "#737272",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-primary-container": "#fff7f6",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "outline": "#946e69",
+                        "secondary-fixed": "#d5e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#6ba7fd",
+                        "on-secondary-container": "#003b74",
+                        "primary-fixed": "#ffdad5",
+                        "secondary": "#0b5eaf",
+                        "surface-container-high": "#e8e8e8",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#e9bcb6",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-primary-fixed": "#410001"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-margin": "16px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "12px",
+                        "section-gap": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["\"Inter, PingFang SC\""],
+                        "body-lg": ["\"Inter, PingFang SC\""],
+                        "headline-lg": ["\"Inter, PingFang SC\""],
+                        "headline-sm": ["\"Inter, PingFang SC\""],
+                        "headline-md": ["\"Inter, PingFang SC\""],
+                        "label-md": ["\"Inter, PingFang SC\""],
+                        "body-md": ["\"Inter, PingFang SC\""]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-sm": ["17px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #f9f9f9;
+        }
+        .video-placeholder {
+            background: #000;
+            position: relative;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .description-collapsed {
+            max-height: 40px;
+            overflow: hidden;
+        }
+        .description-expanded {
+            max-height: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- Header (Mobile Top Bar) -->
+<header class="sticky top-0 z-50 bg-surface border-b border-surface-variant flex items-center justify-between px-container-margin h-12 w-full">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold truncate max-w-[200px]">视频详情</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<button class="active:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pb-32">
+<!-- 1. Video Player Area (16:9) -->
+<div class="w-full aspect-video video-placeholder overflow-hidden shadow-lg">
+<!-- Placeholder for Bilibili iframe or professional cover -->
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAS0OvVXzBqpr48pji13AetmdB0ULzK-TlDama-IyU0lWi3X6e8-jX680CH1r4QkQSFX_suk1y-zWF9eeR_lgUa1DaRACCjp8QstHJGyWiqVlL5ZnxVh5_BThVrl_A1KivqZ-tNdCGTAXzPpdKqOAGbjl6pgaZqLUre-dE_NfeJSGHBgJvu26bjlltdP0xq_CNrviEUkPs5m2HPNuZkgbNn77amK0Fp06LY1LflXChDaIfpufRfCf9ozyjUKKk5bYM1H3EA_7oRCKmI')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<button class="w-16 h-16 bg-primary/90 text-white rounded-full flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Progress overlay simulation -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-primary w-1/3"></div>
+</div>
+</div>
+<!-- 2. Information Hierarchy -->
+<section class="px-container-margin py-stack-md bg-surface-container-lowest">
+<!-- Title & Meta -->
+<div class="space-y-stack-sm">
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded-sm text-[10px] font-bold uppercase">Tactical</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-sm text-[10px] font-bold uppercase">Training</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">高层建筑内攻灭火战术详解</h2>
+<div class="flex items-center gap-stack-md text-on-surface-variant text-label-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 4.2k 次播放</span>
+<span class="">2023-12-01</span>
+</div>
+</div>
+<!-- Description Section (Collapsible) -->
+<div class="mt-stack-md relative" id="desc-wrapper">
+<p class="text-body-md text-on-surface-variant leading-relaxed line-clamp-2" id="video-description">
+                本视频详细介绍了高层建筑火灾扑救中的战术选择、人员编组及器材应用等关键要素。重点讲解内攻路径的选择与火场排烟战术，通过实战模拟演练，深入剖析核心动作。
+            </p>
+<button class="text-primary font-bold text-label-md mt-1 flex items-center gap-0.5" onclick="toggleDescription()">
+<span id="toggle-text" class="">展开更多</span>
+<span class="material-symbols-outlined text-[16px]" id="toggle-icon">expand_more</span>
+</button>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-between items-center mt-section-gap py-stack-sm border-y border-surface-variant/50">
+<button class="flex flex-col items-center gap-1 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined text-on-surface-variant group-active:text-primary">thumb_up</span>
+<span class="text-label-md">1.2k</span>
+</button>
+<button class="flex flex-col items-center gap-1 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined text-on-surface-variant group-active:text-primary">star</span>
+<span class="text-label-md">856</span>
+</button>
+<button class="flex flex-col items-center gap-1 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined text-on-surface-variant group-active:text-primary">forum</span>
+<span class="text-label-md">348</span>
+</button>
+<button class="flex flex-col items-center gap-1 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined text-on-surface-variant group-active:text-primary">share</span>
+<span class="text-label-md">分享</span>
+</button>
+</div>
+</section>
+<!-- 3. Integration of Forum Elements (Course Materials) -->
+<section class="mt-stack-sm px-container-margin py-stack-md bg-surface-container-lowest">
+<div class="flex items-center gap-2 mb-stack-md border-l-4 border-primary pl-3">
+<h3 class="font-headline-sm text-headline-sm">课程配套资料</h3>
+</div>
+<div class="bg-surface-container-low border border-surface-variant p-stack-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-stack-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">description</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">内攻战术课件.pdf</p>
+<p class="text-label-md text-on-surface-variant">所需积分：<span class="text-primary font-bold">10</span></p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-full font-label-md font-bold active:scale-95 transition-transform">
+                点击下载
+            </button>
+</div>
+</section>
+<!-- 4. User Comments/Discussion -->
+<section class="mt-stack-sm px-container-margin py-section-gap bg-surface-container-low min-h-[400px]">
+<div class="flex items-center justify-between mb-section-gap">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+                评论回复 <span class="text-label-md bg-secondary/10 text-secondary px-2 py-0.5 rounded-full">12</span>
+</h3>
+<div class="flex gap-4 text-on-surface-variant text-label-md">
+<span class="text-primary font-bold">按热度</span>
+<span class="">按时间</span>
+</div>
+</div>
+<!-- Comment List -->
+<div class="space-y-section-gap">
+<!-- Comment Item 1 -->
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE_ZtzKfqGYFfncO3eU4J3jD_cXhd0GrdBSvW27zvFqx8U5Nge0Ja25v0MHtmCSm0vbPlIs9x-MJ-WUGUTu5fYWMU8ssOuLy4Xw76XAxo7iOfL-onrz81Xc3ymvsso5KSxXMxhlFuk37MJLxgE--pRI98QyGWZHr7DFvh2_Uvye0vWTXpSCQPLa124zVwvHK9_QwhqE30caplF6NlN9AK4MNoATW7QGcmEJrOCEKlvKOVLy4b6blGQZ7C1Hjgs7NZzmrpdjAvb5Res">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-bold text-on-surface">张三 (特勤一中队)</h4>
+<p class="text-[10px] text-on-surface-variant/60">2023-11-20 14:30</p>
+</div>
+<button class="flex items-center gap-1 text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span class="text-[11px]">15</span>
+</button>
+</div>
+<p class="mt-2 text-body-md text-on-surface-variant leading-relaxed">
+                        在实际操作中，进门泄压降温那一步非常关键。建议大家在训练时多注意水枪的点射频率，防止产生过量水蒸汽导致烫伤。
+                    </p>
+<div class="mt-3 bg-surface-container p-3 rounded-lg border-l-2 border-secondary">
+<p class="text-[12px]"><span class="font-bold text-secondary">教官回复：</span> 总结得很到位，内攻人员必须注意蒸汽回流。</p>
+</div>
+</div>
+</div>
+<!-- Comment Item 2 -->
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-bold text-on-surface">李四 (战训干事)</h4>
+<p class="text-[10px] text-on-surface-variant/60">2023-11-19 10:15</p>
+</div>
+<button class="flex items-center gap-1 text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span class="text-[11px]">8</span>
+</button>
+</div>
+<p class="mt-2 text-body-md text-on-surface-variant leading-relaxed">
+                        请问教学视频里的低姿步法，对地面湿滑情况有没有特别的要求？
+                    </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Comment Bar -->
+<div class="fixed bottom-16 left-0 w-full z-40 px-container-margin py-3 bg-surface-container-lowest/90 backdrop-blur-md border-t border-surface-variant flex items-center gap-stack-md">
+<div class="flex-grow flex items-center bg-surface-container h-10 px-4 rounded-full gap-2 text-on-surface-variant/60 border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md text-on-surface placeholder:text-on-surface-variant/40" placeholder="写下你的战术体会..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined">emoji_emotions</span>
+</button>
+<button class="text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- 5. Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-surface-variant flex justify-around items-center h-16 px-gutter pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">首页</span>
+</button>
+<button class="flex flex-col items-center justify-center active:scale-95 transition-transform duration-150 text-on-surface-variant">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">论坛</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">商城</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">我的</span>
+</button>
+</nav>
+<script>
+    function toggleDescription() {
+        const desc = document.getElementById('video-description');
+        const text = document.getElementById('toggle-text');
+        const icon = document.getElementById('toggle-icon');
+        
+        if (desc.classList.contains('line-clamp-2')) {
+            desc.classList.remove('line-clamp-2');
+            text.innerText = '收起描述';
+            icon.innerText = 'expand_less';
+        } else {
+            desc.classList.add('line-clamp-2');
+            text.innerText = '展开更多';
+            icon.innerText = 'expand_more';
+        }
+    }
+
+    // Touch feedback for buttons
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('touchstart', () => btn.classList.add('opacity-70'));
+        btn.addEventListener('touchend', () => btn.classList.remove('opacity-70'));
+    });
+</script>
+
+
+
+
+</body></html>
