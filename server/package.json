@@ -1,6 +1,6 @@
 {
   "name": "rescue-camp-server",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "description": "应急救援战训营 - 后端服务",
   "main": "src/server.js",
