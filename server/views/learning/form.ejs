@@ -28,11 +28,17 @@
         </div>
         <div class="col-md-4">
           <label class="form-label">封面 URL</label>
-          <input type="text" name="coverUrl" class="form-control" value="<%= learning.coverUrl || '' %>">
+          <div class="input-group">
+            <input type="text" name="coverUrl" class="form-control" value="<%= learning.coverUrl || '' %>">
+            <button type="button" class="btn btn-outline-secondary upload-btn" data-target="coverUrl" data-type="image">📤 上传</button>
+          </div>
         </div>
         <div class="col-md-4">
           <label class="form-label">文件 URL</label>
-          <input type="text" name="fileUrl" class="form-control" value="<%= learning.fileUrl || '' %>">
+          <div class="input-group">
+            <input type="text" name="fileUrl" class="form-control" value="<%= learning.fileUrl || '' %>">
+            <button type="button" class="btn btn-outline-secondary upload-btn" data-target="fileUrl" data-type="file">📤 上传</button>
+          </div>
         </div>
         <div class="col-md-3">
           <label class="form-label">时长（秒）</label>

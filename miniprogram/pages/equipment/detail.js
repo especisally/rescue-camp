@@ -1,15 +1,11 @@
 // pages/equipment/detail.js
-const { get, post } = require('../../utils/request');
+const { get } = require('../../utils/request');
 
 Page({
   data: {
     statusBarHeight: 20,
     equipment: null,
     loading: true,
-    showRepairForm: false,
-    showRequisitionForm: false,
-    formReason: '',
-    submitting: false,
   },
 
   onLoad(options) {
@@ -46,47 +42,4 @@ Page({
     wx.navigateBack({ delta: 1, fail() { wx.switchTab({ url: '/pages/index/index' }); } });
   },
 
-  // 报修
-  onRepair() {
-    this.setData({ showRepairForm: true, formReason: '' });
-  },
-
-  // 领用申请
-  onApply() {
-    this.setData({ showRequisitionForm: true, formReason: '' });
-  },
-
-  onCancelForm() {
-    this.setData({ showRepairForm: false, showRequisitionForm: false, formReason: '' });
-  },
-
-  onReasonInput(e) {
-    this.setData({ formReason: e.detail.value });
-  },
-
-  onSubmitRepair() {
-    const reason = this.data.formReason.trim();
-    if (!reason) { wx.showToast({ title: '请填写报修原因', icon: 'none' }); return; }
-    const that = this;
-    this.setData({ submitting: true });
-    post('/equipment/' + this.data.equipment.id + '/repair', { reason: reason }, { auth: true })
-      .then(function () {
-        that.setData({ showRepairForm: false, formReason: '', submitting: false });
-        wx.showToast({ title: '报修申请已提交', icon: 'success' });
-      })
-      .catch(function () { that.setData({ submitting: false }); });
-  },
-
-  onSubmitRequisition() {
-    const reason = this.data.formReason.trim();
-    if (!reason) { wx.showToast({ title: '请填写领用原因', icon: 'none' }); return; }
-    const that = this;
-    this.setData({ submitting: true });
-    post('/equipment/' + this.data.equipment.id + '/requisition', { reason: reason }, { auth: true })
-      .then(function () {
-        that.setData({ showRequisitionForm: false, formReason: '', submitting: false });
-        wx.showToast({ title: '领用申请已提交', icon: 'success' });
-      })
-      .catch(function () { that.setData({ submitting: false }); });
-  },
 });

@@ -82,7 +82,7 @@
       <div class="modal-body">
         <input type="hidden" id="banner_id" name="id">
         <div class="mb-3"><label class="form-label">标题</label><input type="text" id="banner_title" name="title" class="form-control" required></div>
-        <div class="mb-3"><label class="form-label">图片 URL</label><input type="text" id="banner_imageUrl" name="imageUrl" class="form-control"></div>
+        <div class="mb-3"><label class="form-label">图片 URL</label><div class="input-group"><input type="text" id="banner_imageUrl" name="imageUrl" class="form-control"><button type="button" class="btn btn-outline-secondary upload-btn" data-target="imageUrl" data-type="image">📤 上传</button></div></div>
         <div class="mb-3"><label class="form-label">链接 URL</label><input type="text" id="banner_linkUrl" name="linkUrl" class="form-control"></div>
         <div class="row"><div class="col-6 mb-3"><label class="form-label">排序</label><input type="number" id="banner_sort" name="sort" class="form-control" value="0"></div>
         <div class="col-6 mb-3"><label class="form-label">状态</label><select id="banner_status" name="status" class="form-select"><option value="1">显示</option><option value="0">隐藏</option></select></div></div>
@@ -101,7 +101,7 @@
         <div class="mb-3"><label class="form-label">标题</label><input type="text" id="rec_title" name="title" class="form-control" required></div>
         <div class="mb-3"><label class="form-label">类型</label><select id="rec_type" name="type" class="form-select"><option value="video">视频</option><option value="training">操法</option><option value="learning">学习</option></select></div>
         <div class="mb-3"><label class="form-label">关联内容 ID</label><input type="number" id="rec_targetId" name="targetId" class="form-control"></div>
-        <div class="mb-3"><label class="form-label">封面 URL</label><input type="text" id="rec_coverUrl" name="coverUrl" class="form-control"></div>
+        <div class="mb-3"><label class="form-label">封面 URL</label><div class="input-group"><input type="text" id="rec_coverUrl" name="coverUrl" class="form-control"><button type="button" class="btn btn-outline-secondary upload-btn" data-target="coverUrl" data-type="image">📤 上传</button></div></div>
         <div class="mb-3"><label class="form-label">标签</label><input type="text" id="rec_tag" name="tag" class="form-control"></div>
         <div class="row"><div class="col-6 mb-3"><label class="form-label">排序</label><input type="number" id="rec_sort" name="sort" class="form-control" value="0"></div>
         <div class="col-6 mb-3"><label class="form-label">状态</label><select id="rec_status" name="status" class="form-select"><option value="1">上架</option><option value="0">下架</option></select></div></div>

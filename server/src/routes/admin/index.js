@@ -18,6 +18,7 @@ const quizRouter = require('./quiz');
 const usersRouter = require('./users');
 const feedbacksRouter = require('./feedbacks');
 const settingsRouter = require('./settings');
+const uploadRouter = require('./upload');
 
 /**
  * GET /admin — 数据看板
@@ -76,5 +77,6 @@ router.use('/quiz', quizRouter);
 router.use('/users', usersRouter);
 router.use('/feedbacks', feedbacksRouter);
 router.use('/settings', settingsRouter);
+router.use('/upload', uploadRouter);
 
 module.exports = router;

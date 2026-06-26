@@ -267,25 +267,3 @@
   color: #999;
 }
 
-/* FAB */
-.fab {
-  position: fixed;
-  bottom: 140rpx;
-  right: 40rpx;
-  width: 96rpx;
-  height: 96rpx;
-  border-radius: 50%;
-  background: #1a56db;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8rpx 24rpx rgba(26, 86, 219, 0.35);
-  z-index: 50;
-}
-
-.fab-icon {
-  font-size: 48rpx;
-  color: #fff;
-  font-weight: 300;
-  line-height: 1;
-}

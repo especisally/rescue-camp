@@ -283,39 +283,3 @@
   min-width: 0;
 }
 
-/* 底部操作栏 */
-.action-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 20rpx;
-  padding: 20rpx 24rpx;
-  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
-  background: #fff;
-  border-top: 1rpx solid #eee;
-  z-index: 50;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.action-btn {
-  flex: 1;
-  text-align: center;
-  padding: 24rpx;
-  border-radius: 12rpx;
-  font-size: 28rpx;
-  font-weight: 600;
-}
-
-.action-btn.outline {
-  border: 2rpx solid #1a56db;
-  color: #1a56db;
-  background: #fff;
-}
-
-.action-btn.primary {
-  background: #1a56db;
-  color: #fff;
-}

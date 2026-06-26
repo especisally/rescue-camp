@@ -80,10 +80,6 @@ Page({
     this.setData({ viewMode: mode });
   },
 
-  onFabTap() {
-    wx.showToast({ title: '添加器材功能开发中', icon: 'none' });
-  },
-
   onReachBottom() {
     if (!this.data.hasMore || this.data.loading) return;
     this.setData({ page: this.data.page + 1 });

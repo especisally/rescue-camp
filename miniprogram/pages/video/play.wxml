@@ -21,28 +21,27 @@
 
   <!-- 视频信息 -->
   <view class="video-info">
-    <text class="video-title">高层建筑灭火救援技战术解析</text>
+    <text class="video-title">{{video.title}}</text>
     <view class="video-meta">
-      <text class="meta-text">1.2w播放</text>
+      <text class="meta-text">{{video.views}}播放</text>
       <text class="meta-divider">·</text>
-      <text class="meta-text">15:40</text>
+      <text class="meta-text">{{video.duration}}</text>
       <text class="meta-divider">·</text>
-      <text class="meta-text">2024-10-15</text>
+      <text class="meta-text">{{video.date}}</text>
     </view>
     <view class="video-tags">
-      <text class="tag tag-red">灭火救援</text>
-      <text class="tag tag-blue">高层建筑</text>
+      <text class="tag tag-red" wx:for="{{video.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
     </view>
   </view>
 
   <!-- 作者信息 -->
   <view class="author-card">
     <view class="author-avatar">
-      <text class="author-avatar-text">张</text>
+      <text class="author-avatar-text">{{video.author ? video.author[0] : '教'}}</text>
     </view>
     <view class="author-info">
-      <text class="author-name">火线教官_张</text>
-      <text class="author-level">Lv.14 精英</text>
+      <text class="author-name">{{video.author}}</text>
+      <text class="author-level">{{video.level}}</text>
     </view>
     <view class="follow-btn">
       <text class="follow-text">+ 关注</text>
@@ -51,9 +50,7 @@
 
   <!-- 简介 -->
   <view class="desc-section">
-    <text class="desc-text {{descExpanded ? 'desc-expanded' : ''}}">
-      本课程详细讲解高层建筑火灾扑救中的技战术要点，包括火情侦察、力量部署、供水保障、人员疏散等关键环节。结合近年来典型高层建筑火灾案例，深入剖析作战经验与教训。
-    </text>
+    <text class="desc-text {{descExpanded ? 'desc-expanded' : ''}}">{{video.description}}</text>
     <text class="desc-toggle" bindtap="toggleDesc">
       {{descExpanded ? '收起' : '展开'}}
     </text>

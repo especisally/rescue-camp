@@ -2,7 +2,7 @@ const express = require('express');
 const prisma = require('../../services/prisma');
 const { listQuery, detailQuery } = require('../../services/query');
 const { success, fail } = require('../../utils/response');
-const { optionalAuth, requireAuth } = require('../../middleware/apiAuth');
+const { optionalAuth } = require('../../middleware/apiAuth');
 
 const router = express.Router();
 
@@ -49,44 +49,6 @@ router.get('/:id', optionalAuth, async (req, res) => {
     return res.json(success(equipment));
   } catch (err) {
     console.error('Equipment detail error:', err);
-    return res.status(500).json(fail(500, '服务器错误'));
-  }
-});
-
-// POST /api/equipment/:id/repair — 报修申请
-router.post('/:id/repair', requireAuth, async (req, res) => {
-  try {
-    const { reason } = req.body;
-    if (!reason) return res.status(422).json(fail(422, '请填写报修原因'));
-
-    await prisma.repairRequest.create({
-      data: {
-        equipmentId: Number(req.params.id),
-        userId: req.userId,
-        reason,
-      },
-    });
-    return res.json(success(null, '报修申请已提交'));
-  } catch (err) {
-    return res.status(500).json(fail(500, '服务器错误'));
-  }
-});
-
-// POST /api/equipment/:id/requisition — 领用申请
-router.post('/:id/requisition', requireAuth, async (req, res) => {
-  try {
-    const { reason } = req.body;
-    if (!reason) return res.status(422).json(fail(422, '请填写领用原因'));
-
-    await prisma.requisitionForm.create({
-      data: {
-        equipmentId: Number(req.params.id),
-        userId: req.userId,
-        reason,
-      },
-    });
-    return res.json(success(null, '领用申请已提交'));
-  } catch (err) {
     return res.status(500).json(fail(500, '服务器错误'));
   }
 });
