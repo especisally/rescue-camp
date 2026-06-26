@@ -3,6 +3,7 @@
  * 运行：node prisma/fix-missing-data.js
  *
  * 用途：补充因外键约束导致创建失败的数据（Post/Comment/Recommend/Learning）
+ * 特点：先检查数据是否存在，不存在才创建（幂等、安全）
  */
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -29,6 +30,7 @@ async function main() {
   }
 
   // ==================== 2. 帖子（只添加不存在的） ====================
+  let postIds = [];
   const existingPosts = await prisma.post.count();
   if (existingPosts === 0) {
     const posts = [
@@ -59,41 +61,74 @@ async function main() {
       },
     ];
     for (const post of posts) {
-      await prisma.post.create({ data: post });
+      const created = await prisma.post.create({ data: post });
+      postIds.push(created.id);
     }
-    console.log('✅ 帖子: 5 篇');
+    console.log('✅ 帖子: 5 篇 (ID: ' + postIds.join(', ') + ')');
   } else {
     console.log('⏭️ 帖子已存在 (' + existingPosts + ' 篇)');
+    // 获取现有帖子 ID 供后续使用
+    const existing = await prisma.post.findMany({ select: { id: true }, orderBy: { id: 'asc' }, take: 5 });
+    postIds = existing.map(p => p.id);
   }
 
-  // ==================== 3. 评论（只添加不存在的） ====================
+  // ==================== 3. 评论（使用实际帖子 ID） ====================
   const existingComments = await prisma.comment.count();
-  if (existingComments === 0) {
-    const comments = [
-      { userId: testUser.id, postId: 1, content: '写得太好了！电梯前室的正压送风确实关键，我们之前吃过亏。', likes: 8, status: 1 },
-      { userId: testUser.id, postId: 1, parentId: 1, replyToUid: testUser.id, content: '是的，另外补充一点：要确认消防电梯是否可用，能大大提高运兵效率。', likes: 3, status: 1 },
-      { userId: testUser.id, postId: 1, content: '学习了，下次出警前一定要提前熟悉建筑结构。', likes: 5, status: 1 },
-      { userId: testUser.id, postId: 2, content: '这个计划太实用了！引体向上一直是我弱项，有没有进阶训练方法？', likes: 6, status: 1 },
-      { userId: testUser.id, postId: 3, content: '危化品处置确实需要谨慎，建议加上侦检仪器的使用培训。', likes: 4, status: 1 },
-      { userId: testUser.id, postId: 4, content: '空呼面罩漏气的问题我也遇到过，换了硅胶密封圈后好多了。', likes: 7, status: 1 },
-    ];
-    for (const comment of comments) {
-      await prisma.comment.create({ data: comment });
-    }
+  if (existingComments === 0 && postIds.length >= 4) {
+    // 帖子 1（高层建筑...）有 3 条评论，帖子 2（体能训练...）有 1 条，帖子 3（危化品...）有 1 条，帖子 4（空呼...）有 1 条
+    const p1 = postIds[0]; // 高层建筑灭火...
+    const p2 = postIds[1]; // 体能训练计划
+    const p3 = postIds[2]; // 危化品运输...
+    const p4 = postIds[3]; // 空呼故障...
+
+    // 先创建一级评论
+    const c1 = await prisma.comment.create({
+      data: { userId: testUser.id, postId: p1, content: '写得太好了！电梯前室的正压送风确实关键，我们之前吃过亏。', likes: 8, status: 1 },
+    });
+    // 子回复（回复 c1）
+    await prisma.comment.create({
+      data: { userId: testUser.id, postId: p1, parentId: c1.id, replyToUid: testUser.id, content: '是的，另外补充一点：要确认消防电梯是否可用，能大大提高运兵效率。', likes: 3, status: 1 },
+    });
+    // p1 的第三条评论
+    await prisma.comment.create({
+      data: { userId: testUser.id, postId: p1, content: '学习了，下次出警前一定要提前熟悉建筑结构。', likes: 5, status: 1 },
+    });
+    // 其他帖子的评论
+    await prisma.comment.create({
+      data: { userId: testUser.id, postId: p2, content: '这个计划太实用了！引体向上一直是我弱项，有没有进阶训练方法？', likes: 6, status: 1 },
+    });
+    await prisma.comment.create({
+      data: { userId: testUser.id, postId: p3, content: '危化品处置确实需要谨慎，建议加上侦检仪器的使用培训。', likes: 4, status: 1 },
+    });
+    await prisma.comment.create({
+      data: { userId: testUser.id, postId: p4, content: '空呼面罩漏气的问题我也遇到过，换了硅胶密封圈后好多了。', likes: 7, status: 1 },
+    });
     console.log('✅ 评论: 6 条');
-  } else {
+  } else if (existingComments > 0) {
     console.log('⏭️ 评论已存在 (' + existingComments + ' 条)');
+  } else {
+    console.log('⚠️ 跳过评论：帖子数量不足 (' + postIds.length + ' < 4)');
   }
 
-  // ==================== 4. 推荐内容（只添加不存在的） ====================
+  // ==================== 4. 推荐内容（使用实际帖子/视频 ID） ====================
   const existingRecommends = await prisma.recommend.count();
   if (existingRecommends === 0) {
+    // 获取视频和训练的实际 ID
+    const videos = await prisma.video.findMany({ select: { id: true }, orderBy: { id: 'asc' }, take: 2 });
+    const trainings = await prisma.training.findMany({ select: { id: true }, orderBy: { id: 'asc' }, take: 1 });
+
+    const videoId1 = videos.length > 0 ? videos[0].id : 1;
+    const videoId2 = videos.length > 1 ? videos[1].id : 2;
+    const trainingId1 = trainings.length > 0 ? trainings[0].id : 1;
+    const postId1 = postIds.length > 0 ? postIds[0] : 1;
+    const postId2 = postIds.length > 1 ? postIds[1] : 2;
+
     const recommends = [
-      { title: '高层建筑火灾扑救要点', type: 'video', targetId: 1, coverUrl: '/uploads/images/rec-1.jpg', tag: '热门课程', sort: 1, status: 1 },
-      { title: '地震救援基础知识', type: 'video', targetId: 2, coverUrl: '/uploads/images/rec-2.jpg', tag: '新上课程', sort: 2, status: 1 },
-      { title: '高层建筑水带铺设操', type: 'training', targetId: 1, coverUrl: '/uploads/images/rec-3.jpg', tag: '推荐操法', sort: 3, status: 1 },
-      { title: '高层建筑灭火救援实战经验分享', type: 'post', targetId: 1, coverUrl: '/uploads/images/rec-4.jpg', tag: '精华帖', sort: 4, status: 1 },
-      { title: '新入队消防员体能训练计划', type: 'post', targetId: 2, coverUrl: '/uploads/images/rec-5.jpg', tag: '热门', sort: 5, status: 1 },
+      { title: '高层建筑火灾扑救要点', type: 'video', targetId: videoId1, coverUrl: '/uploads/images/rec-1.jpg', tag: '热门课程', sort: 1, status: 1 },
+      { title: '地震救援基础知识', type: 'video', targetId: videoId2, coverUrl: '/uploads/images/rec-2.jpg', tag: '新上课程', sort: 2, status: 1 },
+      { title: '高层建筑水带铺设操', type: 'training', targetId: trainingId1, coverUrl: '/uploads/images/rec-3.jpg', tag: '推荐操法', sort: 3, status: 1 },
+      { title: '高层建筑灭火救援实战经验分享', type: 'post', targetId: postId1, coverUrl: '/uploads/images/rec-4.jpg', tag: '精华帖', sort: 4, status: 1 },
+      { title: '新入队消防员体能训练计划', type: 'post', targetId: postId2, coverUrl: '/uploads/images/rec-5.jpg', tag: '热门', sort: 5, status: 1 },
     ];
     for (const rec of recommends) {
       await prisma.recommend.create({ data: rec });
