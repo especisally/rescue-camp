@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> — 应急救援战训营</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/admin/assets/css/admin.css" rel="stylesheet">
+</head>
+<body>
+  <div class="d-flex" style="min-height: 100vh">
+
+    <!-- 侧边栏 -->
+    <nav class="bg-dark text-white p-3" style="width: 220px; flex-shrink: 0;">
+      <h5 class="mb-4">&#x1F6DF; 战训营后台</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="/admin" class="nav-link text-white">&#x1F4CA; 数据看板</a></li>
+        <li class="nav-item"><a href="/admin/banners" class="nav-link text-white">&#x1F3AF; 轮播图</a></li>
+        <li class="nav-item"><a href="/admin/videos" class="nav-link text-white">&#x1F4F9; 视频管理</a></li>
+        <li class="nav-item"><a href="/admin/trainings" class="nav-link text-white">&#x1F3CB; 训练操法</a></li>
+        <li class="nav-item"><a href="/admin/chemicals" class="nav-link text-white">&#x2697; 危化品</a></li>
+        <li class="nav-item"><a href="/admin/standards" class="nav-link text-white">&#x1F4CF; 考核标准</a></li>
+        <li class="nav-item"><a href="/admin/equipment" class="nav-link text-white">&#x1F527; 器材装备</a></li>
+        <li class="nav-item"><a href="/admin/equipment/repairs" class="nav-link text-white-50 small ps-4">&#x1F6E0; 报修审批</a></li>
+        <li class="nav-item"><a href="/admin/equipment/requisitions" class="nav-link text-white-50 small ps-4">&#x1F4CB; 领用审批</a></li>
+        <li class="nav-item"><a href="/admin/learning" class="nav-link text-white">&#x1F4DA; 拓展学习</a></li>
+        <li class="nav-item"><a href="/admin/quiz/banks" class="nav-link text-white">&#x1F4DD; 题库管理</a></li>
+        <li class="nav-item"><a href="/admin/posts" class="nav-link text-white">&#x1F4AC; 帖子审核</a></li>
+        <li class="nav-item"><a href="/admin/users" class="nav-link text-white">&#x1F465; 用户管理</a></li>
+        <li class="nav-item"><a href="/admin/feedbacks" class="nav-link text-white">&#x1F4EE; 反馈管理</a></li>
+        <li class="nav-item"><a href="/admin/settings" class="nav-link text-white">&#x2699; 系统设置</a></li>
+      </ul>
+      <hr class="text-white-50">
+      <a href="/admin/logout" class="nav-link text-white-50">&#x1F6AA; 退出登录</a>
+    </nav>
+
+    <!-- 内容区 -->
+    <main class="flex-grow-1 p-4 bg-light">
+      <h3 class="mb-4"><%= title %></h3>

@@ -28,11 +28,12 @@ const feedbackRouter = require('./feedback');
 router.get('/health', async (req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
+    const pkg = require('../../../package.json');
     return res.json(success({
       status: 'ok',
       db: 'connected',
       uptime: process.uptime(),
-      version: '0.2.0',
+      version: pkg.version,
     }));
   } catch (err) {
     return res.status(500).json(fail(500, '服务异常'));

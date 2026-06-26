@@ -71,9 +71,16 @@ async function adminCreate({ model, req, res, redirect, transform }) {
   if (data.duration) data.duration = Number(data.duration);
   if (data.sort) data.sort = Number(data.sort);
   if (data.status !== undefined) data.status = Number(data.status);
+  if (data.targetId) data.targetId = Number(data.targetId);
+
+  // JSON 字段自动解析（支持 Json 类型字段，如表单中的 properties/steps/specs/items 等）
+  data = parseJsonFields(data);
 
   // 自定义转换
   if (transform) data = transform(data);
+
+  // 删除空字符串字段（避免 Prisma 将空字符串写入非字符串字段）
+  data = removeEmptyStrings(data);
 
   await prisma[model].create({ data });
   res.redirect(redirect);
@@ -91,8 +98,15 @@ async function adminUpdate({ model, req, res, redirect, transform }) {
   if (data.duration) data.duration = Number(data.duration);
   if (data.sort) data.sort = Number(data.sort);
   if (data.status !== undefined) data.status = Number(data.status);
+  if (data.targetId) data.targetId = Number(data.targetId);
+
+  // JSON 字段自动解析
+  data = parseJsonFields(data);
 
   if (transform) data = transform(data);
+
+  // 删除空字符串字段
+  data = removeEmptyStrings(data);
 
   await prisma[model].update({ where: { id }, data });
   res.redirect(redirect);
@@ -107,6 +121,38 @@ async function adminDelete({ model, req, res, redirect }) {
     data: { status: -1 },
   });
   res.redirect(redirect);
+}
+
+/**
+ * 自动解析 JSON 字符串字段
+ * 对于以 { 或 [ 开头的字符串值，尝试解析为 JSON 对象
+ */
+function parseJsonFields(data) {
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value === 'string' && value.trim()) {
+      const trimmed = value.trim();
+      if ((trimmed.startsWith('{') || trimmed.startsWith('['))) {
+        try {
+          data[key] = JSON.parse(trimmed);
+        } catch (e) {
+          // 解析失败保留原始字符串，让 Prisma 报错
+        }
+      }
+    }
+  }
+  return data;
+}
+
+/**
+ * 删除空字符串值（避免 Prisma 类型校验错误）
+ */
+function removeEmptyStrings(data) {
+  for (const [key, value] of Object.entries(data)) {
+    if (value === '') {
+      delete data[key];
+    }
+  }
+  return data;
 }
 
 module.exports = { adminList, adminCreate, adminUpdate, adminDelete };

@@ -5,7 +5,30 @@
 
 ---
 
-## 0.2.1 - 2026-06-26 - Bug修复 + 种子数据扩充 + 前端 API 基础设施
+## 0.2.2 - 2026-06-26 - 管理后台布局修复 + adminCrud JSON字段处理修复
+
+- **管理后台布局修复**：`main.ejs` 的 `<%- body %>` 在 Express 标准 EJS 中不会自动填充，导致所有后台页面内容渲染在 `</html>` 之外（页面显示空白）。拆分为 `header.ejs` + `footer.ejs` 模式，24 个视图全部迁移。✅
+- **adminCrud JSON 字段自动解析**：新增 `parseJsonFields()` 和 `removeEmptyStrings()` 辅助函数，自动解析表单提交的 JSON 字符串（如危化品 properties、装备 specs 等），避免 Prisma 类型校验错误。✅
+- **健康检查版本号动态读取**：`GET /api/health` 从硬编码 `0.2.0` 改为从 `package.json` 动态读取。✅
+- 版本号 0.2.1 → 0.2.2（Bug 修复，补丁版本号 +1）
+- 详细日志见：`feature-backend-phase4.md`
+
+---
+## 0.2.1 - 2026-06-26 - Bug修复 + 种子数据扩充 + 前端 API 接入 + 服务器部署
+
+- 修复敏感词过滤 Bug：`sensitiveFilter.js` 中 `REPEAT_CHAR` 未定义 → `REPLACE_CHAR` ✅
+- 修复管理后台 500 错误：EJS 布局 `<%- body %>` 未定义，拆分为 `header.ejs` + `footer.ejs`（24 个视图批量更新）✅
+- 种子数据大幅扩充：训练操法 4 + 装备 6 + 题库 3（21题）+ 帖子 5 + 评论 6 + 推荐 5 + 危化品 4 + 考核标准 4 ✅
+- 种子数据脚本重构为可重复执行（`deleteMany` + `upsert` 策略）✅
+- 创建前端 API 基础设施：`config/index.js` + `utils/request.js` + `utils/util.js` ✅
+- 更新 `app.js`：Token 管理 + 登录状态持久化 ✅
+- 登录页接入微信登录（`wx.login` → `POST /api/auth/login`）✅
+- 全部 28 个前端页面接入真实 API ✅
+- 服务器部署：Node.js v20 + MySQL + Nginx 反向代理 + 种子数据 ✅
+- 微信公众平台添加合法域名 `https://www.yjjyzxy.top` ✅
+- 版本号 0.2.0 → 0.2.1
+- 详细日志见：`feature-backend-phase4.md`
+- 详细日志见：`feature-frontend-api-integration.md`
 
 - 修复敏感词过滤 Bug：`sensitiveFilter.js` 中 `REPEAT_CHAR` 未定义 → `REPLACE_CHAR` ✅
 - 种子数据大幅扩充：训练操法 4 条 + 装备 6 件 + 题库 3 个（21 题）+ 帖子 5 篇 + 评论 6 条 + 推荐 5 条 + 危化品 4 条 + 考核标准 4 条 ✅
@@ -15,8 +38,11 @@
 - 登录页接入真实微信登录（`wx.login` → `POST /api/auth/login`）✅
 - 首页接入 Banner/推荐 API（`GET /api/banners` + `GET /api/recommends`），保留 fallback 数据 ✅
 - **全部 28 个前端页面接入真实 API**（视频3页/论坛3页/刷题3页/工具4页/训练2页/装备2页/学习2页/个人中心5页/搜索/通知/帮助/关于）✅
+- **服务器部署完成**：Node.js + MySQL + Nginx 反向代理 + 种子数据填充 ✅
+- 微信公众平台已添加合法域名 `https://www.yjjyzxy.top` ✅
 - 版本号 0.2.0 → 0.2.1（Bug 修复 + 新功能，补丁版本号 +1）
 - 详细日志见：`feature-backend-phase4.md`
+- 详细日志见：`feature-frontend-api-integration.md`
 
 ---
 
