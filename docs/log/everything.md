@@ -5,6 +5,30 @@
 
 ---
 
+## 0.2.3 - 2026-06-26 - 修复种子数据脚本 + 补充缺失数据
+
+### 问题诊断
+- **现象**：管理后台修改数据后，小程序预览不显示；后台已有的基础数据在小程序中也不出现
+- **根因**：`seed.js` 创建帖子时使用硬编码 `userId: 1`，但从未创建测试 User。Prisma 外键约束导致帖子创建失败，脚本崩溃退出。紧随其后的 Comment、Recommend 数据也被跳过，Learning 表无种子数据
+- **影响表**：posts（0 条）、comments（0 条）、recommends（0 条）、learning（0 条）
+- **不受影响的表**：banners（3）、videos（4）、chemicals（4）、standards（4）、trainings（4）、equipment（6）、quiz_banks（3 个/21 题）— 这些在脚本早期执行成功
+
+### 代码修复
+- 在种子数据帖子/评论/推荐之前，先创建测试用户（openid=`seed_test_user_001`），所有 `userId` 引用改为动态获取 `testUser.id` ✅
+- 新增 6 条拓展学习种子数据（3 视频 + 3 文档）✅
+- 新增 `fix-missing-data.js` 脚本：只补充缺失数据，不删除已有数据（保护后台修改）✅
+- 修复评论的 `postId` 使用数据库实际 ID 替代硬编码（MySQL AUTO_INCREMENT 不会因 deleteMany 重置）✅
+- 版本号 0.2.2 → 0.2.3
+
+### 待部署
+- 服务器 `git pull` 拉取最新代码
+- 运行 `node prisma/fix-missing-data.js` 补充数据
+- 验证：`curl https://www.yjjyzxy.top/api/posts` 应返回 5 篇帖子
+- 验证：`curl https://www.yjjyzxy.top/api/recommends` 应返回 5 条推荐
+- 详细日志见：`bugfix-seed-data.md`
+
+---
+
 ## 0.2.2 - 2026-06-26 - 管理后台布局修复 + adminCrud 修复 + 服务器部署
 
 ### 问题诊断
